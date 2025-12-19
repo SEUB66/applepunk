@@ -1,10 +1,9 @@
-<!-- APPLEPUNK Portfolio v2 - Force redeploy -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Seub Germain - Développement Web & App Créatif | APPLEPUNK</title>
+  <title>APPLEPUNK - Solutions d'Entreprise Intelligentes | Seub Germain</title>
   <style>
     * {
       margin: 0;
@@ -12,55 +11,96 @@
       box-sizing: border-box;
     }
 
+    :root {
+      --primary-color: #8ACCD5;
+      --secondary-color: #8E7DBE;
+      --accent-color: #FF90BB;
+      --bg-primary: #0a0a0a;
+      --bg-secondary: rgba(15, 15, 25, 0.95);
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.7);
+      --border-color: rgba(138, 204, 213, 0.2);
+    }
+
+    /* WHITE THEME */
+    body.theme-white {
+      --primary-color: #2D5A7B;
+      --secondary-color: #6B4C9A;
+      --accent-color: #E84B8A;
+      --bg-primary: #f5f5f5;
+      --bg-secondary: #ffffff;
+      --text-primary: #1a1a1a;
+      --text-secondary: rgba(26, 26, 26, 0.7);
+      --border-color: rgba(45, 90, 123, 0.15);
+    }
+
+    /* UNICORN THEME */
+    body.theme-unicorn {
+      --primary-color: #FF6EC7;
+      --secondary-color: #A78BFA;
+      --accent-color: #06B6D4;
+      --bg-primary: #0f0a1a;
+      --bg-secondary: rgba(20, 10, 40, 0.95);
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.7);
+      --border-color: rgba(255, 110, 199, 0.2);
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      background: #0a0a0a;
-      color: #ffffff;
+      background: var(--bg-primary);
+      color: var(--text-primary);
       line-height: 1.6;
+      transition: all 0.3s ease;
     }
 
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 1rem;
+      padding: 0 1.5rem;
     }
 
-    /* Navigation */
+    /* NAVIGATION */
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1.5rem 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid var(--border-color);
       flex-wrap: wrap;
       gap: 1rem;
+      position: relative;
+      z-index: 100;
     }
 
     nav .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      background: linear-gradient(135deg, #8ACCD5 0%, #8E7DBE 50%, #FF90BB 100%);
+      font-size: 1.8rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--accent-color) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      letter-spacing: -1px;
     }
 
     nav ul {
       display: flex;
       list-style: none;
-      gap: 2rem;
+      gap: 2.5rem;
       flex-wrap: wrap;
     }
 
     nav a {
-      color: rgba(255, 255, 255, 0.7);
+      color: var(--text-secondary);
       text-decoration: none;
-      transition: color 0.3s;
-      font-size: 0.9rem;
+      transition: all 0.3s;
+      font-size: 0.95rem;
+      font-weight: 500;
     }
 
     nav a:hover {
-      color: #8ACCD5;
+      color: var(--primary-color);
+      transform: translateY(-2px);
     }
 
     .nav-controls {
@@ -69,31 +109,36 @@
       align-items: center;
     }
 
-    .lang-toggle {
+    .theme-toggle {
       background: rgba(138, 204, 213, 0.1);
-      border: 1px solid rgba(138, 204, 213, 0.3);
-      color: #8ACCD5;
-      padding: 0.5rem 1rem;
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+      padding: 0.6rem 1.2rem;
       border-radius: 0.5rem;
       cursor: pointer;
       transition: all 0.3s;
       font-size: 0.85rem;
-      font-weight: 600;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    .lang-toggle:hover {
-      background: rgba(138, 204, 213, 0.2);
-      border-color: #8ACCD5;
+    .theme-toggle:hover {
+      background: var(--primary-color);
+      color: var(--bg-primary);
+      transform: scale(1.05);
     }
 
-    /* Hero Section */
+    /* HERO SECTION */
     .hero {
-      padding: 8rem 0;
-      text-align: center;
-      background: linear-gradient(180deg, rgba(10, 10, 10, 0.5) 0%, rgba(15, 15, 25, 0.8) 100%);
+      padding: 6rem 0;
       position: relative;
       overflow: hidden;
-      min-height: 600px;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 4rem;
     }
 
     .hero-video {
@@ -104,936 +149,601 @@
       height: 100%;
       object-fit: cover;
       z-index: 0;
-      opacity: 0.4;
+      opacity: 0.5;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(10, 10, 10, 0.3) 0%, rgba(10, 10, 10, 0.7) 100%);
+      z-index: 1;
     }
 
     .hero-content {
       position: relative;
-      z-index: 1;
-    }
-
-    .hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 1rem;
-      background: linear-gradient(135deg, #8ACCD5 0%, #8E7DBE 50%, #FF90BB 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: gradientShift 3s ease infinite;
-    }
-
-    @keyframes gradientShift {
-      0%, 100% { filter: hue-rotate(0deg); }
-      50% { filter: hue-rotate(10deg); }
+      z-index: 2;
+      text-align: center;
+      max-width: 800px;
     }
 
     .hero-subtitle {
-      font-size: 1rem;
-      color: rgba(255, 255, 255, 0.6);
-      margin-bottom: 1rem;
+      font-size: 0.95rem;
+      color: var(--primary-color);
       text-transform: uppercase;
       letter-spacing: 2px;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--accent-color) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+      font-weight: 900;
     }
 
     .hero p {
-      font-size: 1.2rem;
-      color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 2rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .hero-description {
-      font-size: 1rem;
-      color: rgba(255, 255, 255, 0.6);
-      margin-bottom: 2rem;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
       line-height: 1.8;
     }
 
-    .hero-badges {
+    .hero-buttons {
       display: flex;
+      gap: 1.5rem;
       justify-content: center;
-      gap: 1rem;
-      margin-bottom: 2rem;
       flex-wrap: wrap;
-    }
-
-    .badge {
-      background: rgba(138, 204, 213, 0.1);
-      border: 1px solid rgba(138, 204, 213, 0.3);
-      color: #8ACCD5;
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      font-size: 0.85rem;
-      font-weight: 600;
     }
 
     .btn {
       display: inline-block;
-      padding: 0.75rem 1.5rem;
-      background: linear-gradient(135deg, #8ACCD5 0%, #8E7DBE 100%);
-      color: #0a0a0a;
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: var(--bg-primary);
       border: none;
-      border-radius: 0.5rem;
+      border-radius: 0.75rem;
       cursor: pointer;
-      font-weight: 600;
+      font-weight: 700;
       transition: all 0.3s;
       text-decoration: none;
-      margin: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.95rem;
+      box-shadow: 0 10px 30px rgba(138, 204, 213, 0.3);
     }
 
     .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(138, 204, 213, 0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 40px rgba(138, 204, 213, 0.5);
     }
 
     .btn-secondary {
       background: transparent;
-      border: 2px solid #FF90BB;
-      color: #FF90BB;
+      border: 2px solid var(--accent-color);
+      color: var(--accent-color);
+      box-shadow: 0 10px 30px rgba(255, 144, 187, 0.2);
     }
 
     .btn-secondary:hover {
-      background: rgba(255, 144, 187, 0.1);
-      box-shadow: 0 10px 30px rgba(255, 144, 187, 0.3);
+      background: var(--accent-color);
+      color: var(--bg-primary);
+      box-shadow: 0 15px 40px rgba(255, 144, 187, 0.4);
     }
 
-    /* About Section */
-    .about {
-      padding: 4rem 0;
-    }
-
-    .about-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-    }
-
-    .about-image {
-      text-align: center;
-    }
-
-    .about-image img {
-      max-width: 100%;
-      border-radius: 1rem;
-      box-shadow: 0 20px 50px rgba(138, 204, 213, 0.2);
-    }
-
-    .about-text h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, #8ACCD5 0%, #8E7DBE 50%, #FF90BB 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .about-text p {
-      color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 1.5rem;
-      line-height: 1.8;
-    }
-
-    .about-stats {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .stat {
-      background: rgba(138, 204, 213, 0.05);
-      border: 1px solid rgba(138, 204, 213, 0.2);
-      padding: 1.5rem;
-      border-radius: 0.75rem;
-      text-align: center;
-    }
-
-    .stat-label {
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 0.85rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .stat-value {
-      color: #8ACCD5;
-      font-size: 1.3rem;
-      font-weight: 600;
-    }
-
-    /* Mission Section */
-    .mission {
-      padding: 4rem 0;
-      background: rgba(138, 204, 213, 0.05);
-      border-radius: 1rem;
+    /* SERVICES SECTION */
+    .services {
+      padding: 6rem 0;
+      background: var(--bg-secondary);
+      border-radius: 2rem;
       margin: 4rem 0;
     }
 
-    .mission h2 {
+    .section-title {
       text-align: center;
-      font-size: 2.5rem;
+      font-size: 3rem;
       margin-bottom: 1rem;
-      background: linear-gradient(135deg, #8ACCD5 0%, #8E7DBE 50%, #FF90BB 100%);
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--accent-color) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      font-weight: 900;
     }
 
-    .mission-objective {
+    .section-subtitle {
       text-align: center;
       font-size: 1.1rem;
-      color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 3rem;
-      max-width: 700px;
+      color: var(--text-secondary);
+      margin-bottom: 4rem;
+      max-width: 600px;
       margin-left: auto;
       margin-right: auto;
-    }
-
-    .mission-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-
-    .mission-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 2rem;
-      border-radius: 0.75rem;
-      backdrop-filter: blur(10px);
-    }
-
-    .mission-card h3 {
-      color: #8ACCD5;
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-    }
-
-    .mission-card p {
-      color: rgba(255, 255, 255, 0.6);
-      line-height: 1.6;
-    }
-
-    /* Services Section */
-    .services {
-      padding: 4rem 0;
-    }
-
-    .services h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 3rem;
-      background: linear-gradient(135deg, #8ACCD5 0%, #8E7DBE 50%, #FF90BB 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
     }
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
     }
 
     .service-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 0.75rem;
-      padding: 2rem;
+      background: linear-gradient(135deg, rgba(138, 204, 213, 0.1) 0%, rgba(142, 125, 190, 0.1) 100%);
+      border: 2px solid var(--border-color);
+      border-radius: 1.5rem;
+      padding: 2.5rem;
       backdrop-filter: blur(10px);
-      transition: all 0.3s;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
     }
 
     .service-card:hover {
-      background: rgba(138, 204, 213, 0.1);
-      border-color: #8ACCD5;
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(138, 204, 213, 0.2);
-    }
-
-    .service-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 1rem;
-      color: #8ACCD5;
-    }
-
-    .service-card p {
-      color: rgba(255, 255, 255, 0.7);
-      line-height: 1.6;
-    }
-
-    /* Product Section */
-    .product {
-      padding: 4rem 0;
-    }
-
-    .product h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 3rem;
-      background: linear-gradient(135deg, #8ACCD5 0%, #8E7DBE 50%, #FF90BB 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .product-showcase {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-    }
-
-    .product-image {
-      text-align: center;
-    }
-
-    .product-image img {
-      max-width: 100%;
-      border-radius: 1rem;
+      background: linear-gradient(135deg, rgba(138, 204, 213, 0.2) 0%, rgba(142, 125, 190, 0.2) 100%);
+      border-color: var(--primary-color);
+      transform: translateY(-8px);
       box-shadow: 0 20px 50px rgba(138, 204, 213, 0.2);
     }
 
-    .product-info h3 {
-      font-size: 1.8rem;
-      color: #8ACCD5;
-      margin-bottom: 1rem;
-    }
-
-    .product-info p {
-      color: rgba(255, 255, 255, 0.7);
+    .service-icon {
+      font-size: 3rem;
       margin-bottom: 1.5rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+      font-weight: 800;
+    }
+
+    .service-card p {
+      color: var(--text-secondary);
       line-height: 1.8;
+      margin-bottom: 1.5rem;
     }
 
-    .features-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin: 2rem 0;
-    }
-
-    .feature-item {
-      background: rgba(138, 204, 213, 0.05);
-      border-left: 3px solid #8ACCD5;
-      padding: 1rem;
-      border-radius: 0.25rem;
-    }
-
-    .feature-item strong {
-      color: #8ACCD5;
-    }
-
-    /* Team Section */
-    .team {
-      padding: 4rem 0;
-    }
-
-    .team h2 {
+    .service-card .btn {
+      width: 100%;
       text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 3rem;
-      background: linear-gradient(135deg, #8ACCD5 0%, #8E7DBE 50%, #FF90BB 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      padding: 0.8rem 1.5rem;
+      font-size: 0.9rem;
     }
 
-    .team-grid {
+    /* FEATURES SECTION */
+    .features {
+      padding: 6rem 0;
+    }
+
+    .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
     }
 
-    .team-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+    .feature-box {
+      background: var(--bg-secondary);
+      border: 2px solid var(--border-color);
+      border-radius: 1.5rem;
       padding: 2rem;
-      border-radius: 0.75rem;
       text-align: center;
-      backdrop-filter: blur(10px);
-    }
-
-    .team-card h3 {
-      font-size: 1.3rem;
-      color: #8ACCD5;
-      margin-bottom: 0.5rem;
-    }
-
-    .team-role {
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-    }
-
-    .team-card p {
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-    }
-
-    .team-email {
-      color: #8ACCD5;
-      text-decoration: none;
-      font-size: 0.85rem;
-    }
-
-    /* Contact Section */
-    .contact {
-      padding: 4rem 0;
-    }
-
-    .contact h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      background: linear-gradient(135deg, #8ACCD5 0%, #8E7DBE 50%, #FF90BB 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .contact-subtitle {
-      text-align: center;
-      font-size: 1.1rem;
-      color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 3rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .contact-form {
-      max-width: 600px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(138, 204, 213, 0.3);
-      color: #ffffff;
-      padding: 1rem;
-      border-radius: 0.5rem;
-      font-family: inherit;
-      font-size: 1rem;
       transition: all 0.3s;
     }
 
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-      outline: none;
-      background: rgba(138, 204, 213, 0.1);
-      border-color: #8ACCD5;
-      box-shadow: 0 0 10px rgba(138, 204, 213, 0.2);
+    .feature-box:hover {
+      border-color: var(--primary-color);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(138, 204, 213, 0.15);
     }
 
-    .contact-form input::placeholder,
-    .contact-form textarea::placeholder {
-      color: rgba(255, 255, 255, 0.4);
+    .feature-number {
+      font-size: 2.5rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
     }
 
-    /* Footer */
+    .feature-box h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .feature-box p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* FOOTER */
     footer {
+      border-top: 1px solid var(--border-color);
+      padding: 3rem 0;
+      margin-top: 6rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h4 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+
+    .footer-section a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.5rem;
+      transition: color 0.3s;
+    }
+
+    .footer-section a:hover {
+      color: var(--primary-color);
+    }
+
+    .footer-bottom {
       text-align: center;
-      padding: 2rem 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 0.9rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-secondary);
     }
 
-    footer p {
-      margin: 0.5rem 0;
+    /* LANGUAGE TOGGLE */
+    .lang-toggle {
+      background: rgba(138, 204, 213, 0.1);
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+      padding: 0.6rem 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 700;
     }
 
-    /* Responsive */
+    .lang-toggle:hover {
+      background: var(--primary-color);
+      color: var(--bg-primary);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* RESPONSIVE */
     @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      nav ul {
-        flex-direction: column;
-        gap: 1rem;
-      }
-
       .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .section-title {
         font-size: 2rem;
       }
 
-      .about-content,
-      .product-showcase {
-        grid-template-columns: 1fr;
+      nav ul {
+        gap: 1rem;
       }
 
-      .features-list {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-badges {
+      .hero-buttons {
         flex-direction: column;
+        align-items: center;
       }
 
-      .badge {
+      .btn {
         width: 100%;
+        max-width: 300px;
       }
-    }
-
-    /* Hidden by default */
-    .en {
-      display: none;
-    }
-
-    .fr {
-      display: block;
-    }
-
-    .fr.hidden {
-      display: none;
-    }
-
-    .en.visible {
-      display: block;
     }
   </style>
 </head>
-<body>
+<body class="theme-black">
   <div class="container">
-    <!-- Navigation -->
+    <!-- NAVIGATION -->
     <nav>
       <div class="logo">APPLEPUNK</div>
       <ul>
-        <li><a href="#about" class="nav-link">
-          <span class="fr">À propos</span>
-          <span class="en hidden">About</span>
-        </a></li>
-        <li><a href="#services" class="nav-link">
-          <span class="fr">Services</span>
-          <span class="en hidden">Services</span>
-        </a></li>
-        <li><a href="#product" class="nav-link">
-          <span class="fr">Produit</span>
-          <span class="en hidden">Product</span>
-        </a></li>
-        <li><a href="#team" class="nav-link">
-          <span class="fr">Équipe</span>
-          <span class="en hidden">Team</span>
-        </a></li>
-        <li><a href="#contact" class="nav-link">
-          <span class="fr">Contact</span>
-          <span class="en hidden">Contact</span>
-        </a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#features">Pourquoi Nous</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
       <div class="nav-controls">
         <button class="lang-toggle" onclick="toggleLanguage()">
-          <span class="fr">EN</span>
-          <span class="en hidden">FR</span>
+          <span class="fr">🇨🇦 EN</span>
+          <span class="en hidden">⚜️ FR</span>
+        </button>
+        <button class="theme-toggle" onclick="toggleTheme()">
+          <span class="theme-name">BLACK</span>
         </button>
       </div>
     </nav>
-
-    <!-- Hero Section -->
-    <section class="hero">
-      <video autoplay muted loop playsinline class="hero-video">
-        <source src="/background.mp4" type="video/mp4">
-      </video>
-      <div class="hero-content">
-        <div class="hero-subtitle">
-          <span class="fr">PDG & FONDATEUR</span>
-          <span class="en hidden">CEO & FOUNDER</span>
-        </div>
-        <h1>Sebastien Germain</h1>
-        <p>
-          <span class="fr">Développeur Full Stack & Ingénieur Software</span>
-          <span class="en hidden">Full Stack Developer & Software Engineer</span>
-        </p>
-        <div class="hero-description">
-          <span class="fr">Applications d'entreprise sur mesure complètes pour tous. Ingénieur Software à votre service. Artiste coloré avec créativité++. Créant des expériences multi-plateformes pixel-perfect depuis les années 2000.</span>
-          <span class="en hidden">Complete custom enterprise applications for everyone. Software Engineer at your service. Colorful artist with creativity++. Creating pixel-perfect multi-platform experiences since the 2000s.</span>
-        </div>
-        <div class="hero-badges">
-          <div class="badge">🇨🇦 Canada EN</div>
-          <div class="badge">⚜️ Québec FR</div>
-          <div class="badge">🍎 Certifié Apple</div>
-          <div class="badge">💻 Certifié Microsoft</div>
-        </div>
-        <div>
-          <button class="btn" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">
-            <span class="fr">VOIR LES SERVICES →</span>
-            <span class="en hidden">VIEW SERVICES →</span>
-          </button>
-          <button class="btn btn-secondary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
-            <span class="fr">Nous contacter</span>
-            <span class="en hidden">Contact Us</span>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="about">
-      <div class="about-content">
-        <div class="about-image">
-          <img src="/profile.png" alt="Sebastien Germain">
-        </div>
-        <div class="about-text">
-          <h2>
-            <span class="fr">Old School Pixel Geek</span>
-            <span class="en hidden">Old School Pixel Geek</span>
-          </h2>
-          <p>
-            <span class="fr">J'ai créé mon premier site web HTML à 7 ans. J'ai joué sur Linux avec papa pendant que Nintendo était mon compagnon d'enfance.</span>
-            <span class="en hidden">I created my first HTML website at age 7. I played on Linux with dad while Nintendo was my childhood companion.</span>
-          </p>
-          <p>
-            <span class="fr">5 ans d'école en informatique dans les belles années 2000 ont façonné ma passion pour créer des expériences numériques qui comptent. Développeur certifié Apple + Microsoft, combinant l'art créatif avec l'excellence technique.</span>
-            <span class="en hidden">5 years of computer science education in the beautiful 2000s shaped my passion for creating digital experiences that matter. Apple + Microsoft certified developer, combining creative art with technical excellence.</span>
-          </p>
-          <div class="about-stats">
-            <div class="stat">
-              <div class="stat-label">
-                <span class="fr">Premier code</span>
-                <span class="en hidden">First Code</span>
-              </div>
-              <div class="stat-value">HTML @ 7</div>
-            </div>
-            <div class="stat">
-              <div class="stat-label">
-                <span class="fr">Enfance</span>
-                <span class="en hidden">Childhood</span>
-              </div>
-              <div class="stat-value">Nintendo & Linux</div>
-            </div>
-            <div class="stat">
-              <div class="stat-label">
-                <span class="fr">Éducation</span>
-                <span class="en hidden">Education</span>
-              </div>
-              <div class="stat-value">5 ans CS</div>
-            </div>
-            <div class="stat">
-              <div class="stat-label">
-                <span class="fr">Certifié</span>
-                <span class="en hidden">Certified</span>
-              </div>
-              <div class="stat-value">Apple & MS</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Mission Section -->
-    <section class="mission">
-      <h2>
-        <span class="fr">Ce que nous livrons</span>
-        <span class="en hidden">What We Deliver</span>
-      </h2>
-      <div class="mission-objective">
-        <span class="fr">Notre objectif #1 est de donner aux petites entreprises l'accès à des solutions web et app professionnelles à coût abordable.</span>
-        <span class="en hidden">Our #1 goal is to give small businesses access to professional web and app solutions at affordable cost.</span>
-      </div>
-      <div class="mission-grid">
-        <div class="mission-card">
-          <h3>
-            <span class="fr">Apps multi-plateformes</span>
-            <span class="en hidden">Multi-Platform Apps</span>
-          </h3>
-          <p>
-            <span class="fr">PC, MAC, iOS, Android - 1 app fait tout. Optimisation parfaite sur chaque plateforme avec un seul codebase.</span>
-            <span class="en hidden">PC, MAC, iOS, Android - 1 app does it all. Perfect optimization on each platform with a single codebase.</span>
-          </p>
-        </div>
-        <div class="mission-card">
-          <h3>
-            <span class="fr">Sécurité personnalisée</span>
-            <span class="en hidden">Custom Security</span>
-          </h3>
-          <p>
-            <span class="fr">Une plateforme personnalisée pour votre entreprise est essentielle pour la sécurité. Problèmes de plateformes multi-licences? La sécurité est la réponse.</span>
-            <span class="en hidden">A custom platform for your business is essential for security. Multi-license platform issues? Security is the answer.</span>
-          </p>
-        </div>
-        <div class="mission-card">
-          <h3>
-            <span class="fr">Ultra rapide</span>
-            <span class="en hidden">Lightning Fast</span>
-          </h3>
-          <p>
-            <span class="fr">Construit avec Next.js et Vite pour un beau design et des performances plus rapides que toute autre app de productivité. C'est le futur.</span>
-            <span class="en hidden">Built with Next.js and Vite for beautiful design and faster performance than any other productivity app. This is the future.</span>
-          </p>
-        </div>
-        <div class="mission-card">
-          <h3>
-            <span class="fr">Focus petites entreprises</span>
-            <span class="en hidden">Small Business Focus</span>
-          </h3>
-          <p>
-            <span class="fr">Donner une chance aux petites entreprises d'avoir leur web + app à petit coût. Facile à utiliser, facile à gérer, croissance rapide.</span>
-            <span class="en hidden">Give small businesses a chance to have their web + app at low cost. Easy to use, easy to manage, rapid growth.</span>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services" id="services">
-      <h2>
-        <span class="fr">Nos Services</span>
-        <span class="en hidden">Our Services</span>
-      </h2>
-      <div class="services-grid">
-        <div class="service-card">
-          <h3>🎨 
-            <span class="fr">Logo Design</span>
-            <span class="en hidden">Logo Design</span>
-          </h3>
-          <p>
-            <span class="fr">Identités de marque distinctives qui capturent votre vision et résonnent avec votre audience.</span>
-            <span class="en hidden">Distinctive brand identities that capture your vision and resonate with your audience.</span>
-          </p>
-        </div>
-        <div class="service-card">
-          <h3>🎬 
-            <span class="fr">Production Vidéo</span>
-            <span class="en hidden">Video Production</span>
-          </h3>
-          <p>
-            <span class="fr">Contenu vidéo engageant qui raconte votre histoire et génère des conversions.</span>
-            <span class="en hidden">Engaging video content that tells your story and drives conversions.</span>
-          </p>
-        </div>
-        <div class="service-card">
-          <h3>🌐 
-            <span class="fr">Web Design</span>
-            <span class="en hidden">Web Design</span>
-          </h3>
-          <p>
-            <span class="fr">Sites web modernes et responsifs qui mettent en valeur votre marque et engagent les clients.</span>
-            <span class="en hidden">Modern, responsive websites that showcase your brand and engage customers.</span>
-          </p>
-        </div>
-        <div class="service-card">
-          <h3>💻 
-            <span class="fr">Apps Personnalisées</span>
-            <span class="en hidden">Custom Apps</span>
-          </h3>
-          <p>
-            <span class="fr">Applications construites de zéro pour vos besoins commerciaux uniques.</span>
-            <span class="en hidden">Applications built from scratch for your unique business requirements.</span>
-          </p>
-        </div>
-        <div class="service-card">
-          <h3>👥 
-            <span class="fr">Portails Employés</span>
-            <span class="en hidden">Employee Portals</span>
-          </h3>
-          <p>
-            <span class="fr">Plateformes internes qui rationalisent les opérations et améliorent la collaboration d'équipe.</span>
-            <span class="en hidden">Internal platforms that streamline operations and enhance team collaboration.</span>
-          </p>
-        </div>
-        <div class="service-card">
-          <h3>🚀 
-            <span class="fr">Solutions Full-Stack</span>
-            <span class="en hidden">Full-Stack Solutions</span>
-          </h3>
-          <p>
-            <span class="fr">Transformation numérique complète du concept au déploiement et au-delà.</span>
-            <span class="en hidden">Complete digital transformation from concept to deployment and beyond.</span>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Product Section -->
-    <section class="product" id="product">
-      <h2>
-        <span class="fr">Produit Vedette</span>
-        <span class="en hidden">Featured Product</span>
-      </h2>
-      <div class="product-showcase">
-        <div class="product-info">
-          <h3>
-            <span class="fr">Work Portal App</span>
-            <span class="en hidden">Work Portal App</span>
-          </h3>
-          <p>
-            <span class="fr">Le système ERP glorifié - Une solution complète de gestion d'entreprise avec synchronisation en temps réel.</span>
-            <span class="en hidden">The glorified ERP system - A complete business management solution with real-time sync.</span>
-          </p>
-          <div class="features-list">
-            <div class="feature-item">
-              <strong>
-                <span class="fr">Système de pointage</span>
-                <span class="en hidden">Punch System</span>
-              </strong>
-            </div>
-            <div class="feature-item">
-              <strong>
-                <span class="fr">Création de bons de travail</span>
-                <span class="en hidden">Work Order Creation</span>
-              </strong>
-            </div>
-            <div class="feature-item">
-              <strong>
-                <span class="fr">GPS Technicien</span>
-                <span class="en hidden">Technician GPS</span>
-              </strong>
-            </div>
-            <div class="feature-item">
-              <strong>
-                <span class="fr">Portail de gestion</span>
-                <span class="en hidden">Management Portal</span>
-              </strong>
-            </div>
-            <div class="feature-item">
-              <strong>
-                <span class="fr">Dossiers employés</span>
-                <span class="en hidden">Employee Folders</span>
-              </strong>
-            </div>
-            <div class="feature-item">
-              <strong>
-                <span class="fr">QR & Code-barres</span>
-                <span class="en hidden">QR & Barcode</span>
-              </strong>
-            </div>
-          </div>
-          <p style="margin-top: 2rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.5);">
-            <span class="fr">✓ Web App • ✓ iOS App • ✓ Android App • ✓ Multi-Platform • ✓ Certifié Apple & Microsoft</span>
-            <span class="en hidden">✓ Web App • ✓ iOS App • ✓ Android App • ✓ Multi-Platform • ✓ Apple & Microsoft Certified</span>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Team Section -->
-    <section class="team" id="team">
-      <h2>
-        <span class="fr">L'équipe</span>
-        <span class="en hidden">The Team</span>
-      </h2>
-      <div class="team-grid">
-        <div class="team-card">
-          <h3>Sebastien Germain</h3>
-          <div class="team-role">
-            <span class="fr">PDG & Fondateur</span>
-            <span class="en hidden">CEO & Founder</span>
-          </div>
-          <p>
-            <span class="fr">Développeur Full Stack & Ingénieur Software</span>
-            <span class="en hidden">Full Stack Developer & Software Engineer</span>
-          </p>
-          <a href="mailto:founder@applepunk.com" class="team-email">founder@applepunk.com</a>
-        </div>
-        <div class="team-card">
-          <h3>Nadia</h3>
-          <div class="team-role">
-            <span class="fr">Chef de projet & RH</span>
-            <span class="en hidden">Project Manager & HR</span>
-          </div>
-          <p>
-            <span class="fr">Ressources humaines & Gestion</span>
-            <span class="en hidden">Human Resources & Management</span>
-          </p>
-          <a href="mailto:nadiavp@applepunk.com" class="team-email">nadiavp@applepunk.com</a>
-        </div>
-        <div class="team-card">
-          <h3>Maxime Lepine</h3>
-          <div class="team-role">
-            <span class="fr">Gestion</span>
-            <span class="en hidden">Management</span>
-          </div>
-          <p>
-            <span class="fr">Développement d'affaires</span>
-            <span class="en hidden">Business Development</span>
-          </p>
-          <a href="mailto:Gestion.maxime.lepine@gmail.com" class="team-email">Gestion.maxime.lepine@gmail.com</a>
-        </div>
-        <div class="team-card">
-          <h3>William Fortier</h3>
-          <div class="team-role">
-            <span class="fr">Ingénieur vidéo & son</span>
-            <span class="en hidden">Video & Audio Engineer</span>
-          </div>
-          <p>
-            <span class="fr">Production multimédia</span>
-            <span class="en hidden">Multimedia Production</span>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-      <h2>
-        <span class="fr">Commençons à planifier</span>
-        <span class="en hidden">Let's Start Planning</span>
-      </h2>
-      <p class="contact-subtitle">
-        <span class="fr">Prêt à donner vie à votre vision? Contactez-nous et créons quelque chose d'incroyable ensemble.</span>
-        <span class="en hidden">Ready to bring your vision to life? Contact us and let's create something amazing together.</span>
-      </p>
-      <form class="contact-form" onsubmit="handleSubmit(event)">
-        <input type="text" placeholder="Votre nom / Your name" required>
-        <input type="email" placeholder="vous@entreprise.com / you@company.com" required>
-        <input type="text" placeholder="Nom de votre entreprise / Company name" required>
-        <textarea placeholder="Parlez-nous de votre projet... / Tell us about your project..." rows="5" required></textarea>
-        <button type="submit" class="btn">
-          <span class="fr">Envoyer le message</span>
-          <span class="en hidden">Send Message</span>
-        </button>
-      </form>
-    </section>
   </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2024 APPLEPUNK. 
-      <span class="fr">Tous droits réservés.</span>
-      <span class="en hidden">All rights reserved.</span>
-    </p>
-    <p>📧 founder@applepunk.com | 🌐 applepunk.com</p>
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="background.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-subtitle fr">
+          🚀 Solutions d'Entreprise Intelligentes
+        </div>
+        <div class="hero-subtitle en hidden">
+          🚀 Intelligent Business Solutions
+        </div>
+
+        <h1 class="fr">Transformez Votre Entreprise</h1>
+        <h1 class="en hidden">Transform Your Business</h1>
+
+        <p class="fr">Applications de gestion, dashboards intelligents, et solutions cloud sécurisées pour PME</p>
+        <p class="en hidden">Management apps, smart dashboards, and secure cloud solutions for SMBs</p>
+
+        <div class="hero-buttons">
+          <button class="btn" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+            <span class="fr">VOIR NOS SERVICES</span>
+            <span class="en hidden">VIEW SERVICES</span>
+          </button>
+          <button class="btn btn-secondary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+            <span class="fr">NOUS CONTACTER</span>
+            <span class="en hidden">CONTACT US</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES SECTION -->
+  <section class="services" id="services">
+    <div class="container">
+      <h2 class="section-title fr">Nos Solutions</h2>
+      <h2 class="section-title en hidden">Our Solutions</h2>
+      <p class="section-subtitle fr">Des applications professionnelles construites sur mesure pour votre entreprise</p>
+      <p class="section-subtitle en hidden">Professional applications built custom for your business</p>
+
+      <div class="services-grid">
+        <!-- Employee Dashboard -->
+        <div class="service-card">
+          <div class="service-icon">👥</div>
+          <h3 class="fr">Employee Dashboard</h3>
+          <h3 class="en hidden">Employee Dashboard</h3>
+          <p class="fr">Gestion complète des employés, horaires, pointage et performance en temps réel</p>
+          <p class="en hidden">Complete employee management, schedules, timekeeping and real-time performance</p>
+          <button class="btn btn-secondary" style="width: 100%;">
+            <span class="fr">En Savoir Plus →</span>
+            <span class="en hidden">Learn More →</span>
+          </button>
+        </div>
+
+        <!-- Inventory AI -->
+        <div class="service-card">
+          <div class="service-icon">🤖</div>
+          <h3 class="fr">Gestion Inventaire IA</h3>
+          <h3 class="en hidden">AI Inventory Management</h3>
+          <p class="fr">Prédictions intelligentes, optimisation des stocks et alertes automatiques</p>
+          <p class="en hidden">Smart predictions, stock optimization and automatic alerts</p>
+          <button class="btn btn-secondary" style="width: 100%;">
+            <span class="fr">En Savoir Plus →</span>
+            <span class="en hidden">Learn More →</span>
+          </button>
+        </div>
+
+        <!-- Online Shop -->
+        <div class="service-card">
+          <div class="service-icon">🛍️</div>
+          <h3 class="fr">Boutique en Ligne</h3>
+          <h3 class="en hidden">Online Shop</h3>
+          <p class="fr">E-commerce complet avec paiements sécurisés et gestion des commandes</p>
+          <p class="en hidden">Complete e-commerce with secure payments and order management</p>
+          <button class="btn btn-secondary" style="width: 100%;">
+            <span class="fr">En Savoir Plus →</span>
+            <span class="en hidden">Learn More →</span>
+          </button>
+        </div>
+
+        <!-- Encrypted Database -->
+        <div class="service-card">
+          <div class="service-icon">🔐</div>
+          <h3 class="fr">Base de Données Chiffrée</h3>
+          <h3 class="en hidden">Encrypted Database</h3>
+          <p class="fr">Sécurité maximale avec chiffrement end-to-end et conformité RGPD</p>
+          <p class="en hidden">Maximum security with end-to-end encryption and GDPR compliance</p>
+          <button class="btn btn-secondary" style="width: 100%;">
+            <span class="fr">En Savoir Plus →</span>
+            <span class="en hidden">Learn More →</span>
+          </button>
+        </div>
+
+        <!-- Company Branding -->
+        <div class="service-card">
+          <div class="service-icon">🎨</div>
+          <h3 class="fr">Branding Entreprise</h3>
+          <h3 class="en hidden">Company Branding</h3>
+          <p class="fr">Design de logo, identité visuelle et guidelines complètes pour votre marque</p>
+          <p class="en hidden">Logo design, visual identity and complete guidelines for your brand</p>
+          <button class="btn btn-secondary" style="width: 100%;">
+            <span class="fr">En Savoir Plus →</span>
+            <span class="en hidden">Learn More →</span>
+          </button>
+        </div>
+
+        <!-- Web Design .COM -->
+        <div class="service-card">
+          <div class="service-icon">🌐</div>
+          <h3 class="fr">Web Design .COM</h3>
+          <h3 class="en hidden">Web Design .COM</h3>
+          <p class="fr">Sites web modernes, responsifs et optimisés SEO avec domaine .com</p>
+          <p class="en hidden">Modern, responsive and SEO-optimized websites with .com domain</p>
+          <button class="btn btn-secondary" style="width: 100%;">
+            <span class="fr">En Savoir Plus →</span>
+            <span class="en hidden">Learn More →</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES SECTION -->
+  <section class="features" id="features">
+    <div class="container">
+      <h2 class="section-title fr">Pourquoi Choisir APPLEPUNK</h2>
+      <h2 class="section-title en hidden">Why Choose APPLEPUNK</h2>
+
+      <div class="features-grid">
+        <div class="feature-box">
+          <div class="feature-number">100%</div>
+          <h3 class="fr">Personnalisé</h3>
+          <h3 class="en hidden">Custom</h3>
+          <p class="fr">Solutions construites exactement selon vos besoins spécifiques</p>
+          <p class="en hidden">Solutions built exactly to your specific needs</p>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-number">🔒</div>
+          <h3 class="fr">Sécurisé</h3>
+          <h3 class="en hidden">Secure</h3>
+          <p class="fr">Chiffrement de grade militaire et conformité réglementaire complète</p>
+          <p class="en hidden">Military-grade encryption and full regulatory compliance</p>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-number">⚡</div>
+          <h3 class="fr">Ultra Rapide</h3>
+          <h3 class="en hidden">Lightning Fast</h3>
+          <p class="fr">Performance optimale avec infrastructure cloud moderne</p>
+          <p class="en hidden">Optimal performance with modern cloud infrastructure</p>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-number">🎯</div>
+          <h3 class="fr">Support 24/7</h3>
+          <h3 class="en hidden">24/7 Support</h3>
+          <p class="fr">Équipe dédiée disponible pour vous aider à tout moment</p>
+          <p class="en hidden">Dedicated team available to help you anytime</p>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-number">📈</div>
+          <h3 class="fr">Scalable</h3>
+          <h3 class="en hidden">Scalable</h3>
+          <p class="fr">Grandit avec votre entreprise sans limitation</p>
+          <p class="en hidden">Grows with your business without limitation</p>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-number">💰</div>
+          <h3 class="fr">Transparent</h3>
+          <h3 class="en hidden">Transparent</h3>
+          <p class="fr">Tarification claire sans frais cachés</p>
+          <p class="en hidden">Clear pricing with no hidden fees</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4 class="fr">Services</h4>
+          <h4 class="en hidden">Services</h4>
+          <a href="#" class="fr">Employee Dashboard</a>
+          <a href="#" class="en hidden">Employee Dashboard</a>
+          <a href="#" class="fr">Gestion Inventaire IA</a>
+          <a href="#" class="en hidden">AI Inventory</a>
+          <a href="#" class="fr">Boutique en Ligne</a>
+          <a href="#" class="en hidden">Online Shop</a>
+        </div>
+
+        <div class="footer-section">
+          <h4 class="fr">Entreprise</h4>
+          <h4 class="en hidden">Company</h4>
+          <a href="#" class="fr">À Propos</a>
+          <a href="#" class="en hidden">About</a>
+          <a href="#" class="fr">Blog</a>
+          <a href="#" class="en hidden">Blog</a>
+          <a href="#" class="fr">Carrières</a>
+          <a href="#" class="en hidden">Careers</a>
+        </div>
+
+        <div class="footer-section">
+          <h4 class="fr">Contact</h4>
+          <h4 class="en hidden">Contact</h4>
+          <a href="mailto:founder@applepunk.com">founder@applepunk.com</a>
+          <a href="tel:+1234567890" class="fr">+1 (514) 123-4567</a>
+          <a href="tel:+1234567890" class="en hidden">+1 (514) 123-4567</a>
+          <a href="#" class="fr">Nous Contacter</a>
+          <a href="#" class="en hidden">Contact Us</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="fr">© 2025 APPLEPUNK. Tous droits réservés. | Créé par Seub Germain</p>
+        <p class="en hidden">© 2025 APPLEPUNK. All rights reserved. | Created by Seub Germain</p>
+      </div>
+    </div>
   </footer>
 
   <script>
+    let currentLang = 'fr';
+    let currentTheme = 'black';
+    const themes = ['black', 'white', 'unicorn'];
+    const themeNames = { black: 'BLACK', white: 'WHITE', unicorn: 'UNICORN' };
+
     function toggleLanguage() {
-      const frElements = document.querySelectorAll('.fr');
-      const enElements = document.querySelectorAll('.en');
-      
-      frElements.forEach(el => el.classList.toggle('hidden'));
-      enElements.forEach(el => el.classList.toggle('visible'));
-      
-      // Update HTML lang attribute
-      const html = document.documentElement;
-      html.lang = html.lang === 'fr' ? 'en' : 'fr';
-      
-      // Update button text
-      const button = document.querySelector('.lang-toggle');
-      if (html.lang === 'en') {
-        button.innerHTML = '<span class="en visible">FR</span>';
-      } else {
-        button.innerHTML = '<span class="fr">EN</span>';
-      }
+      currentLang = currentLang === 'fr' ? 'en' : 'fr';
+      document.querySelectorAll('.fr, .en').forEach(el => {
+        el.classList.toggle('hidden');
+      });
     }
 
-    function handleSubmit(event) {
-      event.preventDefault();
-      const lang = document.documentElement.lang;
-      const message = lang === 'fr' ? 'Message envoyé!' : 'Message sent!';
-      alert(message);
-      event.target.reset();
+    function toggleTheme() {
+      const currentIndex = themes.indexOf(currentTheme);
+      currentTheme = themes[(currentIndex + 1) % themes.length];
+      
+      document.body.className = `theme-${currentTheme}`;
+      document.querySelector('.theme-name').textContent = themeNames[currentTheme];
+      
+      localStorage.setItem('applepunk-theme', currentTheme);
+    }
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem('applepunk-theme') || 'black';
+    if (savedTheme !== 'black') {
+      currentTheme = savedTheme;
+      document.body.className = `theme-${currentTheme}`;
+      document.querySelector('.theme-name').textContent = themeNames[currentTheme];
     }
   </script>
 </body>
