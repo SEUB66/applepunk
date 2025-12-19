@@ -15,51 +15,42 @@
       --primary: #7FD8D8;
       --secondary: #FFE5A8;
       --accent: #FF69B4;
-      --bg: #0F0F0F;
+      --dark-bg: #0F0F0F;
       --surface: #1A1A1A;
       --text: #FFFFFF;
       --text-muted: #B0B0B0;
-    }
-
-    /* DARK THEME (DEFAULT) */
-    body.theme-dark {
-      --primary: #7FD8D8;
-      --secondary: #FFE5A8;
-      --accent: #FF69B4;
-      --bg: #0F0F0F;
-      --surface: #1A1A1A;
-      --text: #FFFFFF;
-      --text-muted: #B0B0B0;
-    }
-
-    /* LIGHT THEME */
-    body.theme-light {
-      --primary: #0099CC;
-      --secondary: #FF6B6B;
-      --accent: #FFD93D;
-      --bg: #FFFFFF;
-      --surface: #F5F5F5;
-      --text: #1A1A1A;
-      --text-muted: #666666;
-    }
-
-    /* NEON THEME */
-    body.theme-neon {
-      --primary: #00FF88;
-      --secondary: #FF006E;
-      --accent: #00D9FF;
-      --bg: #0A0E27;
-      --surface: #1A1F3A;
-      --text: #FFFFFF;
-      --text-muted: #A0A0A0;
     }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
-      background: var(--bg);
+      background: linear-gradient(135deg, var(--dark-bg) 0%, #1a0f2e 100%);
       color: var(--text);
       line-height: 1.6;
       transition: all 0.4s ease;
+    }
+
+    /* DARK THEME */
+    body.theme-dark {
+      background: linear-gradient(135deg, #0F0F0F 0%, #1a0f2e 100%);
+    }
+
+    /* LIGHT THEME */
+    body.theme-light {
+      background: linear-gradient(135deg, #FFFFFF 0%, #F0F0F0 100%);
+      color: #1A1A1A;
+      --text: #1A1A1A;
+      --text-muted: #666666;
+      --primary: #0099CC;
+      --secondary: #FF6B6B;
+      --accent: #FFD93D;
+    }
+
+    /* NEON THEME */
+    body.theme-neon {
+      background: linear-gradient(135deg, #0A0E27 0%, #1a0a3a 100%);
+      --primary: #00FF88;
+      --secondary: #FF006E;
+      --accent: #00D9FF;
     }
 
     .container {
@@ -112,7 +103,7 @@
 
     button {
       background: var(--primary);
-      color: var(--bg);
+      color: var(--dark-bg);
       border: none;
       padding: 0.7rem 1.5rem;
       border-radius: 6px;
@@ -120,6 +111,11 @@
       font-weight: 600;
       transition: all 0.3s;
       font-size: 0.95rem;
+    }
+
+    body.theme-light button {
+      color: #FFFFFF;
+      background: var(--primary);
     }
 
     button:hover {
@@ -133,6 +129,10 @@
       border: 2px solid var(--primary);
     }
 
+    body.theme-light button.secondary {
+      color: var(--primary);
+    }
+
     /* HERO */
     .hero {
       position: relative;
@@ -144,6 +144,7 @@
       margin: 3rem 0;
       border-radius: 12px;
       overflow: hidden;
+      background: linear-gradient(135deg, rgba(127, 216, 216, 0.1), rgba(255, 105, 180, 0.1));
     }
 
     .hero video {
@@ -159,10 +160,17 @@
     .hero-content {
       position: relative;
       z-index: 2;
-      background: rgba(15, 15, 15, 0.7);
+      background: rgba(15, 15, 15, 0.75);
       padding: 3rem;
       border-radius: 12px;
       max-width: 600px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(127, 216, 216, 0.3);
+    }
+
+    body.theme-light .hero-content {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(0, 153, 204, 0.3);
     }
 
     .hero h1 {
@@ -211,11 +219,17 @@
     }
 
     .card {
-      background: var(--surface);
+      background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 20, 60, 0.8));
       border: 2px solid var(--primary);
       padding: 2.5rem;
       border-radius: 12px;
       transition: all 0.3s;
+      backdrop-filter: blur(10px);
+    }
+
+    body.theme-light .card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.9));
+      border: 2px solid var(--primary);
     }
 
     .card:hover {
@@ -225,8 +239,13 @@
     }
 
     .card.featured {
-      border-color: var(--secondary);
+      border: 2px solid var(--secondary);
       transform: scale(1.05);
+      background: linear-gradient(135deg, rgba(26, 26, 26, 0.95), rgba(60, 20, 80, 0.95));
+    }
+
+    body.theme-light .card.featured {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 220, 255, 0.95));
     }
 
     .card-icon {
@@ -253,6 +272,10 @@
       line-height: 1.8;
     }
 
+    body.theme-light .card-description {
+      color: #666666;
+    }
+
     /* FEATURES */
     .features {
       padding: 4rem 0;
@@ -276,16 +299,22 @@
     }
 
     .feature {
-      background: var(--surface);
+      background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(42, 20, 60, 0.8));
       padding: 2rem;
       border-radius: 12px;
       border-left: 4px solid var(--primary);
       transition: all 0.3s;
+      backdrop-filter: blur(10px);
+    }
+
+    body.theme-light .feature {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.9));
     }
 
     .feature:hover {
       border-left-color: var(--secondary);
       transform: translateX(8px);
+      box-shadow: 0 8px 16px rgba(127, 216, 216, 0.15);
     }
 
     .feature-icon {
@@ -302,12 +331,21 @@
       color: var(--text-muted);
     }
 
+    body.theme-light .feature p {
+      color: #666666;
+    }
+
     /* FOOTER */
     footer {
-      background: var(--surface);
+      background: linear-gradient(135deg, rgba(26, 26, 26, 0.95), rgba(42, 20, 60, 0.95));
       border-top: 2px solid var(--primary);
       padding: 3rem 0 1rem;
       margin-top: 4rem;
+      backdrop-filter: blur(10px);
+    }
+
+    body.theme-light footer {
+      background: linear-gradient(135deg, rgba(240, 240, 240, 0.95), rgba(220, 240, 255, 0.95));
     }
 
     .footer-content {
@@ -330,6 +368,11 @@
       text-decoration: none;
       margin-bottom: 0.8rem;
       transition: all 0.3s;
+      font-size: 0.95rem;
+    }
+
+    body.theme-light .footer-section a {
+      color: #666666;
     }
 
     .footer-section a:hover {
@@ -343,6 +386,10 @@
       border-top: 1px solid var(--primary);
       color: var(--text-muted);
       font-size: 0.9rem;
+    }
+
+    body.theme-light .footer-bottom {
+      color: #666666;
     }
 
     .hidden {
@@ -360,6 +407,10 @@
 
       .hero-buttons {
         flex-direction: column;
+      }
+
+      .card.featured {
+        transform: scale(1);
       }
     }
   </style>
@@ -434,7 +485,7 @@
             ✅ Personalized Dashboard<br>
             ✅ Support & Maintenance
           </div>
-          <button style="width: 100;">
+          <button style="width: 100%;">
             <span class="fr">COMMANDER</span>
             <span class="en hidden">ORDER NOW</span>
           </button>
