@@ -192,9 +192,54 @@
       margin-bottom: 2rem;
     }
 
+    /* HERO CTA */
+    .hero-cta {
+      padding: 4rem 0;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(26, 26, 26, 0.5), rgba(42, 20, 60, 0.5));
+      border-bottom: 2px solid var(--primary);
+    }
+
+    body.theme-light .hero-cta {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(240, 240, 240, 0.8));
+    }
+
+    .hero-cta h2 {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .hero-cta h1 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 900;
+    }
+
+    .hero-cta p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.8;
+    }
+
+    body.theme-light .hero-cta p {
+      color: #666666;
+    }
+
     .hero-buttons {
       display: flex;
-      gap: 1rem;
+      gap: 1.5rem;
       justify-content: center;
       flex-wrap: wrap;
     }
@@ -442,6 +487,26 @@
       <video autoplay muted loop playsinline>
         <source src="background.mp4" type="video/mp4">
       </video>
+    </section>
+
+    <!-- HERO CTA -->
+    <section class="hero-cta">
+      <div class="fr">
+        <h2>Solutions d'Entreprise Intelligentes</h2>
+        <h1>Transformez Votre Entreprise</h1>
+        <p>Applications de gestion, dashboards intelligents, et solutions cloud sécurisées pour PME</p>
+      </div>
+      <div class="en hidden">
+        <h2>Intelligent Business Solutions</h2>
+        <h1>Transform Your Business</h1>
+        <p>Management applications, smart dashboards, and secure cloud solutions for SMEs</p>
+      </div>
+      <div class="hero-buttons">
+        <button class="fr">VOIR NOS SERVICES</button>
+        <button class="fr secondary">NOUS CONTACTER</button>
+        <button class="en hidden">VIEW SERVICES</button>
+        <button class="en hidden secondary">CONTACT US</button>
+      </div>
     </section>
 
     <!-- PRICING -->
