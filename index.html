@@ -49,9 +49,6 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
       background: var(--bg-primary);
-      background-image: url('bg-black.jpg');
-      background-attachment: fixed;
-      background-size: cover;
       color: var(--text-primary);
       line-height: 1.6;
       transition: all 0.3s ease;
@@ -60,11 +57,11 @@
     }
 
     body.theme-white {
-      background-image: url('bg-white.jpg');
+      background: #FFFAF0;
     }
 
     body.theme-unicorn {
-      background-image: url('bg-unicorn.jpg');
+      background: #1a1a1a;
     }
 
     .container {
@@ -162,7 +159,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.5;
+      opacity: 1;
       z-index: 5;
       pointer-events: none;
     }
