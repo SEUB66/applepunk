@@ -447,15 +447,183 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1.5rem;
+    }    /* MISSION SECTION */
+    .mission {
+      padding: 6rem 0;
+      position: relative;
+      z-index: 5;
+      background: rgba(127, 216, 216, 0.02);
     }
 
-    .team-member {
-      background: rgba(127, 216, 216, 0.05);
-      padding: 1.5rem;
+    .mission-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .mission-card {
+      background: rgba(127, 216, 216, 0.08);
+      padding: 2rem;
       border-radius: 8px;
-      border: 1px solid var(--primary);
-      text-align: center;
+      border-left: 4px solid var(--primary);
       transition: all 0.3s;
+    }
+
+    .mission-card:hover {
+      background: rgba(127, 216, 216, 0.15);
+      transform: translateY(-5px);
+    }
+
+    .mission-card h3 {
+      color: var(--secondary);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .mission-card p {
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.8;
+    }
+
+    /* TECH STACK SECTION */
+    .tech-stack {
+      padding: 6rem 0;
+      position: relative;
+      z-index: 5;
+    }
+
+    .tech-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .tech-card {
+      background: rgba(255, 105, 180, 0.08);
+      padding: 2rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--accent);
+      transition: all 0.3s;
+    }
+
+    .tech-card:hover {
+      background: rgba(255, 105, 180, 0.15);
+      transform: translateY(-5px);
+    }
+
+    .tech-card h3 {
+      color: var(--accent);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .tech-card p {
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.8;
+    }
+
+    /* STARTER PACK SECTION */
+    .starter-pack {
+      padding: 6rem 0;
+      position: relative;
+      z-index: 5;
+      background: rgba(255, 105, 180, 0.02);
+    }
+
+    .starter-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .starter-card {
+      background: linear-gradient(135deg, rgba(127, 216, 216, 0.1), rgba(255, 105, 180, 0.1));
+      padding: 2rem;
+      border-radius: 8px;
+      border: 2px solid var(--primary);
+      transition: all 0.3s;
+    }
+
+    .starter-card:hover {
+      background: linear-gradient(135deg, rgba(127, 216, 216, 0.2), rgba(255, 105, 180, 0.2));
+      transform: translateY(-5px);
+      box-shadow: 0 0 30px rgba(127, 216, 216, 0.2);
+    }
+
+    .starter-card h3 {
+      color: var(--secondary);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    .starter-card p {
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 0.5rem;
+      line-height: 1.8;
+    }
+
+    .starter-card ul {
+      list-style: none;
+      margin-top: 1rem;
+    }
+
+    .starter-card li {
+      color: rgba(255, 255, 255, 0.7);
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .starter-card li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    .starter-cta {
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(135deg, rgba(127, 216, 216, 0.1), rgba(255, 105, 180, 0.1));
+      border-radius: 8px;
+      border: 2px solid var(--primary);
+    }
+
+    .starter-cta p {
+      color: var(--secondary);
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: var(--dark);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 700;
+      transition: all 0.3s;
+      box-shadow: 0 0 30px rgba(127, 216, 216, 0.3);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 50px rgba(127, 216, 216, 0.5);
+    }
+
+    .service-card {
+      background: rgba(127, 216, 216, 0.05);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 2px solid var(--primary);
+      transition: all 0.3s;
+    }  transition: all 0.3s;
     }
 
     .team-member:hover {
@@ -618,6 +786,151 @@
           <button class="cta-button fr" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">NOUS CONTACTER</button>
           <button class="cta-button en hidden" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">CONTACT US</button>
         </div>
+      </div>
+    </section>
+
+    <!-- MISSION SECTION -->
+    <section class="mission" id="mission">
+      <div class="mission-content">
+        <h2 class="section-title fr">Notre Mission</h2>
+        <h2 class="section-title en hidden">Our Mission</h2>
+        
+        <div class="mission-grid">
+          <div class="mission-card">
+            <h3 class="fr">🎯 Donner une Chance</h3>
+            <h3 class="en hidden">🎯 Give a Chance</h3>
+            <p class="fr">Offrir aux petites entreprises une plateforme pour se développer rapidement et professionnellement.</p>
+            <p class="en hidden">Provide small businesses with a platform to grow quickly and professionally.</p>
+          </div>
+          
+          <div class="mission-card">
+            <h3 class="fr">💰 Budget Accessible</h3>
+            <h3 class="en hidden">💰 Affordable Budget</h3>
+            <p class="fr">Solutions professionnelles à petit coût. Pas de compromis sur la qualité.</p>
+            <p class="en hidden">Professional solutions at low cost. No compromise on quality.</p>
+          </div>
+          
+          <div class="mission-card">
+            <h3 class="fr">⚡ Développement Rapide</h3>
+            <h3 class="en hidden">⚡ Fast Development</h3>
+            <p class="fr">Déploiement en semaines, pas en mois. Infrastructure prête à l'emploi.</p>
+            <p class="en hidden">Deploy in weeks, not months. Ready-to-use infrastructure.</p>
+          </div>
+          
+          <div class="mission-card">
+            <h3 class="fr">🎨 Design Personnalisé</h3>
+            <h3 class="en hidden">🎨 Custom Design</h3>
+            <p class="fr">Aux couleurs de votre entreprise. Identité visuelle unique et mémorable.</p>
+            <p class="en hidden">In your company colors. Unique and memorable visual identity.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECH STACK SECTION -->
+    <section class="tech-stack" id="tech">
+      <h2 class="section-title fr">Technologie Pionnière</h2>
+      <h2 class="section-title en hidden">Pioneer Technology</h2>
+      
+      <div class="tech-content">
+        <div class="tech-card">
+          <h3 class="fr">🐧 Linux First</h3>
+          <h3 class="en hidden">🐧 Linux First</h3>
+          <p class="fr">Infrastructure open-source robuste et sécurisée. Fondation solide pour votre croissance.</p>
+          <p class="en hidden">Robust and secure open-source infrastructure. Solid foundation for your growth.</p>
+        </div>
+        
+        <div class="tech-card">
+          <h3 class="fr">🎬 Graphisme Sans Compromis</h3>
+          <h3 class="en hidden">🎬 Graphics No Compromise</h3>
+          <p class="fr">Animations fluides, graphiques haute résolution. Aucun compromis sur la qualité visuelle.</p>
+          <p class="en hidden">Smooth animations, high-resolution graphics. No compromise on visual quality.</p>
+        </div>
+        
+        <div class="tech-card">
+          <h3 class="fr">⚡ Vitesse Préservée</h3>
+          <h3 class="en hidden">⚡ Speed Preserved</h3>
+          <p class="fr">Next.js & Vite Stack. Performance ultra-rapide même avec graphiques avancés.</p>
+          <p class="en hidden">Next.js & Vite Stack. Ultra-fast performance even with advanced graphics.</p>
+        </div>
+        
+        <div class="tech-card">
+          <h3 class="fr">🚀 Nouvelle Génération</h3>
+          <h3 class="en hidden">🚀 Next Generation</h3>
+          <p class="fr">Stack technologique moderne. Prêt pour l'avenir, optimisé pour aujourd'hui.</p>
+          <p class="en hidden">Modern technology stack. Ready for the future, optimized for today.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- STARTER PACK SECTION -->
+    <section class="starter-pack" id="starter">
+      <h2 class="section-title fr">Starter Pack PME</h2>
+      <h2 class="section-title en hidden">SMB Starter Pack</h2>
+      
+      <div class="starter-content">
+        <div class="starter-card">
+          <h3 class="fr">🚀 Démarrage Rapide</h3>
+          <h3 class="en hidden">🚀 Quick Start</h3>
+          <p class="fr"><strong>Semaine 1-2:</strong> Consultation & Design</p>
+          <p class="fr"><strong>Semaine 3-4:</strong> Développement & Tests</p>
+          <p class="fr"><strong>Semaine 5:</strong> Déploiement & Lancement</p>
+          <p class="en hidden"><strong>Week 1-2:</strong> Consultation & Design</p>
+          <p class="en hidden"><strong>Week 3-4:</strong> Development & Testing</p>
+          <p class="en hidden"><strong>Week 5:</strong> Deployment & Launch</p>
+        </div>
+        
+        <div class="starter-card">
+          <h3 class="fr">🎨 Branding Complet</h3>
+          <h3 class="en hidden">🎨 Complete Branding</h3>
+          <ul>
+            <li class="fr">Logo & Identité Visuelle</li>
+            <li class="en hidden">Logo & Visual Identity</li>
+            <li class="fr">Palette de Couleurs</li>
+            <li class="en hidden">Color Palette</li>
+            <li class="fr">Typographie Personnalisée</li>
+            <li class="en hidden">Custom Typography</li>
+            <li class="fr">Design System</li>
+            <li class="en hidden">Design System</li>
+          </ul>
+        </div>
+        
+        <div class="starter-card">
+          <h3 class="fr">💻 Infrastructure Complète</h3>
+          <h3 class="en hidden">💻 Complete Infrastructure</h3>
+          <ul>
+            <li class="fr">Hosting Sécurisé</li>
+            <li class="en hidden">Secure Hosting</li>
+            <li class="fr">Database Cryptée</li>
+            <li class="en hidden">Encrypted Database</li>
+            <li class="fr">SSL Certificate</li>
+            <li class="en hidden">SSL Certificate</li>
+            <li class="fr">Auto Backup & Recovery</li>
+            <li class="en hidden">Auto Backup & Recovery</li>
+          </ul>
+        </div>
+        
+        <div class="starter-card">
+          <h3 class="fr">📊 Analytics & Support</h3>
+          <h3 class="en hidden">📊 Analytics & Support</h3>
+          <ul>
+            <li class="fr">Dashboard Analytics</li>
+            <li class="en hidden">Analytics Dashboard</li>
+            <li class="fr">Real-time Reports</li>
+            <li class="en hidden">Real-time Reports</li>
+            <li class="fr">Support 24/7</li>
+            <li class="en hidden">24/7 Support</li>
+            <li class="fr">Training & Documentation</li>
+            <li class="en hidden">Training & Documentation</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="starter-cta">
+        <p class="fr"><strong>À partir de $2,999/mois</strong> - Tout inclus, pas de frais cachés</p>
+        <p class="en hidden"><strong>From $2,999/month</strong> - Everything included, no hidden fees</p>
+        <a href="#contact" class="cta-button fr">Commencer Maintenant</a>
+        <a href="#contact" class="cta-button en hidden">Start Now</a>
       </div>
     </section>
 
