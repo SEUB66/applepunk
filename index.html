@@ -18,6 +18,9 @@
   <meta name="twitter:title" content="APPLEPUNK - Web Designer • App Developer • Marketing">
   
   <title>APPLEPUNK - Web Designer • App Developer • Marketing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -35,11 +38,18 @@
     }
 
     body {
-      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Orbitron', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
       background: var(--dark);
       color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
+    }
+
+    /* PIXEL FONT FOR SMALL TEXT */
+    .pixel-text, .tagline, .bio-title, .badge, .point p, .team-member p {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
     }
 
     /* WAVE CANVAS */
@@ -76,6 +86,8 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      text-shadow: 0 0 20px rgba(127, 216, 216, 0.5);
+      font-family: 'Orbitron', sans-serif;
     }
 
     nav {
@@ -157,20 +169,27 @@
     }
 
     .hero-content h1 {
-      font-size: 4rem;
+      font-size: 3.5rem;
       margin-bottom: 1rem;
       background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       line-height: 1.2;
+      text-shadow: 0 0 30px rgba(127, 216, 216, 0.4), 0 0 60px rgba(255, 105, 180, 0.3);
+      font-weight: 900;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 2px;
     }
 
     .hero-content .tagline {
-      font-size: 1.5rem;
+      font-size: 1rem;
       color: var(--primary);
       margin-bottom: 2rem;
       font-weight: 600;
+      text-shadow: 0 0 15px rgba(127, 216, 216, 0.6);
+      font-family: 'Press Start 2P', cursive;
+      letter-spacing: 3px;
     }
 
     .hero-content p {
@@ -222,6 +241,10 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      text-shadow: 0 0 25px rgba(127, 216, 216, 0.3);
+      font-weight: 900;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 2px;
     }
 
     .services-grid {
@@ -248,6 +271,9 @@
       font-size: 1.5rem;
       margin-bottom: 1rem;
       color: var(--primary);
+      text-shadow: 0 0 15px rgba(127, 216, 216, 0.4);
+      font-weight: 700;
+      font-family: 'Orbitron', sans-serif;
     }
 
     .service-card p {
@@ -298,6 +324,9 @@
       font-size: 1.2rem;
       margin-bottom: 0.5rem;
       color: var(--primary);
+      text-shadow: 0 0 12px rgba(127, 216, 216, 0.4);
+      font-weight: 700;
+      font-family: 'Orbitron', sans-serif;
     }
 
     .feature p {
@@ -330,6 +359,10 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
       margin-bottom: 0.5rem;
+      text-shadow: 0 0 20px rgba(127, 216, 216, 0.3);
+      font-weight: 900;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 1px;
     }
 
     .bio-title {
@@ -404,6 +437,10 @@
       color: var(--primary);
       margin-bottom: 2rem;
       text-align: center;
+      text-shadow: 0 0 18px rgba(127, 216, 216, 0.4);
+      font-weight: 900;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 1px;
     }
 
     .team-grid {
@@ -429,6 +466,9 @@
     .team-member h4 {
       color: var(--secondary);
       margin-bottom: 0.5rem;
+      text-shadow: 0 0 10px rgba(255, 229, 168, 0.3);
+      font-weight: 700;
+      font-family: 'Orbitron', sans-serif;
     }
 
     .team-member p {
