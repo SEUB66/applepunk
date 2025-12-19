@@ -16,7 +16,7 @@
       --secondary-color: #FFE5A8;
       --accent-color: #B3E5FC;
       --bg-primary: #1a1a1a;
-      --bg-secondary: #F5F5F0;
+      --bg-secondary: #FFFFFF;
       --text-primary: #2a2a2a;
       --text-secondary: #4a4a4a;
       --border-color: #7FD8D8;
@@ -38,9 +38,9 @@
     body.theme-unicorn {
       --primary-color: #7FD8D8;
       --secondary-color: #FFE5A8;
-      --accent-color: #B3E5FC;
+      --accent-color: #FF69B4;
       --bg-primary: #1a1a1a;
-      --bg-secondary: #F5F5F0;
+      --bg-secondary: #FFFFFF;
       --text-primary: #2a2a2a;
       --text-secondary: #4a4a4a;
       --border-color: #7FD8D8;
@@ -49,19 +49,20 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
       background: var(--bg-primary);
+      background-image: url('bg-black.jpg');
+      background-attachment: fixed;
+      background-size: cover;
       color: var(--text-primary);
       line-height: 1.6;
       transition: all 0.3s ease;
-      position: relative;
-      z-index: 1;
     }
 
     body.theme-white {
-      background: #FFFAF0;
+      background-image: url('bg-white.jpg');
     }
 
     body.theme-unicorn {
-      background: #1a1a1a;
+      background-image: url('bg-unicorn.jpg');
     }
 
     .container {
@@ -81,6 +82,11 @@
       gap: 1rem;
       position: relative;
       z-index: 100;
+      background: rgba(26, 26, 26, 0.95);
+    }
+
+    body.theme-white nav {
+      background: rgba(255, 250, 240, 0.95);
     }
 
     nav .logo {
@@ -160,7 +166,7 @@
       height: 100%;
       object-fit: cover;
       opacity: 1;
-      z-index: 5;
+      z-index: 1;
       pointer-events: none;
     }
 
@@ -170,13 +176,13 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(180deg, rgba(10, 10, 10, 0.3) 0%, rgba(10, 10, 10, 0.7) 100%);
-      z-index: 1;
+      background: linear-gradient(180deg, rgba(10, 10, 10, 0.4) 0%, rgba(10, 10, 10, 0.6) 100%);
+      z-index: 2;
     }
 
     .hero-content {
       position: relative;
-      z-index: 101;
+      z-index: 3;
       color: white;
       text-align: center;
     }
@@ -203,7 +209,7 @@
 
     .hero p {
       font-size: 1.3rem;
-      color: var(--text-secondary);
+      color: rgba(255, 255, 255, 0.9);
       margin-bottom: 2.5rem;
       line-height: 1.8;
     }
@@ -219,7 +225,7 @@
       display: inline-block;
       padding: 1rem 2rem;
       background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-      color: var(--bg-primary);
+      color: #1a1a1a;
       border: none;
       border-radius: 0.75rem;
       cursor: pointer;
@@ -246,116 +252,81 @@
 
     .btn-secondary:hover {
       background: var(--accent-color);
-      color: var(--bg-primary);
-      box-shadow: 0 15px 40px rgba(255, 144, 187, 0.4);
+      color: #1a1a1a;
     }
 
     /* SERVICES SECTION */
     .services {
-      padding: 6rem 0;
-      background: rgba(15, 15, 25, 0.85);
-      border-radius: 2rem;
-      margin: 4rem 0;
-      backdrop-filter: blur(10px);
+      padding: 4rem 0;
+      background: var(--bg-primary);
     }
 
     body.theme-white .services {
-      background: rgba(255, 255, 255, 0.9);
+      background: #FFFAF0;
     }
 
-    body.theme-unicorn .services {
-      background: rgba(20, 10, 40, 0.85);
-    }
-
-    .section-title {
+    .services h2 {
       text-align: center;
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--accent-color) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font-weight: 900;
-    }
-
-    .section-subtitle {
-      text-align: center;
-      font-size: 1.1rem;
-      color: var(--text-secondary);
-      margin-bottom: 4rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: var(--text-primary);
     }
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
     }
 
     .service-card {
-      background: #FFFFFF;
-      border: 3px solid var(--primary-color);
-      border-radius: 1.5rem;
-      padding: 2.5rem;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.4s ease;
-    }
-
-    .service-card:hover::before {
-      transform: scaleX(1);
+      background: var(--bg-secondary);
+      border: 3px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 2rem;
+      transition: all 0.3s;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
 
     .service-card:hover {
-      background: #FFFAF0;
-      border-color: var(--secondary-color);
       transform: translateY(-8px);
-      box-shadow: 0 20px 50px rgba(127, 216, 216, 0.3);
-    }
-
-    .service-icon {
-      font-size: 3rem;
-      margin-bottom: 1.5rem;
+      box-shadow: 0 15px 40px rgba(138, 204, 213, 0.3);
     }
 
     .service-card h3 {
       font-size: 1.5rem;
-      margin-bottom: 1rem;
+      margin: 1rem 0;
       color: var(--primary-color);
-      font-weight: 800;
     }
 
     .service-card p {
       color: var(--text-secondary);
-      line-height: 1.8;
       margin-bottom: 1.5rem;
+      line-height: 1.8;
     }
 
     .service-card .btn {
       width: 100%;
       text-align: center;
+      font-size: 0.85rem;
       padding: 0.8rem 1.5rem;
-      font-size: 0.9rem;
     }
 
     /* FEATURES SECTION */
     .features {
-      padding: 6rem 0;
+      padding: 4rem 0;
+      background: var(--bg-secondary);
+    }
+
+    body.theme-white .features {
+      background: #FFFFFF;
+    }
+
+    .features h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: var(--text-primary);
     }
 
     .features-grid {
@@ -365,31 +336,33 @@
     }
 
     .feature-box {
-      background: #FFFFFF;
-      border: 3px solid var(--accent-color);
-      border-radius: 1.5rem;
+      background: var(--bg-secondary);
+      border: 2px solid var(--border-color);
+      border-radius: 1rem;
       padding: 2rem;
       text-align: center;
       transition: all 0.3s;
     }
 
-    .feature-box:hover {
-      border-color: var(--secondary-color);
-      transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(127, 216, 216, 0.3);
+    body.theme-white .feature-box {
+      background: #FFFFFF;
+      border-color: var(--border-color);
     }
 
-    .feature-number {
-      font-size: 2.5rem;
-      font-weight: 900;
-      color: var(--primary-color);
+    .feature-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(138, 204, 213, 0.2);
+    }
+
+    .feature-box .icon {
+      font-size: 3rem;
       margin-bottom: 1rem;
     }
 
     .feature-box h3 {
       font-size: 1.3rem;
-      margin-bottom: 1rem;
-      color: var(--text-primary);
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
     }
 
     .feature-box p {
@@ -397,72 +370,64 @@
       font-size: 0.95rem;
     }
 
+    /* FOOTER */
     footer {
-      background: #FFFAF0;
-      color: var(--text-primary);
-      border-top: 3px solid var(--primary-color);
-      padding: 4rem 0 2rem 0;
-      margin-top: 6rem;
+      background: linear-gradient(135deg, rgba(127, 216, 216, 0.1) 0%, rgba(255, 229, 168, 0.1) 100%);
+      border-top: 2px solid var(--border-color);
+      padding: 3rem 0 1rem;
+      color: var(--text-secondary);
+    }
+
+    body.theme-white footer {
+      background: linear-gradient(135deg, rgba(255, 229, 168, 0.1) 0%, rgba(179, 229, 252, 0.1) 100%);
     }
 
     .footer-content {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 3rem;
-      margin-bottom: 3rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
     }
 
     .footer-section h4 {
       color: var(--primary-color);
-      margin-bottom: 1.5rem;
-      font-weight: 800;
+      margin-bottom: 1rem;
       font-size: 1.1rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
     }
 
     .footer-section a {
+      display: block;
       color: var(--text-secondary);
       text-decoration: none;
-      display: block;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.5rem;
       transition: all 0.3s;
-      font-size: 0.95rem;
     }
 
     .footer-section a:hover {
       color: var(--primary-color);
-      padding-left: 0.5rem;
+      transform: translateX(5px);
     }
 
     .footer-bottom {
       text-align: center;
       padding-top: 2rem;
       border-top: 1px solid var(--border-color);
-      color: var(--text-secondary);
       font-size: 0.9rem;
     }
 
-    @media (max-width: 768px) {
-      .footer-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      footer {
-        padding: 3rem 0 2rem 0;
-      }
+    .hidden {
+      display: none;
     }
 
-    /* LANGUAGE TOGGLE */
     .lang-toggle {
       background: rgba(138, 204, 213, 0.1);
       border: 2px solid var(--primary-color);
       color: var(--primary-color);
-      padding: 0.6rem 1rem;
+      padding: 0.6rem 1.2rem;
       border-radius: 0.5rem;
       cursor: pointer;
       transition: all 0.3s;
+      font-size: 0.85rem;
       font-weight: 700;
     }
 
@@ -470,52 +435,19 @@
       background: var(--primary-color);
       color: var(--bg-primary);
     }
-
-    .hidden {
-      display: none;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-
-      .section-title {
-        font-size: 2rem;
-      }
-
-      nav ul {
-        gap: 1rem;
-      }
-
-      .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .btn {
-        width: 100%;
-        max-width: 300px;
-      }
-    }
   </style>
 </head>
 <body class="theme-black">
   <div class="container">
-    <!-- NAVIGATION -->
     <nav>
       <div class="logo">APPLEPUNK</div>
       <ul>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#features">Pourquoi Nous</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#services" class="fr">Services</a><a href="#services" class="en hidden">Services</a></li>
+        <li><a href="#features" class="fr">Pourquoi Nous</a><a href="#features" class="en hidden">Why Us</a></li>
+        <li><a href="#contact" class="fr">Contact</a><a href="#contact" class="en hidden">Contact</a></li>
       </ul>
       <div class="nav-controls">
-        <button class="lang-toggle" onclick="toggleLanguage()">
-          <span class="fr">🇨🇦 EN</span>
-          <span class="en hidden">⚜️ FR</span>
-        </button>
+        <button class="lang-toggle" onclick="toggleLanguage()">🇨🇦 EN</button>
         <button class="theme-toggle" onclick="toggleTheme()">
           <span class="theme-name">BLACK</span>
         </button>
@@ -525,35 +457,26 @@
 
   <!-- HERO SECTION -->
   <section class="hero">
-    <video class="hero-video" autoplay muted loop playsinline>
-      <source src="background.mp4" type="video/mp4">
+    <video autoplay muted loop>
+      <source src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjAwNzAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCZ0PXRz/giphy.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-subtitle fr">
-          🚀 Solutions d'Entreprise Intelligentes
-        </div>
-        <div class="hero-subtitle en hidden">
-          🚀 Intelligent Business Solutions
-        </div>
-
-        <h1 class="fr">Transformez Votre Entreprise</h1>
-        <h1 class="en hidden">Transform Your Business</h1>
-
-        <p class="fr">Applications de gestion, dashboards intelligents, et solutions cloud sécurisées pour PME</p>
-        <p class="en hidden">Management apps, smart dashboards, and secure cloud solutions for SMBs</p>
-
-        <div class="hero-buttons">
-          <button class="btn" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
-            <span class="fr">VOIR NOS SERVICES</span>
-            <span class="en hidden">VIEW SERVICES</span>
-          </button>
-          <button class="btn btn-secondary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-            <span class="fr">NOUS CONTACTER</span>
-            <span class="en hidden">CONTACT US</span>
-          </button>
-        </div>
+    <div class="hero-content">
+      <p class="hero-subtitle fr">🚀 Solutions d'Entreprise Intelligentes</p>
+      <p class="hero-subtitle en hidden">🚀 Intelligent Business Solutions</p>
+      
+      <h1 class="fr">Transformez Votre Entreprise</h1>
+      <h1 class="en hidden">Transform Your Business</h1>
+      
+      <p class="fr">Applications de gestion, dashboards intelligents, et solutions cloud sécurisées pour PME</p>
+      <p class="en hidden">Management applications, intelligent dashboards, and secure cloud solutions for SMEs</p>
+      
+      <div class="hero-buttons">
+        <button class="btn fr" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">VOIR NOS SERVICES</button>
+        <button class="btn fr" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">NOUS CONTACTER</button>
+        
+        <button class="btn en hidden" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">VIEW OUR SERVICES</button>
+        <button class="btn en hidden" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">CONTACT US</button>
       </div>
     </div>
   </section>
@@ -561,88 +484,68 @@
   <!-- SERVICES SECTION -->
   <section class="services" id="services">
     <div class="container">
-      <h2 class="section-title fr">Nos Solutions</h2>
-      <h2 class="section-title en hidden">Our Solutions</h2>
-      <p class="section-subtitle fr">Des applications professionnelles construites sur mesure pour votre entreprise</p>
-      <p class="section-subtitle en hidden">Professional applications built custom for your business</p>
-
+      <h2 class="fr">Nos Solutions</h2>
+      <h2 class="en hidden">Our Solutions</h2>
+      
       <div class="services-grid">
-        <!-- Employee Dashboard -->
         <div class="service-card">
-          <div class="service-icon">👥</div>
+          <div style="font-size: 3rem;">👥</div>
           <h3 class="fr">Employee Dashboard</h3>
           <h3 class="en hidden">Employee Dashboard</h3>
           <p class="fr">Gestion complète des employés, horaires, pointage et performance en temps réel</p>
-          <p class="en hidden">Complete employee management, schedules, timekeeping and real-time performance</p>
-          <button class="btn btn-secondary" style="width: 100%;">
-            <span class="fr">En Savoir Plus →</span>
-            <span class="en hidden">Learn More →</span>
-          </button>
+          <p class="en hidden">Complete employee management, schedules, attendance and real-time performance</p>
+          <button class="btn fr">EN SAVOIR PLUS →</button>
+          <button class="btn en hidden">LEARN MORE →</button>
         </div>
 
-        <!-- Inventory AI -->
         <div class="service-card">
-          <div class="service-icon">🤖</div>
+          <div style="font-size: 3rem;">🤖</div>
           <h3 class="fr">Gestion Inventaire IA</h3>
-          <h3 class="en hidden">AI Inventory Management</h3>
+          <h3 class="en hidden">AI Inventory</h3>
           <p class="fr">Prédictions intelligentes, optimisation des stocks et alertes automatiques</p>
           <p class="en hidden">Smart predictions, stock optimization and automatic alerts</p>
-          <button class="btn btn-secondary" style="width: 100%;">
-            <span class="fr">En Savoir Plus →</span>
-            <span class="en hidden">Learn More →</span>
-          </button>
+          <button class="btn fr">EN SAVOIR PLUS →</button>
+          <button class="btn en hidden">LEARN MORE →</button>
         </div>
 
-        <!-- Online Shop -->
         <div class="service-card">
-          <div class="service-icon">🛍️</div>
+          <div style="font-size: 3rem;">🛍️</div>
           <h3 class="fr">Boutique en Ligne</h3>
           <h3 class="en hidden">Online Shop</h3>
           <p class="fr">E-commerce complet avec paiements sécurisés et gestion des commandes</p>
           <p class="en hidden">Complete e-commerce with secure payments and order management</p>
-          <button class="btn btn-secondary" style="width: 100%;">
-            <span class="fr">En Savoir Plus →</span>
-            <span class="en hidden">Learn More →</span>
-          </button>
+          <button class="btn fr">EN SAVOIR PLUS →</button>
+          <button class="btn en hidden">LEARN MORE →</button>
         </div>
 
-        <!-- Encrypted Database -->
         <div class="service-card">
-          <div class="service-icon">🔐</div>
+          <div style="font-size: 3rem;">🔐</div>
           <h3 class="fr">Base de Données Chiffrée</h3>
           <h3 class="en hidden">Encrypted Database</h3>
           <p class="fr">Sécurité maximale avec chiffrement end-to-end et conformité RGPD</p>
           <p class="en hidden">Maximum security with end-to-end encryption and GDPR compliance</p>
-          <button class="btn btn-secondary" style="width: 100%;">
-            <span class="fr">En Savoir Plus →</span>
-            <span class="en hidden">Learn More →</span>
-          </button>
+          <button class="btn fr">EN SAVOIR PLUS →</button>
+          <button class="btn en hidden">LEARN MORE →</button>
         </div>
 
-        <!-- Company Branding -->
         <div class="service-card">
-          <div class="service-icon">🎨</div>
+          <div style="font-size: 3rem;">🎨</div>
           <h3 class="fr">Branding Entreprise</h3>
           <h3 class="en hidden">Company Branding</h3>
           <p class="fr">Design de logo, identité visuelle et guidelines complètes pour votre marque</p>
           <p class="en hidden">Logo design, visual identity and complete guidelines for your brand</p>
-          <button class="btn btn-secondary" style="width: 100%;">
-            <span class="fr">En Savoir Plus →</span>
-            <span class="en hidden">Learn More →</span>
-          </button>
+          <button class="btn fr">EN SAVOIR PLUS →</button>
+          <button class="btn en hidden">LEARN MORE →</button>
         </div>
 
-        <!-- Web Design .COM -->
         <div class="service-card">
-          <div class="service-icon">🌐</div>
+          <div style="font-size: 3rem;">🌐</div>
           <h3 class="fr">Web Design .COM</h3>
           <h3 class="en hidden">Web Design .COM</h3>
           <p class="fr">Sites web modernes, responsifs et optimisés SEO avec domaine .com</p>
-          <p class="en hidden">Modern, responsive and SEO-optimized websites with .com domain</p>
-          <button class="btn btn-secondary" style="width: 100%;">
-            <span class="fr">En Savoir Plus →</span>
-            <span class="en hidden">Learn More →</span>
-          </button>
+          <p class="en hidden">Modern, responsive websites optimized for SEO with .com domain</p>
+          <button class="btn fr">EN SAVOIR PLUS →</button>
+          <button class="btn en hidden">LEARN MORE →</button>
         </div>
       </div>
     </div>
@@ -651,36 +554,36 @@
   <!-- FEATURES SECTION -->
   <section class="features" id="features">
     <div class="container">
-      <h2 class="section-title fr">Pourquoi Choisir APPLEPUNK</h2>
-      <h2 class="section-title en hidden">Why Choose APPLEPUNK</h2>
-
+      <h2 class="fr">Pourquoi Choisir APPLEPUNK</h2>
+      <h2 class="en hidden">Why Choose APPLEPUNK</h2>
+      
       <div class="features-grid">
         <div class="feature-box">
-          <div class="feature-number">100%</div>
+          <div class="icon">100%</div>
           <h3 class="fr">Personnalisé</h3>
-          <h3 class="en hidden">Custom</h3>
+          <h3 class="en hidden">Customized</h3>
           <p class="fr">Solutions construites exactement selon vos besoins spécifiques</p>
           <p class="en hidden">Solutions built exactly to your specific needs</p>
         </div>
 
         <div class="feature-box">
-          <div class="feature-number">🔒</div>
+          <div class="icon">🔒</div>
           <h3 class="fr">Sécurisé</h3>
           <h3 class="en hidden">Secure</h3>
           <p class="fr">Chiffrement de grade militaire et conformité réglementaire complète</p>
-          <p class="en hidden">Military-grade encryption and full regulatory compliance</p>
+          <p class="en hidden">Military-grade encryption and complete regulatory compliance</p>
         </div>
 
         <div class="feature-box">
-          <div class="feature-number">⚡</div>
+          <div class="icon">⚡</div>
           <h3 class="fr">Ultra Rapide</h3>
-          <h3 class="en hidden">Lightning Fast</h3>
+          <h3 class="en hidden">Ultra Fast</h3>
           <p class="fr">Performance optimale avec infrastructure cloud moderne</p>
           <p class="en hidden">Optimal performance with modern cloud infrastructure</p>
         </div>
 
         <div class="feature-box">
-          <div class="feature-number">🎯</div>
+          <div class="icon">🎯</div>
           <h3 class="fr">Support 24/7</h3>
           <h3 class="en hidden">24/7 Support</h3>
           <p class="fr">Équipe dédiée disponible pour vous aider à tout moment</p>
@@ -688,7 +591,7 @@
         </div>
 
         <div class="feature-box">
-          <div class="feature-number">📈</div>
+          <div class="icon">📈</div>
           <h3 class="fr">Scalable</h3>
           <h3 class="en hidden">Scalable</h3>
           <p class="fr">Grandit avec votre entreprise sans limitation</p>
@@ -696,7 +599,7 @@
         </div>
 
         <div class="feature-box">
-          <div class="feature-number">💰</div>
+          <div class="icon">💰</div>
           <h3 class="fr">Transparent</h3>
           <h3 class="en hidden">Transparent</h3>
           <p class="fr">Tarification claire sans frais cachés</p>
@@ -736,15 +639,14 @@
           <h4 class="fr">Contact</h4>
           <h4 class="en hidden">Contact</h4>
           <a href="mailto:founder@applepunk.com">founder@applepunk.com</a>
-          <a href="tel:+1234567890" class="fr">+1 (514) 123-4567</a>
-          <a href="tel:+1234567890" class="en hidden">+1 (514) 123-4567</a>
+          <a href="tel:+15141234567">+1 (514) 123-4567</a>
           <a href="#" class="fr">Nous Contacter</a>
           <a href="#" class="en hidden">Contact Us</a>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p class="fr">© 2025 APPLEPUNK. Tous droits réservés. | Créé par Seub Germain</p>
+        <p class="fr">© 2025 APPLEPUNK. All rights reserved. | Created by Seub Germain</p>
         <p class="en hidden">© 2025 APPLEPUNK. All rights reserved. | Created by Seub Germain</p>
       </div>
     </div>
