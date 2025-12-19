@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique en Ligne</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d3d4d 100%);
+            padding-top: 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        /* Left Section - Price & Value */
+        .left-section {
+            padding: 0 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.2;
+        }
+
+        .price {
+            font-family: 'Poppins', sans-serif;
+            font-size: 64px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #7FD8D8 0%, #FF69B4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .price-period {
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            color: #b0b0b0;
+            margin-top: -15px;
+        }
+
+        .value-props {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .value-prop {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .value-prop::before {
+            content: "→";
+            font-size: 24px;
+            color: #FFE5A8;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .value-prop p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            color: #e0e0e0;
+            line-height: 1.4;
+        }
+
+        /* Right Section - Features */
+        .right-section {
+            padding: 0 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .features-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            color: #7FD8D8;
+            margin-bottom: 10px;
+        }
+
+        .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .feature-item::before {
+            content: "✓";
+            font-size: 24px;
+            color: #7FD8D8;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .feature-item p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            color: #e0e0e0;
+            line-height: 1.4;
+        }
+
+        .standalone-note {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid rgba(127, 216, 216, 0.3);
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            color: #FFE5A8;
+            font-style: italic;
+        }
+
+        /* Geometric shapes */
+        .shape-1 {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border: 2px solid rgba(127, 216, 216, 0.15);
+            border-radius: 50%;
+            top: 100px;
+            left: 50px;
+            z-index: 0;
+        }
+
+        .shape-2 {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 2px solid rgba(255, 105, 180, 0.15);
+            bottom: 80px;
+            right: 100px;
+            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="shape-1"></div>
+        <div class="shape-2"></div>
+
+        <div class="left-section">
+            <h1>Boutique en Ligne</h1>
+            <div class="price">$899</div>
+            <p class="price-period">par mois</p>
+
+            <div class="value-props">
+                <div class="value-prop">
+                    <p>E-commerce complet et intégré</p>
+                </div>
+                <div class="value-prop">
+                    <p>Paiements sécurisés et conformes</p>
+                </div>
+                <div class="value-prop">
+                    <p>Gestion d'inventaire en temps réel</p>
+                </div>
+                <div class="value-prop">
+                    <p>Parfait seul ou avec Startup Complet</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-section">
+            <div class="features-title">Fonctionnalités Incluses</div>
+            <div class="features-list">
+                <div class="feature-item">
+                    <p>Catalogue de produits illimité</p>
+                </div>
+                <div class="feature-item">
+                    <p>Panier d'achat et checkout optimisé</p>
+                </div>
+                <div class="feature-item">
+                    <p>Gestion des commandes automatisée</p>
+                </div>
+                <div class="feature-item">
+                    <p>Intégration paiement (Stripe, PayPal)</p>
+                </div>
+                <div class="feature-item">
+                    <p>Rapports de ventes et analytics</p>
+                </div>
+                <div class="feature-item">
+                    <p>Support client 24/7</p>
+                </div>
+            </div>
+
+            <div class="standalone-note">
+                Fonctionne de manière autonome ou s'intègre parfaitement avec le Startup Complet
+            </div>
+        </div>
+    </div>
+</body>
+</html>

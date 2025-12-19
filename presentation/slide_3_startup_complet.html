@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forfait Startup Complet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        .slide-container {
+            width: 1280px;
+            min-height: 720px; /* keep as required */
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d3d4d 100%);
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
+            align-items: start;
+            padding-top: 60px; /* do not change title top padding */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shape-1 { position: absolute; width: 180px; height: 180px; border: 2px solid rgba(127,216,216,0.15); border-radius:50%; top:-40px; right:100px; z-index:0; }
+        .shape-2 { position: absolute; width: 140px; height: 140px; border:2px solid rgba(255,105,180,0.15); bottom:80px; left:50px; clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); z-index:0; }
+
+        /* Left section */
+        .left-section {
+            padding: 0 60px;
+            position: relative; z-index:1;
+            display:flex; flex-direction:column;
+            gap: 20px; /* reduced from 35 */
+        }
+
+        .header-group { display:flex; flex-direction:column; gap:15px; }
+
+        h1 { font-family:'Poppins',sans-serif; font-size:48px; font-weight:700; color:#fff; line-height:1.2; }
+        .accent-line { width:50px; height:4px; background:linear-gradient(90deg,#7FD8D8 0%,#FF69B4 100%); border-radius:2px; }
+
+        .price-section { display:flex; flex-direction:column; gap:12px; }
+        .price-tag { font-family:'Poppins',sans-serif; font-size:72px; font-weight:700; background:linear-gradient(135deg,#7FD8D8 0%,#FF69B4 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1; }
+        .price-period { font-family:'Poppins',sans-serif; font-size:18px; color:#b0b0b0; font-weight:400; }
+        .price-note { font-family:'Poppins',sans-serif; font-size:16px; color:#7FD8D8; font-weight:500; margin-top:10px; padding-top:15px; border-top:1px solid rgba(127,216,216,0.2); }
+
+        /* Right section - compressed layout */
+        .right-section {
+            padding: 0 60px;
+            position:relative; z-index:1;
+            display:flex; flex-direction:column; gap:12px; /* reduced gap */
+        }
+
+        /* Use 3 columns to reduce vertical rows */
+        .features-container {
+            display:grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px 16px; /* smaller gaps */
+        }
+
+        .feature-item {
+            display:flex; gap:10px; align-items:flex-start;
+            padding:8px; /* reduced padding from 14 */
+            background: rgba(127,216,216,0.05);
+            border-left:3px solid #7FD8D8; border-radius:2px;
+        }
+
+        .feature-item::before {
+            content: "✓"; font-size:20px; color:#7FD8D8; font-weight:700; flex-shrink:0; margin-top:0; /* tightened */
+        }
+
+        .feature-item p { font-family:'Poppins',sans-serif; font-size:16px; color:#e0e0e0; line-height:1.4; font-weight:500; }
+
+        .value-statement {
+            padding:10px; /* reduced from 20 */
+            background: linear-gradient(135deg, rgba(127,216,216,0.08) 0%, rgba(255,105,180,0.08) 100%);
+            border:1px solid rgba(127,216,216,0.2); border-radius:2px;
+            color:#FFE5A8; font-family:'Poppins',sans-serif; font-size:16px; font-weight:600; line-height:1.5; text-align:center;
+        }
+
+        /* Responsive adjustments remain similar but mirrored smaller gaps */
+        @media (max-width: 1400px) {
+            .slide-container { grid-template-columns: 1fr; gap:30px; }
+            .left-section, .right-section { padding:0 50px; }
+            h1 { font-size:40px; }
+            .price-tag { font-size:60px; }
+            .features-container { grid-template-columns: repeat(2,1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="shape-1"></div>
+        <div class="shape-2"></div>
+
+        <div class="left-section">
+            <div class="header-group">
+                <div class="accent-line"></div>
+                <h1>Forfait Startup Complet</h1>
+            </div>
+
+            <div class="price-section">
+                <div class="price-tag">$4,999</div>
+                <div class="price-period">par mois</div>
+                <div class="price-note">✓ Tous les services inclus</div>
+            </div>
+        </div>
+
+        <div class="right-section">
+            <div class="features-container">
+                <div class="feature-item"><p>Employee Dashboard</p></div>
+                <div class="feature-item"><p>Gestion Inventaire IA</p></div>
+                <div class="feature-item"><p>Boutique en Ligne</p></div>
+                <div class="feature-item"><p>Base de Données Chiffrée</p></div>
+                <div class="feature-item"><p>Branding Entreprise</p></div>
+                <div class="feature-item"><p>Web Design .COM</p></div>
+                <div class="feature-item"><p>Support 24/7</p></div>
+            </div>
+
+            <div class="value-statement">
+                La solution complète pour transformer votre PME en entreprise numérique moderne et compétitive
+            </div>
+        </div>
+    </div>
+</body>
+</html>

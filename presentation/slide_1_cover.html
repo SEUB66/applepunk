@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APPLEPUNK - Pitch Presentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d3d4d 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .bg-section {
+            position: absolute; right: 0; top: 0; width: 60%; height: 100%;
+            background-image: url('/home/ubuntu/applepunk-pitch-presentation/hero-cover.png');
+            background-size: cover; background-position: center; opacity: 0.9;
+        }
+
+        .overlay {
+            position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+            background: linear-gradient(90deg, rgba(26,26,26,0.95) 0%, rgba(26,26,26,0.75) 40%, rgba(26,26,26,0) 100%);
+            z-index: 1;
+        }
+
+        .content {
+            position: relative; z-index: 2;
+            padding: 80px 60px 8px; /* reduced bottom padding */
+            max-width: 50%; color: #ffffff;
+        }
+
+        /* Header section with accent line and logo */
+        .header-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* tightened */
+            margin-bottom: 10px; /* tightened */
+        }
+
+        .accent-line {
+            width: 60px; height: 4px;
+            background: linear-gradient(90deg, #7FD8D8 0%, #FF69B4 100%);
+            border-radius: 2px;
+        }
+
+        .logo { 
+            font-family: 'Poppins', sans-serif; font-size: 28px; font-weight: 700; 
+            color: #7FD8D8; letter-spacing: 2px; 
+        }
+        .logo span { color: #FF69B4; }
+
+        /* Main headline */
+        h1 { 
+            font-family: 'Poppins', sans-serif; font-size: 64px; font-weight: 700; 
+            line-height: 1.05; /* slightly tightened to save vertical space */
+            margin-bottom: 12px; color: #ffffff; 
+            text-shadow: 0 4px 20px rgba(127,216,216,0.3); 
+        }
+
+        /* Tagline with enhanced styling */
+        .tagline { 
+            font-family: 'Poppins', sans-serif; font-size: 24px; font-weight: 600; 
+            color: #FFE5A8; margin-bottom: 12px; line-height: 1.4;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .tagline i {
+            font-size: 28px;
+            color: #7FD8D8;
+        }
+
+        /* Features showcase section */
+        .features-showcase {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* single row layout */
+            gap: 8px; /* tightened */
+            margin-bottom: 12px; /* tightened */
+            padding: 10px; /* reduced */
+            background: rgba(127, 216, 216, 0.08);
+            border-left: 3px solid #7FD8D8;
+            border-radius: 2px;
+            align-items: center;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 12px;
+            align-items: center; /* center to reduce height */
+        }
+
+        .feature-icon {
+            font-size: 24px;
+            color: #7FD8D8;
+            flex-shrink: 0;
+            margin-top: 0;
+        }
+
+        .feature-icon.accent-pink { color: #FF69B4; }
+        .feature-icon.accent-yellow { color: #FFE5A8; }
+
+        .feature-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            color: #e0e0e0;
+            line-height: 1.3;
+            font-weight: 500;
+        }
+
+        /* Visual divider */
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, rgba(127,216,216,0.3) 0%, transparent 100%);
+            margin-bottom: 12px;
+        }
+
+        /* Subtitle */
+        .subtitle { 
+            font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 400; 
+            color: #b0b0b0; margin-bottom: 12px; line-height: 1.6; 
+        }
+
+        /* CTA Button with enhanced styling */
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 36px; /* reduced vertical padding */
+            background: linear-gradient(135deg, #7FD8D8 0%, #FF69B4 100%);
+            color: #1a1a1a;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 4px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button i {
+            font-size: 18px;
+        }
+
+        /* Enhanced geometric shapes */
+        .shape-1 { 
+            position: absolute; width: 220px; height: 220px; 
+            border: 2px solid rgba(127,216,216,0.25); border-radius: 50%; 
+            bottom: -40px; left: 80px; z-index: 0; /* nudged up */
+            box-shadow: 0 0 30px rgba(127,216,216,0.1);
+        }
+
+        .shape-2 { 
+            position: absolute; width: 170px; height: 170px; 
+            border: 2px solid rgba(255,105,180,0.25); top: 80px; right: 40px; 
+            z-index: 0; clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+            box-shadow: 0 0 30px rgba(255,105,180,0.1);
+        }
+
+        .shape-3 {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 2px solid rgba(255,229,168,0.15);
+            top: 50%;
+            right: 20%;
+            z-index: 0;
+            border-radius: 50%;
+        }
+
+        /* Accent dots for visual interest */
+        .accent-dots {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #7FD8D8;
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .dot-1 { top: 150px; right: 15%; opacity: 0.6; }
+        .dot-2 { bottom: 200px; left: 50px; opacity: 0.4; }
+        .dot-3 { top: 300px; right: 10%; opacity: 0.5; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="shape-1"></div>
+        <div class="shape-2"></div>
+        <div class="shape-3"></div>
+        <div class="accent-dots dot-1"></div>
+        <div class="accent-dots dot-2"></div>
+        <div class="accent-dots dot-3"></div>
+        <div class="bg-section"></div>
+        <div class="overlay"></div>
+        
+        <div class="content">
+            <div class="header-section">
+                <div class="accent-line"></div>
+                <div class="logo">APPLE<span>PUNK</span></div>
+            </div>
+
+            <h1>Solutions d'Entreprise</h1>
+
+            <div class="tagline">
+                <i class="fas fa-rocket"></i>
+                Transformez Votre PME en Leader Numérique
+            </div>
+
+            <div class="features-showcase">
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="feature-text">Dashboards Intelligents</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon accent-pink"><i class="fas fa-brain"></i></div>
+                    <div class="feature-text">Gestion IA Avancée</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon accent-yellow"><i class="fas fa-shopping-cart"></i></div>
+                    <div class="feature-text">E-commerce Intégré</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="feature-text">Sécurité Maximale</div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <p class="subtitle">Dashboards intelligents, gestion d'inventaire IA, boutique en ligne sécurisée et support 24/7</p>
+
+            <button class="cta-button">
+                <i class="fas fa-arrow-right"></i>
+                Découvrir
+            </button>
+        </div>
+    </div>
+</body>
+</html>
