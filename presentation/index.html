@@ -4,154 +4,286 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APPLEPUNK - Présentation Pitch</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Orbitron', sans-serif;
             background: linear-gradient(135deg, #1a1a1a 0%, #0d3d4d 100%);
             color: #ffffff;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 20px;
+            padding: 60px 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Wave background animation */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(127, 216, 216, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255, 105, 180, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
         }
 
         .container {
             max-width: 1200px;
             width: 100%;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
-        h1 {
-            font-size: 48px;
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 80px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #7FD8D8;
+            text-decoration: none;
+            font-size: 14px;
             font-weight: 700;
-            margin-bottom: 10px;
-            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 2px dashed #7FD8D8;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: rgba(127, 216, 216, 0.1);
+            transform: translateX(-5px);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 3px;
             background: linear-gradient(135deg, #7FD8D8 0%, #FF69B4 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .subtitle {
-            font-size: 20px;
-            color: #FFE5A8;
+        .title-section {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 80px;
+        }
+
+        h1 {
+            font-size: 64px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #7FD8D8 0%, #FFE5A8 50%, #FF69B4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(127, 216, 216, 0.3);
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #FFE5A8;
+            letter-spacing: 1px;
+            font-weight: 600;
         }
 
         .slides-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
         }
 
         .slide-card {
-            background: rgba(127, 216, 216, 0.1);
-            border: 2px solid rgba(127, 216, 216, 0.3);
-            border-radius: 8px;
-            padding: 30px;
+            background: linear-gradient(135deg, rgba(127, 216, 216, 0.08) 0%, rgba(255, 105, 180, 0.05) 100%);
+            border: 2px dashed #7FD8D8;
+            border-radius: 0;
+            padding: 40px 30px;
             text-align: center;
-            transition: all 0.3s ease;
             cursor: pointer;
             text-decoration: none;
             color: #ffffff;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(127, 216, 216, 0.2), transparent);
+            transition: left 0.6s ease;
         }
 
         .slide-card:hover {
-            background: rgba(127, 216, 216, 0.2);
-            border-color: #7FD8D8;
-            transform: translateY(-5px);
+            background: linear-gradient(135deg, rgba(127, 216, 216, 0.15) 0%, rgba(255, 105, 180, 0.1) 100%);
+            border-color: #FF69B4;
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 20px 60px rgba(127, 216, 216, 0.3), 
+                        0 0 40px rgba(255, 105, 180, 0.2);
+        }
+
+        .slide-card:hover::before {
+            left: 100%;
         }
 
         .slide-number {
-            font-size: 32px;
-            font-weight: 700;
-            color: #7FD8D8;
+            font-size: 48px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #7FD8D8 0%, #FF69B4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Press Start 2P', cursive;
+            letter-spacing: 2px;
         }
 
         .slide-title {
-            font-size: 18px;
-            font-weight: 600;
+            font-size: 22px;
+            font-weight: 700;
             color: #FFE5A8;
+            letter-spacing: 1px;
         }
 
         .slide-description {
             font-size: 14px;
             color: #b0b0b0;
-            line-height: 1.5;
+            line-height: 1.6;
+            font-weight: 400;
         }
 
         .download-section {
             text-align: center;
-            padding: 40px;
-            background: rgba(127, 216, 216, 0.08);
-            border: 2px solid rgba(127, 216, 216, 0.3);
-            border-radius: 8px;
-            margin-top: 50px;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, rgba(127, 216, 216, 0.1) 0%, rgba(255, 105, 180, 0.05) 100%);
+            border: 2px dashed #7FD8D8;
+            border-radius: 0;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #7FD8D8, #FF69B4, transparent);
         }
 
         .download-section h2 {
-            font-size: 28px;
-            margin-bottom: 20px;
-            color: #7FD8D8;
+            font-size: 32px;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #7FD8D8 0%, #FF69B4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
+            font-weight: 700;
         }
 
         .download-buttons {
             display: flex;
-            gap: 20px;
+            gap: 30px;
             justify-content: center;
             flex-wrap: wrap;
         }
 
         .download-btn {
-            padding: 12px 30px;
+            padding: 16px 40px;
             background: linear-gradient(135deg, #7FD8D8 0%, #FF69B4 100%);
             color: #1a1a1a;
             text-decoration: none;
-            font-weight: 600;
-            border-radius: 4px;
-            border: none;
+            font-weight: 700;
+            border-radius: 0;
+            border: 2px solid #7FD8D8;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 14px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
+            letter-spacing: 2px;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.4s ease;
         }
 
         .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(127, 216, 216, 0.4);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(127, 216, 216, 0.5),
+                        0 0 30px rgba(255, 105, 180, 0.3);
         }
 
-        .back-link {
-            display: inline-block;
-            margin-bottom: 30px;
-            color: #7FD8D8;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 600;
+        .download-btn:hover::before {
+            left: 100%;
         }
 
-        .back-link:hover {
-            color: #FFE5A8;
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 40px;
+            }
+
+            .slides-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .slide-card {
+                padding: 30px 20px;
+            }
+
+            .download-section {
+                padding: 40px 20px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="/" class="back-link">← Retour au site</a>
+        <div class="header">
+            <a href="/" class="back-link">← Retour au site</a>
+            <div class="logo">APPLEPUNK</div>
+        </div>
 
-        <h1>APPLEPUNK Présentation Pitch</h1>
-        <p class="subtitle">Solutions d'Entreprise Intelligentes</p>
+        <div class="title-section">
+            <h1>Présentation Pitch</h1>
+            <p class="subtitle">Solutions d'Entreprise Intelligentes</p>
+        </div>
 
         <div class="slides-grid">
             <a href="/presentation/slide_1_cover.html" class="slide-card">
@@ -188,8 +320,8 @@
         <div class="download-section">
             <h2>📥 Télécharger la Présentation</h2>
             <div class="download-buttons">
-                <a href="/presentation/APPLEPUNK_-_Solutions_d_Entreprise_Intelligentes.pdf" download class="download-btn">📄 Télécharger PDF</a>
-                <a href="/presentation/APPLEPUNK_-_Solutions_d_Entreprise_Intelligentes.ppt" download class="download-btn">📊 Télécharger PPT</a>
+                <a href="/presentation/APPLEPUNK_-_Solutions_d_Entreprise_Intelligentes.pdf" download class="download-btn">📄 PDF</a>
+                <a href="/presentation/APPLEPUNK_-_Solutions_d_Entreprise_Intelligentes.ppt" download class="download-btn">📊 PPT</a>
             </div>
         </div>
     </div>
