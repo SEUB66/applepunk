@@ -1,0 +1,1040 @@
+<!-- APPLEPUNK Portfolio v2 - Force redeploy -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seub Germain - Développement Web & App Créatif | APPLEPUNK</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0a0a0a;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      background: linear-gradient(135deg, #8ACCD5 0%, #8E7DBE 50%, #FF90BB 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.3s;
+      font-size: 0.9rem;
+    }
+
+    nav a:hover {
+      color: #8ACCD5;
+    }
+
+    .nav-controls {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .lang-toggle {
+      background: rgba(138, 204, 213, 0.1);
+      border: 1px solid rgba(138, 204, 213, 0.3);
+      color: #8ACCD5;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .lang-toggle:hover {
+      background: rgba(138, 204, 213, 0.2);
+      border-color: #8ACCD5;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 8rem 0;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(10, 10, 10, 0.5) 0%, rgba(15, 15, 25, 0.8) 100%);
+      position: relative;
+      overflow: hidden;
+      min-height: 600px;
+    }
+
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #8ACCD5 0%, #8E7DBE 50%, #FF90BB 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 3s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { filter: hue-rotate(0deg); }
+      50% { filter: hue-rotate(10deg); }
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-description {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 2rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.8;
+    }
+
+    .hero-badges {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: rgba(138, 204, 213, 0.1);
+      border: 1px solid rgba(138, 204, 213, 0.3);
+      color: #8ACCD5;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(135deg, #8ACCD5 0%, #8E7DBE 100%);
+      color: #0a0a0a;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+      text-decoration: none;
+      margin: 0.5rem;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(138, 204, 213, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid #FF90BB;
+      color: #FF90BB;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 144, 187, 0.1);
+      box-shadow: 0 10px 30px rgba(255, 144, 187, 0.3);
+    }
+
+    /* About Section */
+    .about {
+      padding: 4rem 0;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-image {
+      text-align: center;
+    }
+
+    .about-image img {
+      max-width: 100%;
+      border-radius: 1rem;
+      box-shadow: 0 20px 50px rgba(138, 204, 213, 0.2);
+    }
+
+    .about-text h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #8ACCD5 0%, #8E7DBE 50%, #FF90BB 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .about-text p {
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .stat {
+      background: rgba(138, 204, 213, 0.05);
+      border: 1px solid rgba(138, 204, 213, 0.2);
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      text-align: center;
+    }
+
+    .stat-label {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-value {
+      color: #8ACCD5;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    /* Mission Section */
+    .mission {
+      padding: 4rem 0;
+      background: rgba(138, 204, 213, 0.05);
+      border-radius: 1rem;
+      margin: 4rem 0;
+    }
+
+    .mission h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #8ACCD5 0%, #8E7DBE 50%, #FF90BB 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .mission-objective {
+      text-align: center;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 3rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .mission-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .mission-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 0.75rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .mission-card h3 {
+      color: #8ACCD5;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .mission-card p {
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.6;
+    }
+
+    /* Services Section */
+    .services {
+      padding: 4rem 0;
+    }
+
+    .services h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      background: linear-gradient(135deg, #8ACCD5 0%, #8E7DBE 50%, #FF90BB 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 0.75rem;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s;
+    }
+
+    .service-card:hover {
+      background: rgba(138, 204, 213, 0.1);
+      border-color: #8ACCD5;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(138, 204, 213, 0.2);
+    }
+
+    .service-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: #8ACCD5;
+    }
+
+    .service-card p {
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.6;
+    }
+
+    /* Product Section */
+    .product {
+      padding: 4rem 0;
+    }
+
+    .product h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      background: linear-gradient(135deg, #8ACCD5 0%, #8E7DBE 50%, #FF90BB 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .product-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .product-image {
+      text-align: center;
+    }
+
+    .product-image img {
+      max-width: 100%;
+      border-radius: 1rem;
+      box-shadow: 0 20px 50px rgba(138, 204, 213, 0.2);
+    }
+
+    .product-info h3 {
+      font-size: 1.8rem;
+      color: #8ACCD5;
+      margin-bottom: 1rem;
+    }
+
+    .product-info p {
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .features-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .feature-item {
+      background: rgba(138, 204, 213, 0.05);
+      border-left: 3px solid #8ACCD5;
+      padding: 1rem;
+      border-radius: 0.25rem;
+    }
+
+    .feature-item strong {
+      color: #8ACCD5;
+    }
+
+    /* Team Section */
+    .team {
+      padding: 4rem 0;
+    }
+
+    .team h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      background: linear-gradient(135deg, #8ACCD5 0%, #8E7DBE 50%, #FF90BB 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .team-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 0.75rem;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .team-card h3 {
+      font-size: 1.3rem;
+      color: #8ACCD5;
+      margin-bottom: 0.5rem;
+    }
+
+    .team-role {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .team-card p {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .team-email {
+      color: #8ACCD5;
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+
+    /* Contact Section */
+    .contact {
+      padding: 4rem 0;
+    }
+
+    .contact h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #8ACCD5 0%, #8E7DBE 50%, #FF90BB 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .contact-subtitle {
+      text-align: center;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(138, 204, 213, 0.3);
+      color: #ffffff;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      background: rgba(138, 204, 213, 0.1);
+      border-color: #8ACCD5;
+      box-shadow: 0 0 10px rgba(138, 204, 213, 0.2);
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9rem;
+    }
+
+    footer p {
+      margin: 0.5rem 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .about-content,
+      .product-showcase {
+        grid-template-columns: 1fr;
+      }
+
+      .features-list {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-badges {
+        flex-direction: column;
+      }
+
+      .badge {
+        width: 100%;
+      }
+    }
+
+    /* Hidden by default */
+    .en {
+      display: none;
+    }
+
+    .fr {
+      display: block;
+    }
+
+    .fr.hidden {
+      display: none;
+    }
+
+    .en.visible {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Navigation -->
+    <nav>
+      <div class="logo">APPLEPUNK</div>
+      <ul>
+        <li><a href="#about" class="nav-link">
+          <span class="fr">À propos</span>
+          <span class="en hidden">About</span>
+        </a></li>
+        <li><a href="#services" class="nav-link">
+          <span class="fr">Services</span>
+          <span class="en hidden">Services</span>
+        </a></li>
+        <li><a href="#product" class="nav-link">
+          <span class="fr">Produit</span>
+          <span class="en hidden">Product</span>
+        </a></li>
+        <li><a href="#team" class="nav-link">
+          <span class="fr">Équipe</span>
+          <span class="en hidden">Team</span>
+        </a></li>
+        <li><a href="#contact" class="nav-link">
+          <span class="fr">Contact</span>
+          <span class="en hidden">Contact</span>
+        </a></li>
+      </ul>
+      <div class="nav-controls">
+        <button class="lang-toggle" onclick="toggleLanguage()">
+          <span class="fr">EN</span>
+          <span class="en hidden">FR</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <video autoplay muted loop playsinline class="hero-video">
+        <source src="/background.mp4" type="video/mp4">
+      </video>
+      <div class="hero-content">
+        <div class="hero-subtitle">
+          <span class="fr">PDG & FONDATEUR</span>
+          <span class="en hidden">CEO & FOUNDER</span>
+        </div>
+        <h1>Sebastien Germain</h1>
+        <p>
+          <span class="fr">Développeur Full Stack & Ingénieur Software</span>
+          <span class="en hidden">Full Stack Developer & Software Engineer</span>
+        </p>
+        <div class="hero-description">
+          <span class="fr">Applications d'entreprise sur mesure complètes pour tous. Ingénieur Software à votre service. Artiste coloré avec créativité++. Créant des expériences multi-plateformes pixel-perfect depuis les années 2000.</span>
+          <span class="en hidden">Complete custom enterprise applications for everyone. Software Engineer at your service. Colorful artist with creativity++. Creating pixel-perfect multi-platform experiences since the 2000s.</span>
+        </div>
+        <div class="hero-badges">
+          <div class="badge">🇨🇦 Canada EN</div>
+          <div class="badge">🇫🇷 Québec FR</div>
+          <div class="badge">🍎 Certifié Apple</div>
+          <div class="badge">💻 Certifié Microsoft</div>
+        </div>
+        <div>
+          <button class="btn" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">
+            <span class="fr">VOIR LES SERVICES →</span>
+            <span class="en hidden">VIEW SERVICES →</span>
+          </button>
+          <button class="btn btn-secondary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+            <span class="fr">Nous contacter</span>
+            <span class="en hidden">Contact Us</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+      <div class="about-content">
+        <div class="about-image">
+          <img src="/profile.png" alt="Sebastien Germain">
+        </div>
+        <div class="about-text">
+          <h2>
+            <span class="fr">Old School Pixel Geek</span>
+            <span class="en hidden">Old School Pixel Geek</span>
+          </h2>
+          <p>
+            <span class="fr">J'ai créé mon premier site web HTML à 7 ans. J'ai joué sur Linux avec papa pendant que Nintendo était mon compagnon d'enfance.</span>
+            <span class="en hidden">I created my first HTML website at age 7. I played on Linux with dad while Nintendo was my childhood companion.</span>
+          </p>
+          <p>
+            <span class="fr">5 ans d'école en informatique dans les belles années 2000 ont façonné ma passion pour créer des expériences numériques qui comptent. Développeur certifié Apple + Microsoft, combinant l'art créatif avec l'excellence technique.</span>
+            <span class="en hidden">5 years of computer science education in the beautiful 2000s shaped my passion for creating digital experiences that matter. Apple + Microsoft certified developer, combining creative art with technical excellence.</span>
+          </p>
+          <div class="about-stats">
+            <div class="stat">
+              <div class="stat-label">
+                <span class="fr">Premier code</span>
+                <span class="en hidden">First Code</span>
+              </div>
+              <div class="stat-value">HTML @ 7</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">
+                <span class="fr">Enfance</span>
+                <span class="en hidden">Childhood</span>
+              </div>
+              <div class="stat-value">Nintendo & Linux</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">
+                <span class="fr">Éducation</span>
+                <span class="en hidden">Education</span>
+              </div>
+              <div class="stat-value">5 ans CS</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">
+                <span class="fr">Certifié</span>
+                <span class="en hidden">Certified</span>
+              </div>
+              <div class="stat-value">Apple & MS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission">
+      <h2>
+        <span class="fr">Ce que nous livrons</span>
+        <span class="en hidden">What We Deliver</span>
+      </h2>
+      <div class="mission-objective">
+        <span class="fr">Notre objectif #1 est de donner aux petites entreprises l'accès à des solutions web et app professionnelles à coût abordable.</span>
+        <span class="en hidden">Our #1 goal is to give small businesses access to professional web and app solutions at affordable cost.</span>
+      </div>
+      <div class="mission-grid">
+        <div class="mission-card">
+          <h3>
+            <span class="fr">Apps multi-plateformes</span>
+            <span class="en hidden">Multi-Platform Apps</span>
+          </h3>
+          <p>
+            <span class="fr">PC, MAC, iOS, Android - 1 app fait tout. Optimisation parfaite sur chaque plateforme avec un seul codebase.</span>
+            <span class="en hidden">PC, MAC, iOS, Android - 1 app does it all. Perfect optimization on each platform with a single codebase.</span>
+          </p>
+        </div>
+        <div class="mission-card">
+          <h3>
+            <span class="fr">Sécurité personnalisée</span>
+            <span class="en hidden">Custom Security</span>
+          </h3>
+          <p>
+            <span class="fr">Une plateforme personnalisée pour votre entreprise est essentielle pour la sécurité. Problèmes de plateformes multi-licences? La sécurité est la réponse.</span>
+            <span class="en hidden">A custom platform for your business is essential for security. Multi-license platform issues? Security is the answer.</span>
+          </p>
+        </div>
+        <div class="mission-card">
+          <h3>
+            <span class="fr">Ultra rapide</span>
+            <span class="en hidden">Lightning Fast</span>
+          </h3>
+          <p>
+            <span class="fr">Construit avec Next.js et Vite pour un beau design et des performances plus rapides que toute autre app de productivité. C'est le futur.</span>
+            <span class="en hidden">Built with Next.js and Vite for beautiful design and faster performance than any other productivity app. This is the future.</span>
+          </p>
+        </div>
+        <div class="mission-card">
+          <h3>
+            <span class="fr">Focus petites entreprises</span>
+            <span class="en hidden">Small Business Focus</span>
+          </h3>
+          <p>
+            <span class="fr">Donner une chance aux petites entreprises d'avoir leur web + app à petit coût. Facile à utiliser, facile à gérer, croissance rapide.</span>
+            <span class="en hidden">Give small businesses a chance to have their web + app at low cost. Easy to use, easy to manage, rapid growth.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+      <h2>
+        <span class="fr">Nos Services</span>
+        <span class="en hidden">Our Services</span>
+      </h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>🎨 
+            <span class="fr">Logo Design</span>
+            <span class="en hidden">Logo Design</span>
+          </h3>
+          <p>
+            <span class="fr">Identités de marque distinctives qui capturent votre vision et résonnent avec votre audience.</span>
+            <span class="en hidden">Distinctive brand identities that capture your vision and resonate with your audience.</span>
+          </p>
+        </div>
+        <div class="service-card">
+          <h3>🎬 
+            <span class="fr">Production Vidéo</span>
+            <span class="en hidden">Video Production</span>
+          </h3>
+          <p>
+            <span class="fr">Contenu vidéo engageant qui raconte votre histoire et génère des conversions.</span>
+            <span class="en hidden">Engaging video content that tells your story and drives conversions.</span>
+          </p>
+        </div>
+        <div class="service-card">
+          <h3>🌐 
+            <span class="fr">Web Design</span>
+            <span class="en hidden">Web Design</span>
+          </h3>
+          <p>
+            <span class="fr">Sites web modernes et responsifs qui mettent en valeur votre marque et engagent les clients.</span>
+            <span class="en hidden">Modern, responsive websites that showcase your brand and engage customers.</span>
+          </p>
+        </div>
+        <div class="service-card">
+          <h3>💻 
+            <span class="fr">Apps Personnalisées</span>
+            <span class="en hidden">Custom Apps</span>
+          </h3>
+          <p>
+            <span class="fr">Applications construites de zéro pour vos besoins commerciaux uniques.</span>
+            <span class="en hidden">Applications built from scratch for your unique business requirements.</span>
+          </p>
+        </div>
+        <div class="service-card">
+          <h3>👥 
+            <span class="fr">Portails Employés</span>
+            <span class="en hidden">Employee Portals</span>
+          </h3>
+          <p>
+            <span class="fr">Plateformes internes qui rationalisent les opérations et améliorent la collaboration d'équipe.</span>
+            <span class="en hidden">Internal platforms that streamline operations and enhance team collaboration.</span>
+          </p>
+        </div>
+        <div class="service-card">
+          <h3>🚀 
+            <span class="fr">Solutions Full-Stack</span>
+            <span class="en hidden">Full-Stack Solutions</span>
+          </h3>
+          <p>
+            <span class="fr">Transformation numérique complète du concept au déploiement et au-delà.</span>
+            <span class="en hidden">Complete digital transformation from concept to deployment and beyond.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Section -->
+    <section class="product" id="product">
+      <h2>
+        <span class="fr">Produit Vedette</span>
+        <span class="en hidden">Featured Product</span>
+      </h2>
+      <div class="product-showcase">
+        <div class="product-info">
+          <h3>
+            <span class="fr">Work Portal App</span>
+            <span class="en hidden">Work Portal App</span>
+          </h3>
+          <p>
+            <span class="fr">Le système ERP glorifié - Une solution complète de gestion d'entreprise avec synchronisation en temps réel.</span>
+            <span class="en hidden">The glorified ERP system - A complete business management solution with real-time sync.</span>
+          </p>
+          <div class="features-list">
+            <div class="feature-item">
+              <strong>
+                <span class="fr">Système de pointage</span>
+                <span class="en hidden">Punch System</span>
+              </strong>
+            </div>
+            <div class="feature-item">
+              <strong>
+                <span class="fr">Création de bons de travail</span>
+                <span class="en hidden">Work Order Creation</span>
+              </strong>
+            </div>
+            <div class="feature-item">
+              <strong>
+                <span class="fr">GPS Technicien</span>
+                <span class="en hidden">Technician GPS</span>
+              </strong>
+            </div>
+            <div class="feature-item">
+              <strong>
+                <span class="fr">Portail de gestion</span>
+                <span class="en hidden">Management Portal</span>
+              </strong>
+            </div>
+            <div class="feature-item">
+              <strong>
+                <span class="fr">Dossiers employés</span>
+                <span class="en hidden">Employee Folders</span>
+              </strong>
+            </div>
+            <div class="feature-item">
+              <strong>
+                <span class="fr">QR & Code-barres</span>
+                <span class="en hidden">QR & Barcode</span>
+              </strong>
+            </div>
+          </div>
+          <p style="margin-top: 2rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.5);">
+            <span class="fr">✓ Web App • ✓ iOS App • ✓ Android App • ✓ Multi-Platform • ✓ Certifié Apple & Microsoft</span>
+            <span class="en hidden">✓ Web App • ✓ iOS App • ✓ Android App • ✓ Multi-Platform • ✓ Apple & Microsoft Certified</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team" id="team">
+      <h2>
+        <span class="fr">L'équipe</span>
+        <span class="en hidden">The Team</span>
+      </h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <h3>Sebastien Germain</h3>
+          <div class="team-role">
+            <span class="fr">PDG & Fondateur</span>
+            <span class="en hidden">CEO & Founder</span>
+          </div>
+          <p>
+            <span class="fr">Développeur Full Stack & Ingénieur Software</span>
+            <span class="en hidden">Full Stack Developer & Software Engineer</span>
+          </p>
+          <a href="mailto:founder@applepunk.com" class="team-email">founder@applepunk.com</a>
+        </div>
+        <div class="team-card">
+          <h3>Nadia</h3>
+          <div class="team-role">
+            <span class="fr">Chef de projet & RH</span>
+            <span class="en hidden">Project Manager & HR</span>
+          </div>
+          <p>
+            <span class="fr">Ressources humaines & Gestion</span>
+            <span class="en hidden">Human Resources & Management</span>
+          </p>
+          <a href="mailto:nadiavp@applepunk.com" class="team-email">nadiavp@applepunk.com</a>
+        </div>
+        <div class="team-card">
+          <h3>Maxime Lepine</h3>
+          <div class="team-role">
+            <span class="fr">Gestion</span>
+            <span class="en hidden">Management</span>
+          </div>
+          <p>
+            <span class="fr">Développement d'affaires</span>
+            <span class="en hidden">Business Development</span>
+          </p>
+          <a href="mailto:Gestion.maxime.lepine@gmail.com" class="team-email">Gestion.maxime.lepine@gmail.com</a>
+        </div>
+        <div class="team-card">
+          <h3>William Fortier</h3>
+          <div class="team-role">
+            <span class="fr">Ingénieur vidéo & son</span>
+            <span class="en hidden">Video & Audio Engineer</span>
+          </div>
+          <p>
+            <span class="fr">Production multimédia</span>
+            <span class="en hidden">Multimedia Production</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <h2>
+        <span class="fr">Commençons à planifier</span>
+        <span class="en hidden">Let's Start Planning</span>
+      </h2>
+      <p class="contact-subtitle">
+        <span class="fr">Prêt à donner vie à votre vision? Contactez-nous et créons quelque chose d'incroyable ensemble.</span>
+        <span class="en hidden">Ready to bring your vision to life? Contact us and let's create something amazing together.</span>
+      </p>
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <input type="text" placeholder="Votre nom / Your name" required>
+        <input type="email" placeholder="vous@entreprise.com / you@company.com" required>
+        <input type="text" placeholder="Nom de votre entreprise / Company name" required>
+        <textarea placeholder="Parlez-nous de votre projet... / Tell us about your project..." rows="5" required></textarea>
+        <button type="submit" class="btn">
+          <span class="fr">Envoyer le message</span>
+          <span class="en hidden">Send Message</span>
+        </button>
+      </form>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 APPLEPUNK. 
+      <span class="fr">Tous droits réservés.</span>
+      <span class="en hidden">All rights reserved.</span>
+    </p>
+    <p>📧 founder@applepunk.com | 🌐 applepunk.com</p>
+  </footer>
+
+  <script>
+    function toggleLanguage() {
+      const frElements = document.querySelectorAll('.fr');
+      const enElements = document.querySelectorAll('.en');
+      
+      frElements.forEach(el => el.classList.toggle('hidden'));
+      enElements.forEach(el => el.classList.toggle('visible'));
+      
+      // Update HTML lang attribute
+      const html = document.documentElement;
+      html.lang = html.lang === 'fr' ? 'en' : 'fr';
+      
+      // Update button text
+      const button = document.querySelector('.lang-toggle');
+      if (html.lang === 'en') {
+        button.innerHTML = '<span class="en visible">FR</span>';
+      } else {
+        button.innerHTML = '<span class="fr">EN</span>';
+      }
+    }
+
+    function handleSubmit(event) {
+      event.preventDefault();
+      const lang = document.documentElement.lang;
+      const message = lang === 'fr' ? 'Message envoyé!' : 'Message sent!';
+      alert(message);
+      event.target.reset();
+    }
+  </script>
+</body>
+</html>
