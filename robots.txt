@@ -1,0 +1,24 @@
+# APPLEPUNK Robots.txt
+# Allow all crawlers to index the site
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /private
+Disallow: /temp
+
+# Crawl delay (optional - adjust if needed)
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://applepunk.vercel.app/sitemap.xml
+
+# Google-specific rules
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Bing-specific rules
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
