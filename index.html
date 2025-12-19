@@ -447,7 +447,149 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1.5rem;
-    }    /* MISSION SECTION */
+    }
+
+    /* PRESENTATION SHOWCASE SECTION */
+    .presentation-showcase {
+      padding: 6rem 0;
+      position: relative;
+      z-index: 5;
+      background: linear-gradient(135deg, rgba(127, 216, 216, 0.05) 0%, rgba(255, 105, 180, 0.03) 100%);
+    }
+
+    .presentation-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .presentation-header .section-title {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .presentation-header .subtitle {
+      color: var(--secondary);
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+    }
+
+    .slides-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .slide-preview-card {
+      background: linear-gradient(135deg, rgba(127, 216, 216, 0.08) 0%, rgba(255, 105, 180, 0.05) 100%);
+      border: 2px dashed var(--primary);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      text-decoration: none;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide-preview-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(127, 216, 216, 0.2), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .slide-preview-card:hover {
+      background: linear-gradient(135deg, rgba(127, 216, 216, 0.15) 0%, rgba(255, 105, 180, 0.1) 100%);
+      border-color: var(--accent);
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 15px 50px rgba(127, 216, 216, 0.3), 0 0 30px rgba(255, 105, 180, 0.2);
+    }
+
+    .slide-preview-card:hover::before {
+      left: 100%;
+    }
+
+    .slide-preview-number {
+      font-size: 2.5rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-family: 'Press Start 2P', cursive;
+      letter-spacing: 1px;
+    }
+
+    .slide-preview-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--secondary);
+      letter-spacing: 0.5px;
+    }
+
+    .slide-preview-description {
+      font-size: 0.85rem;
+      color: #b0b0b0;
+      line-height: 1.5;
+    }
+
+    .presentation-cta {
+      text-align: center;
+    }
+
+    .presentation-cta .cta-button {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 0;
+      border: 2px dashed var(--primary);
+      cursor: pointer;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .presentation-cta .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      transition: left 0.4s ease;
+    }
+
+    .presentation-cta .cta-button:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 12px 40px rgba(127, 216, 216, 0.4), 0 0 25px rgba(255, 105, 180, 0.25);
+    }
+
+    .presentation-cta .cta-button:hover::before {
+      left: 100%;
+    }
+
+    /* MISSION SECTION */
     .mission {
       padding: 6rem 0;
       position: relative;
@@ -788,6 +930,63 @@
           <button class="cta-button fr" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">NOUS CONTACTER</button>
           <button class="cta-button en hidden" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">CONTACT US</button>
         </div>
+      </div>
+    </section>
+
+    <!-- PRESENTATION SECTION -->
+    <section class="presentation-showcase" id="presentation-section">
+      <div class="presentation-header">
+        <h2 class="section-title fr">Présentation Pitch</h2>
+        <h2 class="section-title en hidden">Pitch Presentation</h2>
+        <p class="subtitle fr">Solutions d'Entreprise Intelligentes</p>
+        <p class="subtitle en hidden">Intelligent Enterprise Solutions</p>
+      </div>
+
+      <div class="slides-preview-grid">
+        <a href="/presentation/slide_1_cover.html" class="slide-preview-card">
+          <div class="slide-preview-number">1</div>
+          <div class="slide-preview-title fr">Couverture</div>
+          <div class="slide-preview-title en hidden">Cover</div>
+          <div class="slide-preview-description fr">Introduction APPLEPUNK</div>
+          <div class="slide-preview-description en hidden">APPLEPUNK Introduction</div>
+        </a>
+
+        <a href="/presentation/slide_2_problem_solution.html" class="slide-preview-card">
+          <div class="slide-preview-number">2</div>
+          <div class="slide-preview-title fr">Problème & Solution</div>
+          <div class="slide-preview-title en hidden">Problem & Solution</div>
+          <div class="slide-preview-description fr">Défis des PME</div>
+          <div class="slide-preview-description en hidden">SME Challenges</div>
+        </a>
+
+        <a href="/presentation/slide_3_startup_complet.html" class="slide-preview-card">
+          <div class="slide-preview-number">3</div>
+          <div class="slide-preview-title fr">Startup Complet</div>
+          <div class="slide-preview-title en hidden">Complete Startup</div>
+          <div class="slide-preview-description fr">Forfait $4,999/mois</div>
+          <div class="slide-preview-description en hidden">Package $4,999/month</div>
+        </a>
+
+        <a href="/presentation/slide_4_online_shop.html" class="slide-preview-card">
+          <div class="slide-preview-number">4</div>
+          <div class="slide-preview-title fr">Boutique en Ligne</div>
+          <div class="slide-preview-title en hidden">Online Shop</div>
+          <div class="slide-preview-description fr">E-commerce $899/mois</div>
+          <div class="slide-preview-description en hidden">E-commerce $899/month</div>
+        </a>
+
+        <a href="/presentation/slide_5_cta.html" class="slide-preview-card">
+          <div class="slide-preview-number">5</div>
+          <div class="slide-preview-title fr">Appel à l'Action</div>
+          <div class="slide-preview-title en hidden">Call to Action</div>
+          <div class="slide-preview-description fr">Contactez-nous</div>
+          <div class="slide-preview-description en hidden">Contact Us</div>
+        </a>
+      </div>
+
+      <div class="presentation-cta">
+        <a href="/presentation" class="cta-button fr">→ DÉCOUVRIR LA PRÉSENTATION COMPLÈTE</a>
+        <a href="/presentation" class="cta-button en hidden">→ DISCOVER FULL PRESENTATION</a>
       </div>
     </section>
 
