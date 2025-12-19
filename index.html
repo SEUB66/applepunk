@@ -866,7 +866,7 @@
       document.querySelector('.theme-name').textContent = themeNames[currentTheme];
     }
 
-    // WAVE ANIMATION CANVAS
+    // WAVE ANIMATION CANVAS - THEME AWARE
     const canvas = document.getElementById('waveCanvas');
     const ctx = canvas.getContext('2d');
     
@@ -877,23 +877,39 @@
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    const waves = [
-      { amplitude: 80, frequency: 0.01, phase: 0, color: '#00FFFF', speed: 0.015 },
-      { amplitude: 60, frequency: 0.012, phase: Math.PI / 4, color: '#FF1493', speed: 0.012 },
-      { amplitude: 70, frequency: 0.008, phase: Math.PI / 2, color: '#9D4EDD', speed: 0.01 },
-      { amplitude: 50, frequency: 0.015, phase: Math.PI, color: '#FF69B4', speed: 0.018 }
-    ];
+    const themeWaves = {
+      black: [
+        { amplitude: 100, frequency: 0.008, phase: 0, color: '#00FFFF', speed: 0.015 },
+        { amplitude: 80, frequency: 0.01, phase: Math.PI / 4, color: '#FF1493', speed: 0.012 },
+        { amplitude: 90, frequency: 0.007, phase: Math.PI / 2, color: '#9D4EDD', speed: 0.01 },
+        { amplitude: 70, frequency: 0.012, phase: Math.PI, color: '#FF69B4', speed: 0.018 }
+      ],
+      white: [
+        { amplitude: 100, frequency: 0.008, phase: 0, color: '#FFE5A8', speed: 0.015 },
+        { amplitude: 80, frequency: 0.01, phase: Math.PI / 4, color: '#FFB6C1', speed: 0.012 },
+        { amplitude: 90, frequency: 0.007, phase: Math.PI / 2, color: '#DDA0DD', speed: 0.01 },
+        { amplitude: 70, frequency: 0.012, phase: Math.PI, color: '#87CEEB', speed: 0.018 }
+      ],
+      unicorn: [
+        { amplitude: 100, frequency: 0.008, phase: 0, color: '#FF1493', speed: 0.015 },
+        { amplitude: 80, frequency: 0.01, phase: Math.PI / 4, color: '#00FFFF', speed: 0.012 },
+        { amplitude: 90, frequency: 0.007, phase: Math.PI / 2, color: '#FF69B4', speed: 0.01 },
+        { amplitude: 70, frequency: 0.012, phase: Math.PI, color: '#9D4EDD', speed: 0.018 }
+      ]
+    };
+
+    let waves = themeWaves.black;
 
     function drawWaves(time) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       waves.forEach((wave, index) => {
         ctx.strokeStyle = wave.color;
-        ctx.lineWidth = 2;
-        ctx.globalAlpha = 0.3;
+        ctx.lineWidth = 3;
+        ctx.globalAlpha = 0.4;
         ctx.beginPath();
 
-        for (let x = 0; x < canvas.width; x += 5) {
+        for (let x = 0; x < canvas.width; x += 4) {
           const y = canvas.height / 2 + Math.sin((x * wave.frequency) + (time * wave.speed) + wave.phase) * wave.amplitude;
           if (x === 0) ctx.moveTo(x, y);
           else ctx.lineTo(x, y);
@@ -904,6 +920,12 @@
       ctx.globalAlpha = 1;
       requestAnimationFrame(() => drawWaves(time + 1));
     }
+
+    const originalToggleTheme = window.toggleTheme;
+    window.toggleTheme = function() {
+      originalToggleTheme();
+      waves = themeWaves[currentTheme];
+    };
 
     drawWaves(0);
   </script>
