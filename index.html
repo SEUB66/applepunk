@@ -526,7 +526,7 @@
 </head>
 <body class="theme-black">
   <!-- WAVE ANIMATION CANVAS -->
-  <canvas id="waveCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none;"></canvas>
+  <canvas id="waveCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; background: transparent;"></canvas>
   
   <div class="container">
     <nav>
@@ -882,13 +882,12 @@
     ];
 
     function drawWaves(time) {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.02)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       waves.forEach((wave, index) => {
         ctx.strokeStyle = wave.color;
-        ctx.lineWidth = 3;
-        ctx.globalAlpha = 0.4;
+        ctx.lineWidth = 2;
+        ctx.globalAlpha = 0.3;
         ctx.beginPath();
 
         for (let x = 0; x < canvas.width; x += 5) {
