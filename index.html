@@ -55,6 +55,8 @@
       color: var(--text-primary);
       line-height: 1.6;
       transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
     }
 
     body.theme-white {
@@ -142,25 +144,26 @@
 
     /* HERO SECTION */
     .hero {
-      padding: 6rem 0;
       position: relative;
-      overflow: hidden;
-      min-height: 700px;
+      height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 4rem;
+      overflow: hidden;
+      text-align: center;
+      padding: 2rem;
+      z-index: 10;
     }
 
-    .hero-video {
+    .hero video {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      z-index: 0;
-      opacity: 0.5;
+      opacity: 0.4;
+      z-index: 5;
     }
 
     .hero-overlay {
