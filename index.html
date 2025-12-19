@@ -76,20 +76,17 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
       background: var(--bg-primary);
-      background-image: url('bg-black.jpg');
-      background-attachment: fixed;
-      background-size: cover;
       color: var(--text-primary);
       line-height: 1.6;
       transition: all 0.3s ease;
     }
 
     body.theme-white {
-      background-image: url('bg-white.jpg');
+      background: var(--bg-primary);
     }
 
     body.theme-unicorn {
-      background-image: url('bg-unicorn.jpg');
+      background: var(--bg-primary);
     }
 
     .container {
@@ -203,8 +200,8 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(180deg, rgba(10, 10, 10, 0.4) 0%, rgba(10, 10, 10, 0.6) 100%);
-      z-index: 2;
+      background: transparent;
+      z-index: 1;
     }
 
     .hero-content {
