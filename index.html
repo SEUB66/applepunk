@@ -933,60 +933,59 @@
       </div>
     </section>
 
-    <!-- PRESENTATION SECTION -->
+    <!-- PRESENTATION SECTION - SLIDE 1 COVER PAGE -->
     <section class="presentation-showcase" id="presentation-section">
-      <div class="presentation-header">
-        <h2 class="section-title fr">Présentation Pitch</h2>
-        <h2 class="section-title en hidden">Pitch Presentation</h2>
-        <p class="subtitle fr">Solutions d'Entreprise Intelligentes</p>
-        <p class="subtitle en hidden">Intelligent Enterprise Solutions</p>
-      </div>
+      <div style="width: 100%; display: flex; justify-content: center; align-items: center; min-height: 720px; background: linear-gradient(135deg, #1a1a1a 0%, #0d3d4d 100%); position: relative; overflow: hidden;">
+        <div style="position: absolute; width: 220px; height: 220px; border: 2px solid rgba(127,216,216,0.25); border-radius: 50%; bottom: -40px; left: 80px; z-index: 0; box-shadow: 0 0 30px rgba(127,216,216,0.1);"></div>
+        <div style="position: absolute; width: 170px; height: 170px; border: 2px solid rgba(255,105,180,0.25); top: 80px; right: 40px; z-index: 0; clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); box-shadow: 0 0 30px rgba(255,105,180,0.1);"></div>
+        <div style="position: absolute; width: 100px; height: 100px; border: 2px solid rgba(255,229,168,0.15); top: 50%; right: 20%; z-index: 0; border-radius: 50%;"></div>
+        <div style="position: absolute; width: 8px; height: 8px; background: #7FD8D8; border-radius: 50%; z-index: 0; top: 150px; right: 15%; opacity: 0.6;"></div>
+        <div style="position: absolute; width: 8px; height: 8px; background: #7FD8D8; border-radius: 50%; z-index: 0; bottom: 200px; left: 50px; opacity: 0.4;"></div>
+        <div style="position: absolute; width: 8px; height: 8px; background: #7FD8D8; border-radius: 50%; z-index: 0; top: 300px; right: 10%; opacity: 0.5;"></div>
+        <div style="position: absolute; right: 0; top: 0; width: 60%; height: 100%; background-image: url('/home/ubuntu/applepunk-pitch-presentation/hero-cover.png'); background-size: cover; background-position: center; opacity: 0.9; z-index: 0;"></div>
+        <div style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(26,26,26,0.95) 0%, rgba(26,26,26,0.75) 40%, rgba(26,26,26,0) 100%); z-index: 1;"></div>
+        
+        <div style="position: relative; z-index: 2; padding: 80px 60px 8px; max-width: 50%; color: #ffffff;">
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px;">
+            <div style="width: 60px; height: 4px; background: linear-gradient(90deg, #7FD8D8 0%, #FF69B4 100%); border-radius: 2px;"></div>
+            <div style="font-family: 'Poppins', sans-serif; font-size: 28px; font-weight: 700; color: #7FD8D8; letter-spacing: 2px;">APPLE<span style="color: #FF69B4;">PUNK</span></div>
+          </div>
 
-      <div class="slides-preview-grid">
-        <a href="/presentation/slide_1_cover.html" class="slide-preview-card">
-          <div class="slide-preview-number">1</div>
-          <div class="slide-preview-title fr">Couverture</div>
-          <div class="slide-preview-title en hidden">Cover</div>
-          <div class="slide-preview-description fr">Introduction APPLEPUNK</div>
-          <div class="slide-preview-description en hidden">APPLEPUNK Introduction</div>
-        </a>
+          <h1 style="font-family: 'Poppins', sans-serif; font-size: 64px; font-weight: 700; line-height: 1.05; margin-bottom: 12px; color: #ffffff; text-shadow: 0 4px 20px rgba(127,216,216,0.3);">Solutions d'Entreprise</h1>
 
-        <a href="/presentation/slide_2_problem_solution.html" class="slide-preview-card">
-          <div class="slide-preview-number">2</div>
-          <div class="slide-preview-title fr">Problème & Solution</div>
-          <div class="slide-preview-title en hidden">Problem & Solution</div>
-          <div class="slide-preview-description fr">Défis des PME</div>
-          <div class="slide-preview-description en hidden">SME Challenges</div>
-        </a>
+          <div style="font-family: 'Poppins', sans-serif; font-size: 24px; font-weight: 600; color: #FFE5A8; margin-bottom: 12px; line-height: 1.4; display: flex; align-items: center; gap: 12px;">
+            <i class="fas fa-rocket" style="font-size: 28px; color: #7FD8D8;"></i>
+            Transformez Votre PME en Leader Numérique
+          </div>
 
-        <a href="/presentation/slide_3_startup_complet.html" class="slide-preview-card">
-          <div class="slide-preview-number">3</div>
-          <div class="slide-preview-title fr">Startup Complet</div>
-          <div class="slide-preview-title en hidden">Complete Startup</div>
-          <div class="slide-preview-description fr">Forfait $4,999/mois</div>
-          <div class="slide-preview-description en hidden">Package $4,999/month</div>
-        </a>
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 12px; padding: 10px; background: rgba(127, 216, 216, 0.08); border-left: 3px solid #7FD8D8; border-radius: 2px; align-items: center;">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <div style="font-size: 24px; color: #7FD8D8; flex-shrink: 0;"><i class="fas fa-chart-line"></i></div>
+              <div style="font-family: 'Poppins', sans-serif; font-size: 14px; color: #e0e0e0; line-height: 1.3; font-weight: 500;">Dashboards Intelligents</div>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <div style="font-size: 24px; color: #FF69B4; flex-shrink: 0;"><i class="fas fa-brain"></i></div>
+              <div style="font-family: 'Poppins', sans-serif; font-size: 14px; color: #e0e0e0; line-height: 1.3; font-weight: 500;">Gestion IA Avancée</div>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <div style="font-size: 24px; color: #FFE5A8; flex-shrink: 0;"><i class="fas fa-shopping-cart"></i></div>
+              <div style="font-family: 'Poppins', sans-serif; font-size: 14px; color: #e0e0e0; line-height: 1.3; font-weight: 500;">E-commerce Intégré</div>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <div style="font-size: 24px; color: #7FD8D8; flex-shrink: 0;"><i class="fas fa-shield-alt"></i></div>
+              <div style="font-family: 'Poppins', sans-serif; font-size: 14px; color: #e0e0e0; line-height: 1.3; font-weight: 500;">Sécurité Maximale</div>
+            </div>
+          </div>
 
-        <a href="/presentation/slide_4_online_shop.html" class="slide-preview-card">
-          <div class="slide-preview-number">4</div>
-          <div class="slide-preview-title fr">Boutique en Ligne</div>
-          <div class="slide-preview-title en hidden">Online Shop</div>
-          <div class="slide-preview-description fr">E-commerce $899/mois</div>
-          <div class="slide-preview-description en hidden">E-commerce $899/month</div>
-        </a>
+          <div style="height: 1px; background: linear-gradient(90deg, rgba(127,216,216,0.3) 0%, transparent 100%); margin-bottom: 12px;"></div>
 
-        <a href="/presentation/slide_5_cta.html" class="slide-preview-card">
-          <div class="slide-preview-number">5</div>
-          <div class="slide-preview-title fr">Appel à l'Action</div>
-          <div class="slide-preview-title en hidden">Call to Action</div>
-          <div class="slide-preview-description fr">Contactez-nous</div>
-          <div class="slide-preview-description en hidden">Contact Us</div>
-        </a>
-      </div>
+          <p style="font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 400; color: #b0b0b0; margin-bottom: 12px; line-height: 1.6;">Dashboards intelligents, gestion d'inventaire IA, boutique en ligne sécurisée et support 24/7</p>
 
-      <div class="presentation-cta">
-        <a href="/presentation" class="cta-button fr">→ DÉCOUVRIR LA PRÉSENTATION COMPLÈTE</a>
-        <a href="/presentation" class="cta-button en hidden">→ DISCOVER FULL PRESENTATION</a>
+          <a href="/presentation" style="display: inline-flex; align-items: center; gap: 10px; padding: 10px 36px; background: linear-gradient(135deg, #7FD8D8 0%, #FF69B4 100%); color: #1a1a1a; text-decoration: none; font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 600; border-radius: 4px; border: 2px solid transparent; cursor: pointer; text-transform: uppercase; letter-spacing: 1px;">
+            <i class="fas fa-arrow-right" style="font-size: 18px;"></i>
+            Découvrir
+          </a>
+        </div>
       </div>
     </section>
 
