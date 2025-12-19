@@ -28,7 +28,7 @@
       --secondary-color: #6B4C9A;
       --accent-color: #E84B8A;
       --bg-primary: #f5f5f5;
-      --bg-secondary: #ffffff;
+      --bg-secondary: rgba(255, 255, 255, 0.95);
       --text-primary: #1a1a1a;
       --text-secondary: rgba(26, 26, 26, 0.7);
       --border-color: rgba(45, 90, 123, 0.15);
@@ -49,9 +49,20 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
       background: var(--bg-primary);
+      background-image: url('bg-black.jpg');
+      background-attachment: fixed;
+      background-size: cover;
       color: var(--text-primary);
       line-height: 1.6;
       transition: all 0.3s ease;
+    }
+
+    body.theme-white {
+      background-image: url('bg-white.jpg');
+    }
+
+    body.theme-unicorn {
+      background-image: url('bg-unicorn.jpg');
     }
 
     .container {
@@ -241,9 +252,18 @@
     /* SERVICES SECTION */
     .services {
       padding: 6rem 0;
-      background: var(--bg-secondary);
+      background: rgba(15, 15, 25, 0.85);
       border-radius: 2rem;
       margin: 4rem 0;
+      backdrop-filter: blur(10px);
+    }
+
+    body.theme-white .services {
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    body.theme-unicorn .services {
+      background: rgba(20, 10, 40, 0.85);
     }
 
     .section-title {
