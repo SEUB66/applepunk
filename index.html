@@ -12,63 +12,60 @@
     }
 
     :root {
-      --primary-color: #7FD8D8;
-      --secondary-color: #FFE5A8;
-      --accent-color: #B3E5FC;
-      --bg-primary: #1a1a1a;
-      --bg-secondary: #FFFFFF;
-      --text-primary: #2a2a2a;
-      --text-secondary: #4a4a4a;
-      --border-color: #7FD8D8;
+      --primary: #7FD8D8;
+      --secondary: #FFE5A8;
+      --accent: #FF69B4;
+      --bg: #0F0F0F;
+      --surface: #1A1A1A;
+      --text: #FFFFFF;
+      --text-muted: #B0B0B0;
     }
 
-    /* WHITE THEME */
-    body.theme-white {
-      --primary-color: #FFE5A8;
-      --secondary-color: #B3E5FC;
-      --accent-color: #7FD8D8;
-      --bg-primary: #FFFAF0;
-      --bg-secondary: #FFFFFF;
-      --text-primary: #2a2a2a;
-      --text-secondary: #4a4a4a;
-      --border-color: #FFE5A8;
+    /* DARK THEME (DEFAULT) */
+    body.theme-dark {
+      --primary: #7FD8D8;
+      --secondary: #FFE5A8;
+      --accent: #FF69B4;
+      --bg: #0F0F0F;
+      --surface: #1A1A1A;
+      --text: #FFFFFF;
+      --text-muted: #B0B0B0;
     }
 
-    /* UNICORN THEME */
-    body.theme-unicorn {
-      --primary-color: #7FD8D8;
-      --secondary-color: #FFE5A8;
-      --accent-color: #FF69B4;
-      --bg-primary: #1a1a1a;
-      --bg-secondary: #FFFFFF;
-      --text-primary: #2a2a2a;
-      --text-secondary: #4a4a4a;
-      --border-color: #7FD8D8;
+    /* LIGHT THEME */
+    body.theme-light {
+      --primary: #0099CC;
+      --secondary: #FF6B6B;
+      --accent: #FFD93D;
+      --bg: #FFFFFF;
+      --surface: #F5F5F5;
+      --text: #1A1A1A;
+      --text-muted: #666666;
+    }
+
+    /* NEON THEME */
+    body.theme-neon {
+      --primary: #00FF88;
+      --secondary: #FF006E;
+      --accent: #00D9FF;
+      --bg: #0A0E27;
+      --surface: #1A1F3A;
+      --text: #FFFFFF;
+      --text-muted: #A0A0A0;
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      background: var(--bg-primary);
-      background-image: url('bg-black.jpg');
-      background-attachment: fixed;
-      background-size: cover;
-      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.6;
-      transition: all 0.3s ease;
-    }
-
-    body.theme-white {
-      background-image: url('bg-white.jpg');
-    }
-
-    body.theme-unicorn {
-      background-image: url('bg-unicorn.jpg');
+      transition: all 0.4s ease;
     }
 
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 1.5rem;
+      padding: 0 2rem;
     }
 
     /* NAVIGATION */
@@ -76,86 +73,77 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.5rem 0;
-      border-bottom: 1px solid var(--border-color);
+      padding: 2rem 0;
+      border-bottom: 2px solid var(--primary);
+      gap: 2rem;
       flex-wrap: wrap;
-      gap: 1rem;
-      position: relative;
-      z-index: 100;
-      background: rgba(26, 26, 26, 0.95);
     }
 
-    body.theme-white nav {
-      background: rgba(255, 250, 240, 0.95);
-    }
-
-    nav .logo {
-      font-size: 1.8rem;
+    .logo {
+      font-size: 2rem;
       font-weight: 900;
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--accent-color) 100%);
+      background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      letter-spacing: -1px;
     }
 
-    nav ul {
+    .nav-links {
       display: flex;
-      list-style: none;
-      gap: 2.5rem;
-      flex-wrap: wrap;
+      gap: 3rem;
+      align-items: center;
     }
 
-    nav a {
-      color: var(--text-secondary);
+    .nav-links a {
+      color: var(--text);
       text-decoration: none;
-      transition: all 0.3s;
-      font-size: 0.95rem;
+      transition: color 0.3s;
       font-weight: 500;
     }
 
-    nav a:hover {
-      color: var(--primary-color);
-      transform: translateY(-2px);
+    .nav-links a:hover {
+      color: var(--primary);
     }
 
     .nav-controls {
       display: flex;
       gap: 1rem;
-      align-items: center;
     }
 
-    .theme-toggle {
-      background: rgba(138, 204, 213, 0.1);
-      border: 2px solid var(--primary-color);
-      color: var(--primary-color);
-      padding: 0.6rem 1.2rem;
-      border-radius: 0.5rem;
+    button {
+      background: var(--primary);
+      color: var(--bg);
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
       cursor: pointer;
+      font-weight: 600;
       transition: all 0.3s;
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      font-size: 0.95rem;
     }
 
-    .theme-toggle:hover {
-      background: var(--primary-color);
-      color: var(--bg-primary);
-      transform: scale(1.05);
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(127, 216, 216, 0.3);
     }
 
-    /* HERO SECTION */
+    button.secondary {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    /* HERO */
     .hero {
       position: relative;
-      height: 100vh;
+      height: 600px;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
       text-align: center;
-      padding: 2rem;
-      z-index: 10;
+      margin: 3rem 0;
+      border-radius: 12px;
+      overflow: hidden;
     }
 
     .hero video {
@@ -165,168 +153,120 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 1;
       z-index: 1;
-      pointer-events: none;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(180deg, rgba(10, 10, 10, 0.4) 0%, rgba(10, 10, 10, 0.6) 100%);
-      z-index: 2;
     }
 
     .hero-content {
       position: relative;
-      z-index: 3;
-      color: white;
-      text-align: center;
-    }
-
-    .hero-subtitle {
-      font-size: 0.95rem;
-      color: var(--primary-color);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 1.5rem;
-      font-weight: 700;
+      z-index: 2;
+      background: rgba(15, 15, 15, 0.7);
+      padding: 3rem;
+      border-radius: 12px;
+      max-width: 600px;
     }
 
     .hero h1 {
-      font-size: 4rem;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--accent-color) 100%);
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      line-height: 1.2;
       font-weight: 900;
     }
 
     .hero p {
-      font-size: 1.3rem;
-      color: rgba(255, 255, 255, 0.9);
-      margin-bottom: 2.5rem;
-      line-height: 1.8;
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
     }
 
     .hero-buttons {
       display: flex;
-      gap: 1.5rem;
+      gap: 1rem;
       justify-content: center;
       flex-wrap: wrap;
     }
 
-    .btn {
-      display: inline-block;
-      padding: 1rem 2rem;
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-      color: #1a1a1a;
-      border: none;
-      border-radius: 0.75rem;
-      cursor: pointer;
-      font-weight: 700;
-      transition: all 0.3s;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 0.95rem;
-      box-shadow: 0 10px 30px rgba(138, 204, 213, 0.3);
-    }
-
-    .btn:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 15px 40px rgba(138, 204, 213, 0.5);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      border: 2px solid var(--accent-color);
-      color: var(--accent-color);
-      box-shadow: 0 10px 30px rgba(255, 144, 187, 0.2);
-    }
-
-    .btn-secondary:hover {
-      background: var(--accent-color);
-      color: #1a1a1a;
-    }
-
-    /* SERVICES SECTION */
-    .services {
+    /* PRICING SECTION */
+    .pricing {
       padding: 4rem 0;
-      background: var(--bg-primary);
     }
 
-    body.theme-white .services {
-      background: #FFFAF0;
-    }
-
-    .services h2 {
-      text-align: center;
-      font-size: 2.5rem;
+    .pricing h2 {
+      font-size: 2.8rem;
       margin-bottom: 3rem;
-      color: var(--text-primary);
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
-    .services-grid {
+    .pricing-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
+      margin-bottom: 3rem;
     }
 
-    .service-card {
-      background: var(--bg-secondary);
-      border: 3px solid var(--border-color);
-      border-radius: 1rem;
-      padding: 2rem;
+    .card {
+      background: var(--surface);
+      border: 2px solid var(--primary);
+      padding: 2.5rem;
+      border-radius: 12px;
       transition: all 0.3s;
-      cursor: pointer;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
 
-    .service-card:hover {
+    .card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 15px 40px rgba(138, 204, 213, 0.3);
+      box-shadow: 0 16px 32px rgba(127, 216, 216, 0.2);
+      border-color: var(--secondary);
     }
 
-    .service-card h3 {
+    .card.featured {
+      border-color: var(--secondary);
+      transform: scale(1.05);
+    }
+
+    .card-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
       font-size: 1.5rem;
-      margin: 1rem 0;
-      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      color: var(--primary);
     }
 
-    .service-card p {
-      color: var(--text-secondary);
-      margin-bottom: 1.5rem;
+    .card-price {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--secondary);
+      margin: 1.5rem 0;
+    }
+
+    .card-description {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
       line-height: 1.8;
     }
 
-    .service-card .btn {
-      width: 100%;
-      text-align: center;
-      font-size: 0.85rem;
-      padding: 0.8rem 1.5rem;
-    }
-
-    /* FEATURES SECTION */
+    /* FEATURES */
     .features {
       padding: 4rem 0;
-      background: var(--bg-secondary);
-    }
-
-    body.theme-white .features {
-      background: #FFFFFF;
+      border-top: 2px solid var(--primary);
     }
 
     .features h2 {
-      text-align: center;
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       margin-bottom: 3rem;
-      color: var(--text-primary);
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .features-grid {
@@ -335,52 +275,39 @@
       gap: 2rem;
     }
 
-    .feature-box {
-      background: var(--bg-secondary);
-      border: 2px solid var(--border-color);
-      border-radius: 1rem;
+    .feature {
+      background: var(--surface);
       padding: 2rem;
-      text-align: center;
+      border-radius: 12px;
+      border-left: 4px solid var(--primary);
       transition: all 0.3s;
     }
 
-    body.theme-white .feature-box {
-      background: #FFFFFF;
-      border-color: var(--border-color);
+    .feature:hover {
+      border-left-color: var(--secondary);
+      transform: translateX(8px);
     }
 
-    .feature-box:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(138, 204, 213, 0.2);
-    }
-
-    .feature-box .icon {
-      font-size: 3rem;
+    .feature-icon {
+      font-size: 2.5rem;
       margin-bottom: 1rem;
     }
 
-    .feature-box h3 {
-      font-size: 1.3rem;
-      color: var(--primary-color);
+    .feature h3 {
+      color: var(--primary);
       margin-bottom: 0.5rem;
     }
 
-    .feature-box p {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
+    .feature p {
+      color: var(--text-muted);
     }
 
     /* FOOTER */
     footer {
-      background: #2a2a2a;
-      border-top: 3px solid var(--primary-color);
+      background: var(--surface);
+      border-top: 2px solid var(--primary);
       padding: 3rem 0 1rem;
-      color: #FFFFFF;
-    }
-
-    body.theme-white footer {
-      background: #F5F5F5;
-      color: #2a2a2a;
+      margin-top: 4rem;
     }
 
     .footer-content {
@@ -391,323 +318,252 @@
     }
 
     .footer-section h4 {
-      color: var(--primary-color);
-      margin-bottom: 1rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
       font-size: 1.1rem;
+      font-weight: 700;
     }
 
     .footer-section a {
       display: block;
-      color: #FFFFFF;
+      color: var(--text-muted);
       text-decoration: none;
       margin-bottom: 0.8rem;
       transition: all 0.3s;
-      font-size: 0.95rem;
-    }
-
-    body.theme-white .footer-section a {
-      color: #2a2a2a;
     }
 
     .footer-section a:hover {
-      color: var(--primary-color);
+      color: var(--primary);
       transform: translateX(5px);
     }
 
     .footer-bottom {
       text-align: center;
       padding-top: 2rem;
-      border-top: 1px solid var(--primary-color);
+      border-top: 1px solid var(--primary);
+      color: var(--text-muted);
       font-size: 0.9rem;
-      color: #FFFFFF;
-    }
-
-    body.theme-white .footer-bottom {
-      color: #2a2a2a;
     }
 
     .hidden {
       display: none;
     }
 
-    .lang-toggle {
-      background: rgba(138, 204, 213, 0.1);
-      border: 2px solid var(--primary-color);
-      color: var(--primary-color);
-      padding: 0.6rem 1.2rem;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      transition: all 0.3s;
-      font-size: 0.85rem;
-      font-weight: 700;
-    }
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
 
-    .lang-toggle:hover {
-      background: var(--primary-color);
-      color: var(--bg-primary);
+      .nav-links {
+        gap: 1.5rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
-<body class="theme-black">
+<body class="theme-dark">
   <div class="container">
+    <!-- NAVIGATION -->
     <nav>
       <div class="logo">APPLEPUNK</div>
-      <ul>
-        <li><a href="#services" class="fr">Services</a><a href="#services" class="en hidden">Services</a></li>
-        <li><a href="#features" class="fr">Pourquoi Nous</a><a href="#features" class="en hidden">Why Us</a></li>
-        <li><a href="#contact" class="fr">Contact</a><a href="#contact" class="en hidden">Contact</a></li>
-      </ul>
+      <div class="nav-links">
+        <a href="#services" class="fr">Services</a>
+        <a href="#services" class="en hidden">Services</a>
+        <a href="#features" class="fr">Pourquoi Nous</a>
+        <a href="#features" class="en hidden">Why Us</a>
+        <a href="#contact" class="fr">Contact</a>
+        <a href="#contact" class="en hidden">Contact</a>
+      </div>
       <div class="nav-controls">
-        <button class="lang-toggle" onclick="toggleLanguage()">🇨🇦 EN</button>
-        <button class="theme-toggle" onclick="toggleTheme()">
-          <span class="theme-name">BLACK</span>
-        </button>
+        <button class="secondary" onclick="toggleLanguage()">🇨🇦 EN</button>
+        <button class="secondary" onclick="toggleTheme()">DARK</button>
       </div>
     </nav>
-  </div>
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <video autoplay muted loop>
-      <source src="background.mp4" type="video/mp4">
-    </video>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <p class="hero-subtitle fr">🚀 Solutions d'Entreprise Intelligentes</p>
-      <p class="hero-subtitle en hidden">🚀 Intelligent Business Solutions</p>
-      
-      <h1 class="fr">Transformez Votre Entreprise</h1>
-      <h1 class="en hidden">Transform Your Business</h1>
-      
-      <p class="fr">Applications de gestion, dashboards intelligents, et solutions cloud sécurisées pour PME</p>
-      <p class="en hidden">Management applications, intelligent dashboards, and secure cloud solutions for SMEs</p>
-      
-      <div class="hero-buttons">
-        <button class="btn fr" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">VOIR NOS SERVICES</button>
-        <button class="btn fr" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">NOUS CONTACTER</button>
-        
-        <button class="btn en hidden" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">VIEW OUR SERVICES</button>
-        <button class="btn en hidden" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">CONTACT US</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRICING SECTION -->
-  <section class="pricing" id="pricing" style="padding: 4rem 0; background: var(--bg-secondary);">
-    <div class="container">
-      <h2 class="fr" style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: var(--text-primary);">Forfaits & Tarification</h2>
-      <h2 class="en hidden" style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: var(--text-primary);">Pricing & Plans</h2>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
-        <!-- STARTUP PACKAGE -->
-        <div class="service-card" style="border: 3px solid var(--primary-color); background: linear-gradient(135deg, rgba(127, 216, 216, 0.1) 0%, rgba(255, 229, 168, 0.1) 100%); transform: scale(1.05);">
-          <div style="font-size: 3rem; margin-bottom: 1rem;">🚀</div>
-          <h3 class="fr" style="color: var(--primary-color); font-size: 2rem; margin-bottom: 0.5rem;">Startup Complet</h3>
-          <h3 class="en hidden" style="color: var(--primary-color); font-size: 2rem; margin-bottom: 0.5rem;">Complete Startup</h3>
-          <p style="font-size: 3rem; font-weight: 900; color: var(--primary-color); margin: 1rem 0;">À partir de $999</p>
-          <p class="fr" style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 2; font-size: 1.1rem; font-weight: 600;">✅ <strong>Design Client Complet</strong><br>Branding, logo, identité visuelle<br><br>✅ <strong>Website .COM au Choix</strong><br>Domaine + site web moderne<br><br>✅ <strong>Application Personnalisée</strong><br>Dashboard sur mesure<br><br>✅ <strong>Support & Maintenance</strong><br>Assistance complète incluse</p>
-          <p class="en hidden" style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 2; font-size: 1.1rem; font-weight: 600;">✅ <strong>Complete Client Design</strong><br>Branding, logo, visual identity<br><br>✅ <strong>Website .COM of Your Choice</strong><br>Domain + modern website<br><br>✅ <strong>Custom Application</strong><br>Personalized dashboard<br><br>✅ <strong>Support & Maintenance</strong><br>Full assistance included</p>
-          <button class="btn fr" style="width: 100%; text-align: center; font-size: 1.1rem; padding: 1.2rem;">COMMANDER MAINTENANT</button>
-          <button class="btn en hidden" style="width: 100%; text-align: center; font-size: 1.1rem; padding: 1.2rem;">ORDER NOW</button>
+    <!-- HERO -->
+    <section class="hero">
+      <video autoplay muted loop playsinline>
+        <source src="steam-chan.mp4" type="video/mp4">
+      </video>
+      <div class="hero-content">
+        <div class="fr">
+          <p style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--primary); margin-bottom: 1rem;">Solutions d'Entreprise Intelligentes</p>
+          <h1>Transformez Votre Entreprise</h1>
+          <p>Applications de gestion, dashboards intelligents, et solutions cloud sécurisées pour PME</p>
         </div>
-
-        <!-- INDIVIDUAL SERVICES -->
-        <div class="service-card">
-          <div style="font-size: 3rem;">👥</div>
-          <h3 class="fr" style="color: var(--primary-color);">Employee Dashboard</h3>
-          <h3 class="en hidden" style="color: var(--primary-color);">Employee Dashboard</h3>
-          <p style="font-size: 1.8rem; font-weight: 900; color: var(--primary-color); margin: 1rem 0;">$799<span style="font-size: 0.9rem;">/mois</span></p>
-          <p class="fr" style="color: var(--text-secondary); margin-bottom: 1.5rem;">Gestion complète des employés</p>
-          <p class="en hidden" style="color: var(--text-secondary); margin-bottom: 1.5rem;">Complete employee management</p>
-          <button class="btn fr">EN SAVOIR PLUS →</button>
-          <button class="btn en hidden">LEARN MORE →</button>
+        <div class="en hidden">
+          <p style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--primary); margin-bottom: 1rem;">Intelligent Business Solutions</p>
+          <h1>Transform Your Business</h1>
+          <p>Management applications, smart dashboards, and secure cloud solutions for SMEs</p>
         </div>
-
-        <div class="service-card">
-          <div style="font-size: 3rem;">🤖</div>
-          <h3 class="fr" style="color: var(--primary-color);">Gestion Inventaire IA</h3>
-          <h3 class="en hidden" style="color: var(--primary-color);">AI Inventory</h3>
-          <p style="font-size: 1.8rem; font-weight: 900; color: var(--primary-color); margin: 1rem 0;">$599<span style="font-size: 0.9rem;">/mois</span></p>
-          <p class="fr" style="color: var(--text-secondary); margin-bottom: 1.5rem;">Prédictions intelligentes</p>
-          <p class="en hidden" style="color: var(--text-secondary); margin-bottom: 1.5rem;">Smart predictions</p>
-          <button class="btn fr">EN SAVOIR PLUS →</button>
-          <button class="btn en hidden">LEARN MORE →</button>
-        </div>
-
-        <div class="service-card">
-          <div style="font-size: 3rem;">🛍️</div>
-          <h3 class="fr" style="color: var(--primary-color);">Boutique en Ligne</h3>
-          <h3 class="en hidden" style="color: var(--primary-color);">Online Shop</h3>
-          <p style="font-size: 1.8rem; font-weight: 900; color: var(--primary-color); margin: 1rem 0;">$899<span style="font-size: 0.9rem;">/mois</span></p>
-          <p class="fr" style="color: var(--text-secondary); margin-bottom: 1.5rem;">E-commerce complet</p>
-          <p class="en hidden" style="color: var(--text-secondary); margin-bottom: 1.5rem;">Complete e-commerce</p>
-          <button class="btn fr">EN SAVOIR PLUS →</button>
-          <button class="btn en hidden">LEARN MORE →</button>
-        </div>
-
-        <div class="service-card">
-          <div style="font-size: 3rem;">🔐</div>
-          <h3 class="fr" style="color: var(--primary-color);">Base de Données Chiffrée</h3>
-          <h3 class="en hidden" style="color: var(--primary-color);">Encrypted Database</h3>
-          <p style="font-size: 1.8rem; font-weight: 900; color: var(--primary-color); margin: 1rem 0;">$499<span style="font-size: 0.9rem;">/mois</span></p>
-          <p class="fr" style="color: var(--text-secondary); margin-bottom: 1.5rem;">Sécurité maximale</p>
-          <p class="en hidden" style="color: var(--text-secondary); margin-bottom: 1.5rem;">Maximum security</p>
-          <button class="btn fr">EN SAVOIR PLUS →</button>
-          <button class="btn en hidden">LEARN MORE →</button>
-        </div>
-
-        <div class="service-card">
-          <div style="font-size: 3rem;">🎨</div>
-          <h3 class="fr" style="color: var(--primary-color);">Branding Entreprise</h3>
-          <h3 class="en hidden" style="color: var(--primary-color);">Company Branding</h3>
-          <p style="font-size: 1.8rem; font-weight: 900; color: var(--primary-color); margin: 1rem 0;">$399<span style="font-size: 0.9rem;">/projet</span></p>
-          <p class="fr" style="color: var(--text-secondary); margin-bottom: 1.5rem;">Design de marque complet</p>
-          <p class="en hidden" style="color: var(--text-secondary); margin-bottom: 1.5rem;">Complete brand design</p>
-          <button class="btn fr">EN SAVOIR PLUS →</button>
-          <button class="btn en hidden">LEARN MORE →</button>
-        </div>
-
-        <div class="service-card">
-          <div style="font-size: 3rem;">🌐</div>
-          <h3 class="fr" style="color: var(--primary-color);">Web Design .COM</h3>
-          <h3 class="en hidden" style="color: var(--primary-color);">Web Design .COM</h3>
-          <p style="font-size: 1.8rem; font-weight: 900; color: var(--primary-color); margin: 1rem 0;">$699<span style="font-size: 0.9rem;">/projet</span></p>
-          <p class="fr" style="color: var(--text-secondary); margin-bottom: 1.5rem;">Sites web modernes</p>
-          <p class="en hidden" style="color: var(--text-secondary); margin-bottom: 1.5rem;">Modern websites</p>
-          <button class="btn fr">EN SAVOIR PLUS →</button>
-          <button class="btn en hidden">LEARN MORE →</button>
+        <div class="hero-buttons">
+          <button class="fr">VOIR NOS SERVICES</button>
+          <button class="fr secondary">NOUS CONTACTER</button>
+          <button class="en hidden">VIEW SERVICES</button>
+          <button class="en hidden secondary">CONTACT US</button>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SERVICES SECTION -->
-  <section class="services" id="services" style="display: none;">
-    <div class="container">
-      <h2 class="fr">Nos Solutions</h2>
-      <h2 class="en hidden">Our Solutions</h2>
-      
-      <div class="services-grid">
-        <div class="service-card">
-          <div style="font-size: 3rem;">👥</div>
+    <!-- PRICING -->
+    <section class="pricing" id="services">
+      <h2 class="fr">Forfaits & Tarification</h2>
+      <h2 class="en hidden">Pricing & Plans</h2>
+
+      <div class="pricing-grid">
+        <!-- STARTUP -->
+        <div class="card featured">
+          <div class="card-icon">🚀</div>
+          <h3 class="fr">Startup Complet</h3>
+          <h3 class="en hidden">Complete Startup</h3>
+          <div class="card-price">À partir de $999</div>
+          <div class="card-description fr">
+            ✅ Design Client Complet<br>
+            ✅ Website .COM au Choix<br>
+            ✅ Application Personnalisée<br>
+            ✅ Dashboard sur Mesure<br>
+            ✅ Support & Maintenance
+          </div>
+          <div class="card-description en hidden">
+            ✅ Complete Client Design<br>
+            ✅ Website .COM of Your Choice<br>
+            ✅ Custom Application<br>
+            ✅ Personalized Dashboard<br>
+            ✅ Support & Maintenance
+          </div>
+          <button style="width: 100;">
+            <span class="fr">COMMANDER</span>
+            <span class="en hidden">ORDER NOW</span>
+          </button>
+        </div>
+
+        <!-- EMPLOYEE DASHBOARD -->
+        <div class="card">
+          <div class="card-icon">👥</div>
           <h3 class="fr">Employee Dashboard</h3>
           <h3 class="en hidden">Employee Dashboard</h3>
-          <p class="fr">Gestion complète des employés, horaires, pointage et performance en temps réel</p>
-          <p class="en hidden">Complete employee management, schedules, attendance and real-time performance</p>
-          <button class="btn fr">EN SAVOIR PLUS →</button>
-          <button class="btn en hidden">LEARN MORE →</button>
+          <div class="card-price">$799<span style="font-size: 1rem;">/mois</span></div>
+          <div class="card-description fr">Gestion complète des employés</div>
+          <div class="card-description en hidden">Complete employee management</div>
+          <button style="width: 100%;"><span class="fr">EN SAVOIR PLUS</span><span class="en hidden">LEARN MORE</span></button>
         </div>
 
-        <div class="service-card">
-          <div style="font-size: 3rem;">🤖</div>
+        <!-- AI INVENTORY -->
+        <div class="card">
+          <div class="card-icon">🤖</div>
           <h3 class="fr">Gestion Inventaire IA</h3>
           <h3 class="en hidden">AI Inventory</h3>
-          <p class="fr">Prédictions intelligentes, optimisation des stocks et alertes automatiques</p>
-          <p class="en hidden">Smart predictions, stock optimization and automatic alerts</p>
-          <button class="btn fr">EN SAVOIR PLUS →</button>
-          <button class="btn en hidden">LEARN MORE →</button>
+          <div class="card-price">$599<span style="font-size: 1rem;">/mois</span></div>
+          <div class="card-description fr">Prédictions intelligentes</div>
+          <div class="card-description en hidden">Smart predictions</div>
+          <button style="width: 100%;"><span class="fr">EN SAVOIR PLUS</span><span class="en hidden">LEARN MORE</span></button>
         </div>
 
-        <div class="service-card">
-          <div style="font-size: 3rem;">🛍️</div>
+        <!-- ONLINE SHOP -->
+        <div class="card">
+          <div class="card-icon">🛍️</div>
           <h3 class="fr">Boutique en Ligne</h3>
           <h3 class="en hidden">Online Shop</h3>
-          <p class="fr">E-commerce complet avec paiements sécurisés et gestion des commandes</p>
-          <p class="en hidden">Complete e-commerce with secure payments and order management</p>
-          <button class="btn fr">EN SAVOIR PLUS →</button>
-          <button class="btn en hidden">LEARN MORE →</button>
+          <div class="card-price">$899<span style="font-size: 1rem;">/mois</span></div>
+          <div class="card-description fr">E-commerce complet</div>
+          <div class="card-description en hidden">Complete e-commerce</div>
+          <button style="width: 100%;"><span class="fr">EN SAVOIR PLUS</span><span class="en hidden">LEARN MORE</span></button>
         </div>
 
-        <div class="service-card">
-          <div style="font-size: 3rem;">🔐</div>
+        <!-- ENCRYPTED DB -->
+        <div class="card">
+          <div class="card-icon">🔐</div>
           <h3 class="fr">Base de Données Chiffrée</h3>
           <h3 class="en hidden">Encrypted Database</h3>
-          <p class="fr">Sécurité maximale avec chiffrement end-to-end et conformité RGPD</p>
-          <p class="en hidden">Maximum security with end-to-end encryption and GDPR compliance</p>
-          <button class="btn fr">EN SAVOIR PLUS →</button>
-          <button class="btn en hidden">LEARN MORE →</button>
+          <div class="card-price">$499<span style="font-size: 1rem;">/mois</span></div>
+          <div class="card-description fr">Sécurité maximale</div>
+          <div class="card-description en hidden">Maximum security</div>
+          <button style="width: 100%;"><span class="fr">EN SAVOIR PLUS</span><span class="en hidden">LEARN MORE</span></button>
         </div>
 
-        <div class="service-card">
-          <div style="font-size: 3rem;">🎨</div>
+        <!-- BRANDING -->
+        <div class="card">
+          <div class="card-icon">🎨</div>
           <h3 class="fr">Branding Entreprise</h3>
           <h3 class="en hidden">Company Branding</h3>
-          <p class="fr">Design de logo, identité visuelle et guidelines complètes pour votre marque</p>
-          <p class="en hidden">Logo design, visual identity and complete guidelines for your brand</p>
-          <button class="btn fr">EN SAVOIR PLUS →</button>
-          <button class="btn en hidden">LEARN MORE →</button>
+          <div class="card-price">$399<span style="font-size: 1rem;">/projet</span></div>
+          <div class="card-description fr">Design de marque complet</div>
+          <div class="card-description en hidden">Complete brand design</div>
+          <button style="width: 100%;"><span class="fr">EN SAVOIR PLUS</span><span class="en hidden">LEARN MORE</span></button>
         </div>
 
-        <div class="service-card">
-          <div style="font-size: 3rem;">🌐</div>
+        <!-- WEB DESIGN -->
+        <div class="card">
+          <div class="card-icon">🌐</div>
           <h3 class="fr">Web Design .COM</h3>
           <h3 class="en hidden">Web Design .COM</h3>
-          <p class="fr">Sites web modernes, responsifs et optimisés SEO avec domaine .com</p>
-          <p class="en hidden">Modern, responsive websites optimized for SEO with .com domain</p>
-          <button class="btn fr">EN SAVOIR PLUS →</button>
-          <button class="btn en hidden">LEARN MORE →</button>
+          <div class="card-price">$699<span style="font-size: 1rem;">/projet</span></div>
+          <div class="card-description fr">Sites web modernes</div>
+          <div class="card-description en hidden">Modern websites</div>
+          <button style="width: 100%;"><span class="fr">EN SAVOIR PLUS</span><span class="en hidden">LEARN MORE</span></button>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FEATURES SECTION -->
-  <section class="features" id="features">
-    <div class="container">
+    <!-- FEATURES -->
+    <section class="features" id="features">
       <h2 class="fr">Pourquoi Choisir APPLEPUNK</h2>
       <h2 class="en hidden">Why Choose APPLEPUNK</h2>
-      
+
       <div class="features-grid">
-        <div class="feature-box">
-          <div class="icon">100%</div>
+        <div class="feature">
+          <div class="feature-icon">100%</div>
           <h3 class="fr">Personnalisé</h3>
           <h3 class="en hidden">Customized</h3>
-          <p class="fr">Solutions construites exactement selon vos besoins spécifiques</p>
-          <p class="en hidden">Solutions built exactly to your specific needs</p>
+          <p class="fr">Solutions construites exactement selon vos besoins</p>
+          <p class="en hidden">Solutions built exactly for your needs</p>
         </div>
 
-        <div class="feature-box">
-          <div class="icon">🔒</div>
+        <div class="feature">
+          <div class="feature-icon">🔒</div>
           <h3 class="fr">Sécurisé</h3>
           <h3 class="en hidden">Secure</h3>
-          <p class="fr">Chiffrement de grade militaire et conformité réglementaire complète</p>
-          <p class="en hidden">Military-grade encryption and complete regulatory compliance</p>
+          <p class="fr">Chiffrement de grade militaire</p>
+          <p class="en hidden">Military-grade encryption</p>
         </div>
 
-        <div class="feature-box">
-          <div class="icon">⚡</div>
+        <div class="feature">
+          <div class="feature-icon">⚡</div>
           <h3 class="fr">Ultra Rapide</h3>
-          <h3 class="en hidden">Ultra Fast</h3>
-          <p class="fr">Performance optimale avec infrastructure cloud moderne</p>
-          <p class="en hidden">Optimal performance with modern cloud infrastructure</p>
+          <h3 class="en hidden">Lightning Fast</h3>
+          <p class="fr">Performance optimale avec infrastructure cloud</p>
+          <p class="en hidden">Optimal performance with cloud infrastructure</p>
         </div>
 
-        <div class="feature-box">
-          <div class="icon">🎯</div>
+        <div class="feature">
+          <div class="feature-icon">🎯</div>
           <h3 class="fr">Support 24/7</h3>
           <h3 class="en hidden">24/7 Support</h3>
-          <p class="fr">Équipe dédiée disponible pour vous aider à tout moment</p>
-          <p class="en hidden">Dedicated team available to help you anytime</p>
+          <p class="fr">Équipe dédiée disponible à tout moment</p>
+          <p class="en hidden">Dedicated team available anytime</p>
         </div>
 
-        <div class="feature-box">
-          <div class="icon">📈</div>
+        <div class="feature">
+          <div class="feature-icon">📈</div>
           <h3 class="fr">Scalable</h3>
           <h3 class="en hidden">Scalable</h3>
-          <p class="fr">Grandit avec votre entreprise sans limitation</p>
-          <p class="en hidden">Grows with your business without limitation</p>
+          <p class="fr">Grandit avec votre entreprise</p>
+          <p class="en hidden">Grows with your business</p>
         </div>
 
-        <div class="feature-box">
-          <div class="icon">💰</div>
+        <div class="feature">
+          <div class="feature-icon">💰</div>
           <h3 class="fr">Transparent</h3>
           <h3 class="en hidden">Transparent</h3>
           <p class="fr">Tarification claire sans frais cachés</p>
           <p class="en hidden">Clear pricing with no hidden fees</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
   <!-- FOOTER -->
   <footer id="contact">
@@ -746,41 +602,37 @@
       </div>
 
       <div class="footer-bottom">
-        <p class="fr">© 2025 APPLEPUNK. All rights reserved. | Created by Seub Germain</p>
-        <p class="en hidden">© 2025 APPLEPUNK. All rights reserved. | Created by Seub Germain</p>
+        <p>© 2025 APPLEPUNK. All rights reserved. | Created by Seub Germain</p>
       </div>
     </div>
   </footer>
 
   <script>
-    let currentLang = 'fr';
-    let currentTheme = 'black';
-    const themes = ['black', 'white', 'unicorn'];
-    const themeNames = { black: 'BLACK', white: 'WHITE', unicorn: 'UNICORN' };
-
     function toggleLanguage() {
-      currentLang = currentLang === 'fr' ? 'en' : 'fr';
-      document.querySelectorAll('.fr, .en').forEach(el => {
-        el.classList.toggle('hidden');
-      });
+      const frElements = document.querySelectorAll('.fr');
+      const enElements = document.querySelectorAll('.en');
+      
+      frElements.forEach(el => el.classList.toggle('hidden'));
+      enElements.forEach(el => el.classList.toggle('hidden'));
     }
 
     function toggleTheme() {
-      const currentIndex = themes.indexOf(currentTheme);
-      currentTheme = themes[(currentIndex + 1) % themes.length];
+      const body = document.body;
+      const button = event.target;
       
-      document.body.className = `theme-${currentTheme}`;
-      document.querySelector('.theme-name').textContent = themeNames[currentTheme];
-      
-      localStorage.setItem('applepunk-theme', currentTheme);
-    }
-
-    // Load saved theme
-    const savedTheme = localStorage.getItem('applepunk-theme') || 'black';
-    if (savedTheme !== 'black') {
-      currentTheme = savedTheme;
-      document.body.className = `theme-${currentTheme}`;
-      document.querySelector('.theme-name').textContent = themeNames[currentTheme];
+      if (body.classList.contains('theme-dark')) {
+        body.classList.remove('theme-dark');
+        body.classList.add('theme-light');
+        button.textContent = 'LIGHT';
+      } else if (body.classList.contains('theme-light')) {
+        body.classList.remove('theme-light');
+        body.classList.add('theme-neon');
+        button.textContent = 'NEON';
+      } else {
+        body.classList.remove('theme-neon');
+        body.classList.add('theme-dark');
+        button.textContent = 'DARK';
+      }
     }
   </script>
 </body>
