@@ -55,6 +55,101 @@
       --primary: #FF006E;
       --secondary: #00F5FF;
       --accent: #FFBE0B;
+      color: #FFFFFF;
+    }
+
+    /* NEON theme button styling */
+    body.theme-neon button {
+      background: linear-gradient(135deg, #FF006E, #00F5FF);
+      color: #FFFFFF;
+      border: 2px solid #FFBE0B;
+      font-weight: 700;
+      text-shadow: 0 0 8px rgba(255, 0, 110, 0.5);
+      box-shadow: 0 0 20px rgba(0, 245, 255, 0.4);
+    }
+
+    body.theme-neon button:hover {
+      box-shadow: 0 0 30px rgba(255, 0, 110, 0.8), 0 0 20px rgba(0, 245, 255, 0.6);
+      text-shadow: 0 0 12px rgba(255, 190, 11, 0.8);
+    }
+
+    body.theme-neon button.secondary {
+      background: transparent;
+      color: #00F5FF;
+      border: 2px solid #00F5FF;
+      text-shadow: 0 0 10px rgba(0, 245, 255, 0.6);
+    }
+
+    body.theme-neon button.secondary:hover {
+      background: rgba(0, 245, 255, 0.1);
+      box-shadow: 0 0 20px rgba(0, 245, 255, 0.8), inset 0 0 10px rgba(0, 245, 255, 0.2);
+    }
+
+    body.theme-neon .card {
+      background: linear-gradient(135deg, rgba(255, 0, 110, 0.15), rgba(0, 245, 255, 0.15));
+      border: 2px solid #00F5FF;
+      box-shadow: 0 0 20px rgba(0, 245, 255, 0.3), inset 0 0 10px rgba(255, 0, 110, 0.1);
+    }
+
+    body.theme-neon .card:hover {
+      box-shadow: 0 0 30px rgba(0, 245, 255, 0.6), 0 0 15px rgba(255, 0, 110, 0.4), inset 0 0 15px rgba(255, 0, 110, 0.15);
+      border-color: #FFBE0B;
+    }
+
+    body.theme-neon .card.featured {
+      background: linear-gradient(135deg, rgba(255, 0, 110, 0.25), rgba(0, 245, 255, 0.25));
+      border: 2px solid #FFBE0B;
+      box-shadow: 0 0 30px rgba(255, 190, 11, 0.4), 0 0 20px rgba(0, 245, 255, 0.3);
+    }
+
+    body.theme-neon .card h3 {
+      color: #00F5FF;
+      text-shadow: 0 0 10px rgba(0, 245, 255, 0.6);
+    }
+
+    body.theme-neon .card-price {
+      color: #FFBE0B;
+      text-shadow: 0 0 10px rgba(255, 190, 11, 0.6);
+    }
+
+    body.theme-neon .card-description {
+      color: #E0E0E0;
+    }
+
+    body.theme-neon .feature {
+      background: linear-gradient(135deg, rgba(255, 0, 110, 0.1), rgba(0, 245, 255, 0.1));
+      border-left: 4px solid #00F5FF;
+      box-shadow: 0 0 15px rgba(0, 245, 255, 0.2);
+    }
+
+    body.theme-neon .feature:hover {
+      box-shadow: 0 0 25px rgba(0, 245, 255, 0.5), 0 0 15px rgba(255, 0, 110, 0.3);
+      border-left-color: #FFBE0B;
+    }
+
+    body.theme-neon .feature h3 {
+      color: #00F5FF;
+      text-shadow: 0 0 8px rgba(0, 245, 255, 0.5);
+    }
+
+    body.theme-neon footer {
+      background: linear-gradient(135deg, rgba(255, 0, 110, 0.15), rgba(0, 245, 255, 0.15));
+      border-top: 2px solid #00F5FF;
+      box-shadow: inset 0 0 20px rgba(0, 245, 255, 0.1);
+    }
+
+    body.theme-neon .footer-section h4 {
+      color: #FFBE0B;
+      text-shadow: 0 0 8px rgba(255, 190, 11, 0.5);
+    }
+
+    body.theme-neon .footer-section a {
+      color: #00F5FF;
+    }
+
+    body.theme-neon .footer-section a:hover {
+      color: #FFBE0B;
+      text-shadow: 0 0 10px rgba(255, 190, 11, 0.6);
     }
 
     .container {
@@ -227,6 +322,14 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
       font-weight: 900;
+    }
+
+    body.theme-neon .hero-cta h1 {
+      background: linear-gradient(135deg, #00F5FF, #FFBE0B, #FF006E);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
     }
 
     .hero-cta p {
