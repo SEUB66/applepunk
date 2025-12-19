@@ -126,6 +126,34 @@
       padding: 4rem 0;
       position: relative;
       z-index: 5;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(26, 26, 26, 0.6);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
     }
 
     .hero-content h1 {
@@ -530,6 +558,9 @@
 
     <!-- HERO SECTION -->
     <section class="hero">
+      <video class="hero-video" autoplay muted loop playsinline>
+        <source src="/background.mp4" type="video/mp4">
+      </video>
       <div class="hero-content">
         <div class="tagline fr">Web Designer • App Developer • Marketing</div>
         <div class="tagline en hidden">Web Designer • App Developer • Marketing</div>
