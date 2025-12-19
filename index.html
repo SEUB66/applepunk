@@ -438,6 +438,9 @@
   </style>
 </head>
 <body class="theme-black">
+  <!-- WAVE ANIMATION CANVAS -->
+  <canvas id="waveCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none;"></canvas>
+  
   <div class="container">
     <nav>
       <div class="logo">APPLEPUNK</div>
@@ -771,6 +774,48 @@
       document.body.className = `theme-${currentTheme}`;
       document.querySelector('.theme-name').textContent = themeNames[currentTheme];
     }
+
+    // WAVE ANIMATION CANVAS
+    const canvas = document.getElementById('waveCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const waves = [
+      { amplitude: 80, frequency: 0.01, phase: 0, color: '#00FFFF', speed: 0.015 },
+      { amplitude: 60, frequency: 0.012, phase: Math.PI / 4, color: '#FF1493', speed: 0.012 },
+      { amplitude: 70, frequency: 0.008, phase: Math.PI / 2, color: '#9D4EDD', speed: 0.01 },
+      { amplitude: 50, frequency: 0.015, phase: Math.PI, color: '#FF69B4', speed: 0.018 }
+    ];
+
+    function drawWaves(time) {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.02)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      waves.forEach((wave, index) => {
+        ctx.strokeStyle = wave.color;
+        ctx.lineWidth = 3;
+        ctx.globalAlpha = 0.4;
+        ctx.beginPath();
+
+        for (let x = 0; x < canvas.width; x += 5) {
+          const y = canvas.height / 2 + Math.sin((x * wave.frequency) + (time * wave.speed) + wave.phase) * wave.amplitude;
+          if (x === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+      });
+
+      ctx.globalAlpha = 1;
+      requestAnimationFrame(() => drawWaves(time + 1));
+    }
+
+    drawWaves(0);
   </script>
 </body>
 </html>
