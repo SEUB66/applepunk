@@ -277,6 +277,181 @@
       font-size: 0.95rem;
     }
 
+    /* BIO SECTION */
+    .bio {
+      padding: 6rem 0;
+      position: relative;
+      z-index: 5;
+    }
+
+    .bio-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 4rem;
+      background: rgba(127, 216, 216, 0.05);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 2px solid var(--primary);
+    }
+
+    .bio-main h3 {
+      font-size: 2rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .bio-title {
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .bio-text {
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .bio-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .badge {
+      background: rgba(127, 216, 216, 0.2);
+      border: 1px solid var(--primary);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--primary);
+    }
+
+    .bio-mission h4 {
+      font-size: 1.5rem;
+      color: var(--secondary);
+      margin-bottom: 1rem;
+    }
+
+    .bio-mission p {
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .mission-points {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .point {
+      background: rgba(255, 105, 180, 0.1);
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 3px solid var(--accent);
+    }
+
+    .point h5 {
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .point p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+    }
+
+    /* TEAM SECTION */
+    .team {
+      margin-bottom: 3rem;
+    }
+
+    .team h3 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .team-member {
+      background: rgba(127, 216, 216, 0.05);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--primary);
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .team-member:hover {
+      background: rgba(127, 216, 216, 0.1);
+      transform: translateY(-3px);
+    }
+
+    .team-member h4 {
+      color: var(--secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .team-member p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .team-member a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      word-break: break-all;
+      transition: color 0.3s;
+    }
+
+    .team-member a:hover {
+      color: var(--accent);
+    }
+
+    /* PORTFOLIO LINK */
+    .portfolio-link {
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(135deg, rgba(127, 216, 216, 0.1), rgba(255, 105, 180, 0.1));
+      border-radius: 12px;
+      border: 2px solid var(--primary);
+    }
+
+    .portfolio-link p {
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 1rem;
+    }
+
+    .portfolio-button {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: var(--dark);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 700;
+      transition: all 0.3s;
+      box-shadow: 0 0 30px rgba(127, 216, 216, 0.3);
+    }
+
+    .portfolio-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 50px rgba(127, 216, 216, 0.5);
+    }
+
     /* FOOTER */
     footer {
       padding: 3rem 0;
@@ -340,9 +515,12 @@
     <header>
       <div class="logo">APPLEPUNK</div>
       <nav>
-        <a href="#services">Services</a>
-        <a href="#features">Features</a>
-        <a href="#contact">Contact</a>
+        <a href="#services" class="fr">Services</a>
+        <a href="#services" class="en hidden">Services</a>
+        <a href="#bio" class="fr">À Propos</a>
+        <a href="#bio" class="en hidden">About</a>
+        <a href="#contact" class="fr">Contact</a>
+        <a href="#contact" class="en hidden">Contact</a>
       </nav>
       <div class="controls">
         <button onclick="toggleLanguage()">🇨🇦 EN</button>
@@ -481,6 +659,114 @@
           <p class="fr">Pas de frais cachés, prix clairs</p>
           <p class="en hidden">No hidden fees, clear pricing</p>
         </div>
+      </div>
+    </section>
+
+    <!-- BIO SECTION -->
+    <section class="bio" id="bio">
+      <h2 class="section-title fr">À Propos</h2>
+      <h2 class="section-title en hidden">About Us</h2>
+      
+      <div class="bio-container">
+        <div class="bio-main">
+          <h3 class="fr">Sebastien Germain</h3>
+          <h3 class="en hidden">Sebastien Germain</h3>
+          <p class="bio-title fr">PDG & Fondateur • Développeur Full Stack & Ingénieur Software</p>
+          <p class="bio-title en hidden">CEO & Founder • Full Stack Developer & Software Engineer</p>
+          
+          <p class="bio-text fr">
+            Artiste coloré avec créativité++. Création d'expériences multi-plateformes pixel-perfect depuis les années 2000.
+            Certifié Apple & Microsoft. Old School Pixel Geek qui a créé son premier site HTML à 7 ans.
+          </p>
+          <p class="bio-text en hidden">
+            Colorful artist with creativity++. Creating pixel-perfect multi-platform experiences since the 2000s.
+            Apple & Microsoft Certified. Old School Pixel Geek who created his first HTML website at age 7.
+          </p>
+          
+          <div class="bio-badges">
+            <span class="badge">HTML @ 7 ans</span>
+            <span class="badge">Apple Certified</span>
+            <span class="badge">Microsoft Certified</span>
+            <span class="badge">Full Stack</span>
+          </div>
+        </div>
+        
+        <div class="bio-mission">
+          <h4 class="fr">Notre Mission</h4>
+          <h4 class="en hidden">Our Mission</h4>
+          <p class="fr">
+            Donner aux petites entreprises l'accès à des solutions web et app professionnelles à coût abordable.
+            Applications d'entreprise sur mesure complètes pour tous.
+          </p>
+          <p class="en hidden">
+            Give small businesses access to professional web and app solutions at affordable cost.
+            Complete custom enterprise applications for everyone.
+          </p>
+          
+          <div class="mission-points">
+            <div class="point">
+              <h5 class="fr">🚀 Multi-Plateformes</h5>
+              <h5 class="en hidden">🚀 Multi-Platform</h5>
+              <p class="fr">1 app = PC, MAC, iOS, Android</p>
+              <p class="en hidden">1 app = PC, MAC, iOS, Android</p>
+            </div>
+            <div class="point">
+              <h5 class="fr">🔒 Sécurité</h5>
+              <h5 class="en hidden">🔒 Security</h5>
+              <p class="fr">Base de données chiffrée</p>
+              <p class="en hidden">Encrypted database</p>
+            </div>
+            <div class="point">
+              <h5 class="fr">⚡ Performance</h5>
+              <h5 class="en hidden">⚡ Performance</h5>
+              <p class="fr">Ultra rapide avec Next.js & Vite</p>
+              <p class="en hidden">Ultra-fast with Next.js & Vite</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="team">
+        <h3 class="fr">L'Équipe</h3>
+        <h3 class="en hidden">The Team</h3>
+        
+        <div class="team-grid">
+          <div class="team-member">
+            <h4>Sebastien Germain</h4>
+            <p class="fr">PDG & Fondateur</p>
+            <p class="en hidden">CEO & Founder</p>
+            <a href="mailto:founder@applepunk.com">founder@applepunk.com</a>
+          </div>
+          
+          <div class="team-member">
+            <h4>Nadia</h4>
+            <p class="fr">Chef de Projet & RH</p>
+            <p class="en hidden">Project Manager & HR</p>
+            <a href="mailto:nadiavp@applepunk.com">nadiavp@applepunk.com</a>
+          </div>
+          
+          <div class="team-member">
+            <h4>Maxime Lepine</h4>
+            <p class="fr">Gestion & Développement</p>
+            <p class="en hidden">Management & Development</p>
+            <a href="mailto:Gestion.maxime.lepine@gmail.com">Gestion.maxime.lepine@gmail.com</a>
+          </div>
+          
+          <div class="team-member">
+            <h4>William Fortier</h4>
+            <p class="fr">Ingénieur Vidéo & Son</p>
+            <p class="en hidden">Video & Audio Engineer</p>
+            <p class="fr">Production multimédia</p>
+            <p class="en hidden">Multimedia production</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="portfolio-link">
+        <p class="fr">Découvrez notre portfolio complet et nos projets:</p>
+        <p class="en hidden">Discover our complete portfolio and projects:</p>
+        <a href="https://www.applepunk.com" target="_blank" class="portfolio-button fr">→ Visiter applepunk.com</a>
+        <a href="https://www.applepunk.com" target="_blank" class="portfolio-button en hidden">→ Visit applepunk.com</a>
       </div>
     </section>
 
