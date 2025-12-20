@@ -199,6 +199,21 @@
       display: none;
     }
 
+    .hero video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      opacity: 0.8;
+    }
+
+    html.light .hero video {
+      opacity: 0.6;
+    }
+
     .hero-video.fr {
       display: block;
     }
@@ -808,19 +823,19 @@
       border-radius: 8px;
     }
 
-    .portfolio-link::before {
-      content: '';
+    .portfolio-link video {
       position: absolute;
       top: 0;
-      right: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      background-image: url('/portfolio-crt-animated.mp4');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
+      object-fit: contain;
+      z-index: 0;
       opacity: 0.9;
-      z-index: 1;
+    }
+
+    .portfolio-link::before {
+      display: none;
     }
 
     .portfolio-link::after {
@@ -893,20 +908,19 @@
       border-radius: 8px;
     }
 
-    .retro-contact-section::before {
-      content: '';
+    .retro-contact-section video {
       position: absolute;
       top: 0;
-      right: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      background-image: url('/astronaut-contact-animated.mp4');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-attachment: fixed;
+      object-fit: contain;
+      z-index: 0;
       opacity: 0.9;
-      z-index: 1;
+    }
+
+    .retro-contact-section::before {
+      display: none;
     }
 
     .retro-contact-section::after {
