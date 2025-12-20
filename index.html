@@ -1684,8 +1684,10 @@
     // THEME TOGGLE
     function toggleTheme() {
       currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      document.body.style.background = currentTheme === 'dark' ? '#1a1a1a' : '#FFFAF0';
+      document.body.style.background = currentTheme === 'dark' ? '#1a1a1a' : '#FFFFFF';
       document.body.style.color = currentTheme === 'dark' ? '#ffffff' : '#1a1a1a';
+      document.documentElement.classList.toggle('light', currentTheme === 'light');
+      document.documentElement.classList.toggle('dark', currentTheme === 'dark');
       
       // Add/remove white-theme class for text shadow
       if (currentTheme === 'light') {
