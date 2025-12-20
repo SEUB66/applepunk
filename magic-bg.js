@@ -13,10 +13,11 @@
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
 
-  // Check current theme
+  // Check current theme - look for white-theme class on body or light class on html
   function isDarkTheme() {
-    const html = document.documentElement;
-    return html.classList.contains('dark') || !html.classList.contains('light');
+    const hasWhiteTheme = document.body.classList.contains('white-theme');
+    const hasLightClass = document.documentElement.classList.contains('light');
+    return !hasWhiteTheme && !hasLightClass;
   }
 
   // Particle class
@@ -186,4 +187,16 @@
   }
 
   animate();
+
+  // Watch for theme changes
+  const observer = new MutationObserver(() => {
+    // Recreate particles when theme changes
+    particles.length = 0;
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle(isDarkTheme()));
+    }
+  });
+
+  observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
 })();
