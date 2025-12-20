@@ -1414,16 +1414,16 @@
 
     const themeWaves = {
       dark: [
-        { amplitude: 100, frequency: 0.008, phase: 0, color: '#00FFFF', speed: 0.015 },
-        { amplitude: 80, frequency: 0.01, phase: Math.PI / 4, color: '#FF1493', speed: 0.012 },
-        { amplitude: 90, frequency: 0.007, phase: Math.PI / 2, color: '#9D4EDD', speed: 0.01 },
-        { amplitude: 70, frequency: 0.012, phase: Math.PI, color: '#FF69B4', speed: 0.018 }
+        { amplitude: 100, frequency: 0.008, phase: 0, color: '#00FFFF', speed: 0.004 },
+        { amplitude: 80, frequency: 0.01, phase: Math.PI / 4, color: '#FF1493', speed: 0.003 },
+        { amplitude: 90, frequency: 0.007, phase: Math.PI / 2, color: '#9D4EDD', speed: 0.0025 },
+        { amplitude: 70, frequency: 0.012, phase: Math.PI, color: '#FF69B4', speed: 0.0045 }
       ],
       light: [
-        { amplitude: 100, frequency: 0.008, phase: 0, color: '#FFE5A8', speed: 0.015 },
-        { amplitude: 80, frequency: 0.01, phase: Math.PI / 4, color: '#FFB6C1', speed: 0.012 },
-        { amplitude: 90, frequency: 0.007, phase: Math.PI / 2, color: '#DDA0DD', speed: 0.01 },
-        { amplitude: 70, frequency: 0.012, phase: Math.PI, color: '#87CEEB', speed: 0.018 }
+        { amplitude: 100, frequency: 0.008, phase: 0, color: '#FFE5A8', speed: 0.004 },
+        { amplitude: 80, frequency: 0.01, phase: Math.PI / 4, color: '#FFB6C1', speed: 0.003 },
+        { amplitude: 90, frequency: 0.007, phase: Math.PI / 2, color: '#DDA0DD', speed: 0.0025 },
+        { amplitude: 70, frequency: 0.012, phase: Math.PI, color: '#87CEEB', speed: 0.0045 }
       ]
     };
 
@@ -1439,7 +1439,8 @@
         ctx.beginPath();
 
         for (let x = 0; x < canvas.width; x += 4) {
-          const y = canvas.height / 2 + Math.sin((x * wave.frequency) + (time * wave.speed) + wave.phase) * wave.amplitude;
+          const waveHeight = canvas.height * 0.25;
+          const y = waveHeight + Math.sin((x * wave.frequency) + (time * wave.speed) + wave.phase) * wave.amplitude;
           if (x === 0) ctx.moveTo(x, y);
           else ctx.lineTo(x, y);
         }
