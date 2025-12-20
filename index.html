@@ -43,6 +43,22 @@
       color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    /* WHITE THEME TEXT SHADOW FOR VISIBILITY */
+    body.white-theme {
+      text-shadow: 0 2px 6px rgba(100, 100, 100, 0.4);
+    }
+
+    body.white-theme h1,
+    body.white-theme h2,
+    body.white-theme h3,
+    body.white-theme h4,
+    body.white-theme p,
+    body.white-theme a,
+    body.white-theme span {
+      text-shadow: 0 2px 6px rgba(100, 100, 100, 0.4);
     }
 
     /* PIXEL FONT FOR SMALL TEXT */
@@ -1513,6 +1529,14 @@
       currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
       document.body.style.background = currentTheme === 'dark' ? '#1a1a1a' : '#FFFAF0';
       document.body.style.color = currentTheme === 'dark' ? '#ffffff' : '#1a1a1a';
+      
+      // Add/remove white-theme class for text shadow
+      if (currentTheme === 'light') {
+        document.body.classList.add('white-theme');
+      } else {
+        document.body.classList.remove('white-theme');
+      }
+      
       waves = themeWaves[currentTheme];
       document.querySelector('button:nth-of-type(2)').textContent = currentTheme === 'dark' ? 'DARK' : 'LIGHT';
     }
