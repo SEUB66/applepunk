@@ -1,4 +1,4 @@
-// Magical Background Animation with Full Theme Support
+// Magical Background Animation with Vibrant Light Theme
 (function() {
   const canvas = document.getElementById('fluidCanvas');
   if (!canvas) return;
@@ -24,17 +24,17 @@
     constructor(isDark) {
       this.x = Math.random() * canvas.width;
       this.y = Math.random() * canvas.height;
-      this.vx = (Math.random() - 0.5) * 0.3;
-      this.vy = (Math.random() - 0.5) * 0.3;
-      this.size = Math.random() * 1.5 + 0.5;
-      this.opacity = Math.random() * 0.4 + 0.2;
+      this.vx = (Math.random() - 0.5) * 0.5;
+      this.vy = (Math.random() - 0.5) * 0.5;
+      this.size = Math.random() * 2 + 1;
+      this.opacity = Math.random() * 0.5 + 0.3;
       
       if (isDark) {
-        // Dark theme: bright colors
+        // Dark theme: bright cyberpunk colors
         this.color = ['#00FFFF', '#FF00FF', '#FFFF00'][Math.floor(Math.random() * 3)];
       } else {
-        // Light theme: subtle gray/blue colors
-        this.color = ['#B0B0B0', '#A0C0E0', '#C0B0D0'][Math.floor(Math.random() * 3)];
+        // Light theme: vibrant colors
+        this.color = ['#FF1493', '#00CED1', '#32CD32', '#FF69B4'][Math.floor(Math.random() * 4)];
       }
     }
 
@@ -55,7 +55,7 @@
       ctx.globalAlpha = this.opacity;
       ctx.fillStyle = this.color;
       ctx.shadowColor = this.color;
-      ctx.shadowBlur = 8;
+      ctx.shadowBlur = 10;
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
       ctx.fill();
@@ -64,7 +64,7 @@
 
   // Create particles
   const particles = [];
-  const particleCount = 40;
+  const particleCount = 50;
   for (let i = 0; i < particleCount; i++) {
     particles.push(new Particle(isDarkTheme()));
   }
@@ -132,28 +132,19 @@
         }
       }
     } else {
-      // LIGHT THEME: Subtle gradient with soft particles
-      const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-      
-      // Soft animated colors (very subtle)
-      const hue1 = (time * 0.05) % 360;
-      const hue2 = (time * 0.08 + 120) % 360;
-      
-      gradient.addColorStop(0, `hsl(${hue1}, 20%, 98%)`);
-      gradient.addColorStop(1, `hsl(${hue2}, 15%, 96%)`);
-      
-      ctx.fillStyle = gradient;
+      // LIGHT THEME: White background with vibrant animated particles
+      ctx.fillStyle = '#FFFFFF';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Draw particles (subtle)
+      // Draw particles (vibrant colors on white)
       ctx.globalAlpha = 1;
       particles.forEach(particle => {
         particle.update();
         particle.draw();
       });
 
-      // Draw soft connecting lines
-      const colors = ['#D0D0D0', '#C0D0E0', '#D0C0E0'];
+      // Draw vibrant connecting lines
+      const colors = ['#FF1493', '#00CED1', '#32CD32', '#FF69B4'];
       
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
@@ -161,16 +152,24 @@
           const dy = particles[i].y - particles[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
           
-          if (distance < 200) {
-            const opacity = 1 - (distance / 200);
-            const lineColor = colors[(i + j) % 3];
+          if (distance < 250) {
+            const opacity = 1 - (distance / 250);
+            const lineColor = colors[(i + j) % 4];
+            
+            ctx.globalAlpha = opacity * 0.6;
+            ctx.strokeStyle = lineColor;
+            ctx.lineWidth = 2;
+            ctx.shadowColor = lineColor;
+            ctx.shadowBlur = 10;
+            
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
             
             ctx.globalAlpha = opacity * 0.3;
-            ctx.strokeStyle = lineColor;
-            ctx.lineWidth = 1;
-            ctx.shadowColor = lineColor;
-            ctx.shadowBlur = 4;
-            
+            ctx.lineWidth = 4;
+            ctx.shadowBlur = 15;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
