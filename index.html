@@ -1230,6 +1230,17 @@
         padding: 0 0.75rem;
       }
 
+      /* MOBILE VIDEO FIX */
+      video {
+        width: 100% !important;
+        height: 100% !important;
+        display: block !important;
+      }
+
+      .hero-video {
+        display: block !important;
+      }
+
       .hero-content h1 {
         font-size: 1.4rem;
       }
@@ -1288,7 +1299,7 @@
 
     <!-- HERO SECTION -->
     <section class="hero">
-      <video autoplay muted loop style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0.8;" class="hero-video">
+      <video autoplay muted loop playsinline webkit-playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0.8;" class="hero-video">
         <source src="/christmas-hero-animated.mp4" type="video/mp4">
       </video>
       <div class="hero-content">
@@ -1603,7 +1614,7 @@
 
     <!-- PORTFOLIO SECTION -->
     <section class="portfolio-link">
-      <video autoplay muted loop style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; z-index: 0; opacity: 0.9;">
+      <video autoplay muted loop playsinline webkit-playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; z-index: 0; opacity: 0.9;">
         <source src="/portfolio-crt-animated.mp4" type="video/mp4">
       </video>
       <div class="portfolio-link-content">
@@ -1707,7 +1718,7 @@
 
     <!-- RETRO COMPUTER CONTACT SECTION -->
     <section class="retro-contact-section" id="contact">
-      <video autoplay muted loop style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; z-index: 0; opacity: 0.9;">
+      <video autoplay muted loop playsinline webkit-playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; z-index: 0; opacity: 0.9;">
         <source src="/astronaut-contact-animated.mp4" type="video/mp4">
       </video>
       <div class="retro-contact-content">
