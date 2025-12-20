@@ -1,4 +1,4 @@
-// Magical Background Animation
+// Magical Background Animation with Enhanced Network Effect
 (function() {
   const canvas = document.getElementById('fluidCanvas');
   if (!canvas) return;
@@ -80,16 +80,39 @@
       particle.draw();
     });
 
-    // Draw connecting lines between nearby particles
-    ctx.globalAlpha = 0.2;
-    ctx.strokeStyle = '#00FFFF';
+    // Draw enhanced connecting lines between nearby particles
+    const colors = ['#00FFFF', '#FF00FF', '#FFFF00'];
+    
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
         const dx = particles[i].x - particles[j].x;
         const dy = particles[i].y - particles[j].y;
         const distance = Math.sqrt(dx * dx + dy * dy);
         
-        if (distance < 150) {
+        // Increased connection distance for more visible network
+        if (distance < 250) {
+          // Calculate opacity based on distance (closer = more opaque)
+          const opacity = 1 - (distance / 250);
+          
+          // Assign color based on particle index
+          const lineColor = colors[(i + j) % 3];
+          
+          // Draw the line with glow effect
+          ctx.globalAlpha = opacity * 0.7;
+          ctx.strokeStyle = lineColor;
+          ctx.lineWidth = 2;
+          ctx.shadowColor = lineColor;
+          ctx.shadowBlur = 12;
+          
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+          
+          // Draw a second line for extra glow effect
+          ctx.globalAlpha = opacity * 0.4;
+          ctx.lineWidth = 4;
+          ctx.shadowBlur = 20;
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
