@@ -68,15 +68,20 @@
       letter-spacing: 2px;
     }
 
-    /* WAVE CANVAS */
-    canvas {
+    /* FLUID SIMULATION CANVAS */
+    #fluidCanvas {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       z-index: -1;
-      pointer-events: none;
+      pointer-events: auto;
+    }
+
+    /* WAVE CANVAS (HIDDEN) */
+    #waveCanvas {
+      display: none;
     }
 
     .container {
@@ -957,6 +962,9 @@
 <body>
   <canvas id="waveCanvas"></canvas>
 
+  <!-- FLUID SIMULATION CANVAS -->
+  <canvas id="fluidCanvas"></canvas>
+
   <div class="container">
     <!-- HEADER -->
     <header>
@@ -1472,16 +1480,21 @@
     let currentTheme = 'dark';
     let currentLang = 'fr';
 
-    // WAVE ANIMATION - THEME AWARE
-    const canvas = document.getElementById('waveCanvas');
-    const ctx = canvas.getContext('2d');
+    // FLUID SIMULATION INITIALIZATION
+    const fluidCanvas = document.getElementById('fluidCanvas');
+    fluidCanvas.width = window.innerWidth;
+    fluidCanvas.height = window.innerHeight;
     
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('resize', () => {
+      fluidCanvas.width = window.innerWidth;
+      fluidCanvas.height = window.innerHeight;
+    });
+
+    // WAVE ANIMATION - THEME AWARE (BACKUP)
+    const canvas = document.getElementById('waveCanvas');
+    const ctx = canvas ? canvas.getContext('2d') : null;
+    
+    // Canvas resize handled above
 
     const themeWaves = {
       dark: [
@@ -1500,29 +1513,7 @@
 
     let waves = themeWaves.dark;
 
-    function drawWaves(time) {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      waves.forEach((wave, index) => {
-        ctx.strokeStyle = wave.color;
-        ctx.lineWidth = 3;
-        ctx.globalAlpha = 0.4;
-        ctx.beginPath();
-
-        for (let x = 0; x < canvas.width; x += 4) {
-          const waveHeight = canvas.height * 0.25;
-          const y = waveHeight + Math.sin((x * wave.frequency) + (time * wave.speed) + wave.phase) * wave.amplitude;
-          if (x === 0) ctx.moveTo(x, y);
-          else ctx.lineTo(x, y);
-        }
-        ctx.stroke();
-      });
-
-      ctx.globalAlpha = 1;
-      requestAnimationFrame(() => drawWaves(time + 1));
-    }
-
-    drawWaves(0);
+    // Wave animation disabled - using fluid simulation instead
 
     // THEME TOGGLE
     function toggleTheme() {
@@ -1553,5 +1544,8 @@
     style.textContent = '.hidden { display: none !important; }';
     document.head.appendChild(style);
   </script>
+
+  <!-- FLUID SIMULATION SCRIPT -->
+  <script src="/fluid-sim.js"></script>
 </body>
 </html>
