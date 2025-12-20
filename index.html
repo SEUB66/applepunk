@@ -68,9 +68,15 @@
       letter-spacing: 2px;
     }
 
-    /* FLUID SIMULATION CANVAS - HIDDEN */
+    /* FLUID SIMULATION CANVAS */
     #fluidCanvas {
-      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
     }
 
     /* WAVE CANVAS (HIDDEN) */
@@ -1705,6 +1711,7 @@
     document.head.appendChild(style);
   </script>
 
-  <!-- ANIMATION REMOVED -->
+  <!-- MAGICAL BACKGROUND ANIMATION -->
+  <script src="/magic-bg.js"></script>
 </body>
 </html>
