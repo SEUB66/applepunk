@@ -192,24 +192,27 @@
     }
 
     .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('/christmas-hero-new.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-attachment: scroll;
-      opacity: 0.8;
-      z-index: 1;
+      display: none;
     }
 
     html.light .hero::before {
-      background-image: url('/sunset-hero-new.jpg');
-      opacity: 0.7;
+      display: none;
+    }
+
+    .hero-video.fr {
+      display: block;
+    }
+
+    .hero-video.en {
+      display: none;
+    }
+
+    html.light .hero-video.fr {
+      display: none;
+    }
+
+    html.light .hero-video.en {
+      display: block;
     }
 
     .hero::after {
@@ -812,7 +815,7 @@
       right: 0;
       width: 100%;
       height: 100%;
-      background-image: url('/portfolio-crt-new.jpg');
+      background-image: url('/portfolio-crt-animated.mp4');
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
@@ -897,7 +900,7 @@
       right: 0;
       width: 100%;
       height: 100%;
-      background-image: url('/astronaut-contact-new.jpg');
+      background-image: url('/astronaut-contact-animated.mp4');
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
@@ -1227,6 +1230,12 @@
 
     <!-- HERO SECTION -->
     <section class="hero">
+      <video autoplay muted loop style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0.8;" class="hero-video fr">
+        <source src="/christmas-hero-animated.mp4" type="video/mp4">
+      </video>
+      <video autoplay muted loop style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0.7; display: none;" class="hero-video en">
+        <source src="/sunset-hero-animated.mp4" type="video/mp4">
+      </video>
       <div class="hero-content">
         <div class="tagline fr">Web Designer • App Developer • Marketing</div>
         <div class="tagline en hidden">Web Designer • App Developer • Marketing</div>
