@@ -1,4 +1,4 @@
-// Magical Background Animation with Theme Support
+// Magical Background Animation with Full Theme Support
 (function() {
   const canvas = document.getElementById('fluidCanvas');
   if (!canvas) return;
@@ -21,14 +21,21 @@
 
   // Particle class
   class Particle {
-    constructor() {
+    constructor(isDark) {
       this.x = Math.random() * canvas.width;
       this.y = Math.random() * canvas.height;
-      this.vx = (Math.random() - 0.5) * 0.5;
-      this.vy = (Math.random() - 0.5) * 0.5;
-      this.size = Math.random() * 2 + 1;
-      this.opacity = Math.random() * 0.5 + 0.3;
-      this.color = ['#00FFFF', '#FF00FF', '#FFFF00'][Math.floor(Math.random() * 3)];
+      this.vx = (Math.random() - 0.5) * 0.3;
+      this.vy = (Math.random() - 0.5) * 0.3;
+      this.size = Math.random() * 1.5 + 0.5;
+      this.opacity = Math.random() * 0.4 + 0.2;
+      
+      if (isDark) {
+        // Dark theme: bright colors
+        this.color = ['#00FFFF', '#FF00FF', '#FFFF00'][Math.floor(Math.random() * 3)];
+      } else {
+        // Light theme: subtle gray/blue colors
+        this.color = ['#B0B0B0', '#A0C0E0', '#C0B0D0'][Math.floor(Math.random() * 3)];
+      }
     }
 
     update() {
@@ -48,7 +55,7 @@
       ctx.globalAlpha = this.opacity;
       ctx.fillStyle = this.color;
       ctx.shadowColor = this.color;
-      ctx.shadowBlur = 10;
+      ctx.shadowBlur = 8;
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
       ctx.fill();
@@ -57,8 +64,9 @@
 
   // Create particles
   const particles = [];
-  for (let i = 0; i < 50; i++) {
-    particles.push(new Particle());
+  const particleCount = 40;
+  for (let i = 0; i < particleCount; i++) {
+    particles.push(new Particle(isDarkTheme()));
   }
 
   let time = 0;
@@ -67,7 +75,7 @@
     const darkTheme = isDarkTheme();
 
     if (darkTheme) {
-      // DARK THEME: Animated gradient with particles
+      // DARK THEME: Animated gradient with bright particles
       const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
       
       // Animated colors
@@ -98,15 +106,10 @@
           const dy = particles[i].y - particles[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
           
-          // Increased connection distance for more visible network
           if (distance < 250) {
-            // Calculate opacity based on distance (closer = more opaque)
             const opacity = 1 - (distance / 250);
-            
-            // Assign color based on particle index
             const lineColor = colors[(i + j) % 3];
             
-            // Draw the line with glow effect
             ctx.globalAlpha = opacity * 0.7;
             ctx.strokeStyle = lineColor;
             ctx.lineWidth = 2;
@@ -118,7 +121,6 @@
             ctx.lineTo(particles[j].x, particles[j].y);
             ctx.stroke();
             
-            // Draw a second line for extra glow effect
             ctx.globalAlpha = opacity * 0.4;
             ctx.lineWidth = 4;
             ctx.shadowBlur = 20;
@@ -130,9 +132,52 @@
         }
       }
     } else {
-      // LIGHT THEME: Simple white background
-      ctx.fillStyle = '#FFFFFF';
+      // LIGHT THEME: Subtle gradient with soft particles
+      const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      
+      // Soft animated colors (very subtle)
+      const hue1 = (time * 0.05) % 360;
+      const hue2 = (time * 0.08 + 120) % 360;
+      
+      gradient.addColorStop(0, `hsl(${hue1}, 20%, 98%)`);
+      gradient.addColorStop(1, `hsl(${hue2}, 15%, 96%)`);
+      
+      ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Draw particles (subtle)
+      ctx.globalAlpha = 1;
+      particles.forEach(particle => {
+        particle.update();
+        particle.draw();
+      });
+
+      // Draw soft connecting lines
+      const colors = ['#D0D0D0', '#C0D0E0', '#D0C0E0'];
+      
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          
+          if (distance < 200) {
+            const opacity = 1 - (distance / 200);
+            const lineColor = colors[(i + j) % 3];
+            
+            ctx.globalAlpha = opacity * 0.3;
+            ctx.strokeStyle = lineColor;
+            ctx.lineWidth = 1;
+            ctx.shadowColor = lineColor;
+            ctx.shadowBlur = 4;
+            
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
     }
 
     ctx.globalAlpha = 1;
