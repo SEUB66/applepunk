@@ -68,21 +68,7 @@
       letter-spacing: 2px;
     }
 
-    /* FLUID SIMULATION CANVAS */
-    #fluidCanvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    /* WAVE CANVAS (HIDDEN) */
-    #waveCanvas {
-      display: none;
-    }
+    /* ANIMATION CANVAS REMOVED */
 
     .container {
       max-width: 1200px;
@@ -98,34 +84,35 @@
       padding: 2rem 0;
       position: relative;
       z-index: 10;
+      border-bottom: 2px dashed var(--primary);
     }
 
     .logo {
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: 900;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-shadow: 0 0 20px rgba(127, 216, 216, 0.5);
-      font-family: 'Orbitron', sans-serif;
+      color: var(--primary);
+      text-shadow: 0 0 20px rgba(127, 216, 216, 0.5), 0 0 40px rgba(255, 105, 180, 0.3);
+      letter-spacing: 3px;
     }
 
     nav {
       display: flex;
       gap: 2rem;
-      align-items: center;
     }
 
     nav a {
       color: var(--primary);
       text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
+      font-weight: 600;
+      transition: all 0.3s;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
     }
 
     nav a:hover {
-      color: var(--primary);
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+      text-shadow: 0 0 20px rgba(255, 105, 180, 0.6);
     }
 
     .controls {
@@ -133,699 +120,622 @@
       gap: 1rem;
     }
 
-    button {
-      padding: 0.5rem 1rem;
+    .controls button {
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: var(--dark);
       border: 2px solid var(--primary);
-      background: transparent;
-      color: var(--primary);
-      cursor: pointer;
-      font-weight: 600;
       border-radius: 4px;
+      font-weight: 700;
+      cursor: pointer;
       transition: all 0.3s;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    button:hover {
-      background: var(--primary);
-      color: var(--dark);
+    .controls button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(127, 216, 216, 0.4), 0 0 60px rgba(255, 105, 180, 0.2);
     }
 
     /* HERO SECTION */
     .hero {
-      min-height: 100vh;
+      min-height: 600px;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      padding: 4rem 0;
+      padding: 4rem 2rem;
+      background: linear-gradient(135deg, #1a1a1a 0%, #0d3d4d 100%);
       position: relative;
-      z-index: 5;
       overflow: hidden;
+      margin: 4rem 0;
+      border: 3px dashed var(--primary);
+      border-radius: 8px;
     }
 
     .hero::before {
       content: '';
       position: absolute;
       top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(26, 26, 26, 0.6);
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    /* DARK THEME: Christmas image */
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: 0;
       right: 0;
-      width: 60%;
+      width: 100%;
       height: 100%;
       background-image: url('/christmas-hero.jpg');
       background-size: cover;
       background-position: center;
-      opacity: 0.9;
-      z-index: 0;
-      pointer-events: none;
+      opacity: 0.6;
+      z-index: 1;
     }
 
-    /* LIGHT THEME: Show sunset silhouette */
-    .light .hero::after {
+    html.light .hero::before {
       background-image: url('/sunset-hero.gif');
+      opacity: 0.7;
     }
 
-    .hero-video {
+    .hero::after {
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      z-index: 0;
+      background: linear-gradient(90deg, rgba(26,26,26,0.95) 0%, rgba(26,26,26,0.7) 40%, rgba(26,26,26,0) 100%);
+      z-index: 2;
     }
 
     .hero-content {
       position: relative;
-      z-index: 2;
+      z-index: 3;
+      text-align: left;
+      max-width: 600px;
+    }
+
+    .hero-content .tagline {
+      color: var(--secondary);
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     }
 
     .hero-content h1 {
       font-size: 3.5rem;
-      margin-bottom: 1rem;
-      background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      margin-bottom: 1.5rem;
       line-height: 1.2;
-      text-shadow: 0 0 30px rgba(127, 216, 216, 0.4), 0 0 60px rgba(255, 105, 180, 0.3);
-      font-weight: 900;
-      font-family: 'Orbitron', sans-serif;
-      letter-spacing: 2px;
-    }
-
-    .hero-content .tagline {
-      font-size: 1rem;
-      color: var(--primary);
-      margin-bottom: 2rem;
-      font-weight: 600;
-      text-shadow: 0 0 15px rgba(127, 216, 216, 0.6);
-      font-family: 'Press Start 2P', cursive;
-      letter-spacing: 3px;
+      color: var(--light);
+      text-shadow: 0 0 30px rgba(127, 216, 216, 0.4), 0 0 60px rgba(255, 105, 180, 0.2);
     }
 
     .hero-content p {
       font-size: 1.2rem;
-      max-width: 600px;
-      margin: 0 auto 3rem;
-      color: rgba(255, 255, 255, 0.8);
+      color: var(--light);
+      margin-bottom: 2rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     }
 
     .cta-buttons {
       display: flex;
       gap: 1.5rem;
-      justify-content: center;
       flex-wrap: wrap;
     }
 
     .cta-button {
-      padding: 1rem 2.5rem;
-      font-size: 1.1rem;
+      padding: 16px 40px;
       background: linear-gradient(135deg, var(--primary), var(--accent));
       color: var(--dark);
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 6px;
       font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-family: 'Orbitron', sans-serif;
       text-transform: uppercase;
       letter-spacing: 1px;
-      box-shadow: 0 0 30px rgba(127, 216, 216, 0.4);
-      transition: all 0.3s;
+      box-shadow: 0 0 30px rgba(127, 216, 216, 0.4), 0 0 60px rgba(255, 105, 180, 0.2);
     }
 
     .cta-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 0 50px rgba(127, 216, 216, 0.6);
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 0 50px rgba(127, 216, 216, 0.6), 0 0 80px rgba(255, 105, 180, 0.4);
     }
 
-    /* SERVICES SECTION */
-    .services {
-      padding: 6rem 0;
-      position: relative;
-      z-index: 5;
+    /* SOLUTIONS SECTION */
+    .solutions {
+      padding: 4rem 2rem;
+      margin: 4rem 0;
     }
 
-    .section-title {
-      text-align: center;
+    .solutions h2 {
       font-size: 2.5rem;
-      margin-bottom: 4rem;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-shadow: 0 0 25px rgba(127, 216, 216, 0.3);
-      font-weight: 900;
-      font-family: 'Orbitron', sans-serif;
-      letter-spacing: 2px;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      text-shadow: 0 0 20px rgba(127, 216, 216, 0.5);
+    }
+
+    .solutions-subtitle {
+      font-size: 1.5rem;
+      color: var(--secondary);
+      margin-bottom: 3rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     }
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 2rem;
+      margin-bottom: 2rem;
     }
 
     .service-card {
-      background: rgba(127, 216, 216, 0.05);
-      border: 2px solid var(--primary);
       padding: 2rem;
-      border-radius: 12px;
+      background: rgba(26, 26, 26, 0.8);
+      border: 2px dashed var(--primary);
+      border-radius: 8px;
       transition: all 0.3s;
     }
 
     .service-card:hover {
-      background: rgba(127, 216, 216, 0.1);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 40px rgba(127, 216, 216, 0.2);
+      background: rgba(26, 26, 26, 0.95);
+      box-shadow: 0 0 30px rgba(127, 216, 216, 0.3), 0 0 60px rgba(255, 105, 180, 0.1);
+      transform: translateY(-4px);
     }
 
     .service-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: var(--primary);
-      text-shadow: 0 0 15px rgba(127, 216, 216, 0.4);
-      font-weight: 700;
-      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
     }
 
     .service-card p {
-      color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 1.5rem;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.95rem;
     }
 
-    .service-features {
-      list-style: none;
+    .solutions-description {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     }
 
-    .service-features li {
-      padding: 0.5rem 0;
-      color: rgba(255, 255, 255, 0.6);
+    .discover-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 32px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: var(--dark);
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: all 0.3s;
+      box-shadow: 0 0 30px rgba(127, 216, 216, 0.4), 0 0 60px rgba(255, 105, 180, 0.2);
+      border: 2px solid transparent;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    .service-features li:before {
-      content: "✓ ";
+    .discover-button:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 0 50px rgba(127, 216, 216, 0.6), 0 0 80px rgba(255, 105, 180, 0.4);
+      background: linear-gradient(135deg, var(--accent), var(--primary));
+    }
+
+    /* MISSION SECTION */
+    .mission {
+      padding: 4rem 2rem;
+      margin: 4rem 0;
+    }
+
+    .mission h2 {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
       color: var(--primary);
-      font-weight: bold;
-      margin-right: 0.5rem;
+      text-shadow: 0 0 20px rgba(127, 216, 216, 0.5);
     }
 
-    /* FEATURES SECTION */
-    .features {
-      padding: 6rem 0;
-      position: relative;
-      z-index: 5;
-    }
-
-    .features-grid {
+    .mission-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 2rem;
     }
 
-    .feature {
-      text-align: center;
+    .mission-card {
       padding: 2rem;
+      background: rgba(26, 26, 26, 0.8);
+      border: 2px dashed var(--primary);
+      border-radius: 8px;
+      transition: all 0.3s;
     }
 
-    .feature-icon {
-      font-size: 3rem;
+    .mission-card:hover {
+      background: rgba(26, 26, 26, 0.95);
+      box-shadow: 0 0 30px rgba(127, 216, 216, 0.3);
+      transform: translateY(-4px);
+    }
+
+    .mission-card h3 {
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      text-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
+    }
+
+    .mission-card p {
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+    }
+
+    /* TECHNOLOGY SECTION */
+    .technology {
+      padding: 4rem 2rem;
+      margin: 4rem 0;
+    }
+
+    .technology h2 {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: var(--primary);
+      text-shadow: 0 0 20px rgba(127, 216, 216, 0.5);
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .tech-card {
+      padding: 2rem;
+      background: rgba(26, 26, 26, 0.8);
+      border: 2px dashed var(--primary);
+      border-radius: 8px;
+    }
+
+    .tech-card h3 {
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      text-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
+    }
+
+    .tech-card p {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* STARTER PACK SECTION */
+    .starter-pack {
+      padding: 4rem 2rem;
+      margin: 4rem 0;
+      background: linear-gradient(135deg, rgba(26,26,26,0.8) 0%, rgba(13,61,77,0.8) 100%);
+      border: 3px dashed var(--primary);
+      border-radius: 8px;
+    }
+
+    .starter-pack h2 {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: var(--primary);
+      text-shadow: 0 0 20px rgba(127, 216, 216, 0.5);
+    }
+
+    .pack-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .pack-card {
+      padding: 2rem;
+      background: rgba(26, 26, 26, 0.6);
+      border: 2px solid var(--primary);
+      border-radius: 6px;
+    }
+
+    .pack-card h3 {
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      text-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
+    }
+
+    .pack-card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .pack-card li {
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .pack-card li:before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+    }
+
+    .pack-price {
+      font-size: 1.8rem;
+      color: var(--accent);
+      font-weight: 700;
+      margin: 2rem 0;
+      text-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
+    }
+
+    .pack-description {
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    /* SERVICES SECTION */
+    .services {
+      padding: 4rem 2rem;
+      margin: 4rem 0;
+    }
+
+    .services h2 {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: var(--primary);
+      text-shadow: 0 0 20px rgba(127, 216, 216, 0.5);
+    }
+
+    .services-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .service-item {
+      padding: 2rem;
+      background: rgba(26, 26, 26, 0.8);
+      border: 2px dashed var(--primary);
+      border-radius: 8px;
+      transition: all 0.3s;
+    }
+
+    .service-item:hover {
+      background: rgba(26, 26, 26, 0.95);
+      box-shadow: 0 0 30px rgba(127, 216, 216, 0.3);
+      transform: translateY(-4px);
+    }
+
+    .service-item h3 {
+      font-size: 1.3rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      text-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
+    }
+
+    .service-item p {
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .service-item ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .service-item li {
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+      font-size: 0.9rem;
+    }
+
+    .service-item li:before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+    }
+
+    /* WHY APPLEPUNK SECTION */
+    .why-applepunk {
+      padding: 4rem 2rem;
+      margin: 4rem 0;
+    }
+
+    .why-applepunk h2 {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: var(--primary);
+      text-shadow: 0 0 20px rgba(127, 216, 216, 0.5);
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .benefit-card {
+      padding: 2rem;
+      background: rgba(26, 26, 26, 0.8);
+      border: 2px dashed var(--primary);
+      border-radius: 8px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .benefit-card:hover {
+      background: rgba(26, 26, 26, 0.95);
+      box-shadow: 0 0 30px rgba(127, 216, 216, 0.3);
+      transform: translateY(-4px);
+    }
+
+    .benefit-icon {
+      font-size: 2.5rem;
       margin-bottom: 1rem;
     }
 
-    .feature h4 {
+    .benefit-card h3 {
       font-size: 1.2rem;
+      color: var(--accent);
       margin-bottom: 0.5rem;
-      color: var(--primary);
-      text-shadow: 0 0 12px rgba(127, 216, 216, 0.4);
-      font-weight: 700;
-      font-family: 'Orbitron', sans-serif;
+      text-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
     }
 
-    .feature p {
-      color: rgba(255, 255, 255, 0.7);
+    .benefit-card p {
+      color: rgba(255, 255, 255, 0.8);
       font-size: 0.95rem;
     }
 
     /* BIO SECTION */
     .bio {
-      padding: 6rem 0;
-      position: relative;
-      z-index: 5;
+      padding: 4rem 2rem;
+      margin: 4rem 0;
     }
 
-    .bio-container {
+    .bio h2 {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: var(--primary);
+      text-shadow: 0 0 20px rgba(127, 216, 216, 0.5);
+    }
+
+    .bio-content {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 3rem;
-      margin-bottom: 4rem;
-      background: rgba(127, 216, 216, 0.05);
-      padding: 2rem;
-      border-radius: 12px;
-      border: 2px solid var(--primary);
+      margin-bottom: 3rem;
     }
 
-    .bio-main h3 {
-      font-size: 2rem;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .bio-card {
+      padding: 2rem;
+      background: rgba(26, 26, 26, 0.8);
+      border: 2px dashed var(--primary);
+      border-radius: 8px;
+    }
+
+    .bio-card h3 {
+      font-size: 1.4rem;
+      color: var(--accent);
       margin-bottom: 0.5rem;
-      text-shadow: 0 0 20px rgba(127, 216, 216, 0.3);
-      font-weight: 900;
-      font-family: 'Orbitron', sans-serif;
-      letter-spacing: 1px;
+      text-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
     }
 
     .bio-title {
-      color: var(--primary);
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-
-    .bio-text {
-      color: rgba(255, 255, 255, 0.8);
-      margin-bottom: 1.5rem;
-      line-height: 1.8;
-    }
-
-    .bio-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .badge {
-      background: rgba(127, 216, 216, 0.2);
-      border: 1px solid var(--primary);
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      color: var(--primary);
-    }
-
-    .bio-mission h4 {
-      font-size: 1.5rem;
       color: var(--secondary);
       margin-bottom: 1rem;
     }
 
-    .bio-mission p {
+    .bio-card p {
       color: rgba(255, 255, 255, 0.8);
-      margin-bottom: 1.5rem;
-      line-height: 1.8;
+      margin-bottom: 1rem;
+      line-height: 1.6;
     }
 
-    .mission-points {
+    .bio-badges {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .badge {
+      padding: 0.5rem 1rem;
+      background: rgba(127, 216, 216, 0.2);
+      border: 1px solid var(--primary);
+      border-radius: 4px;
+      color: var(--primary);
+      font-size: 0.7rem;
+    }
+
+    .mission-statement {
+      padding: 2rem;
+      background: rgba(13, 61, 77, 0.6);
+      border: 2px dashed var(--primary);
+      border-radius: 8px;
+      margin-bottom: 3rem;
+    }
+
+    .mission-statement h4 {
+      color: var(--accent);
+      margin-bottom: 1rem;
+      text-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
+    }
+
+    .mission-statement p {
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+    }
+
+    .points-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 1rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-bottom: 3rem;
     }
 
     .point {
-      background: rgba(255, 105, 180, 0.1);
-      padding: 1rem;
-      border-radius: 8px;
-      border-left: 3px solid var(--accent);
+      padding: 1.5rem;
+      background: rgba(26, 26, 26, 0.8);
+      border: 2px solid var(--primary);
+      border-radius: 6px;
+      text-align: center;
     }
 
     .point h5 {
       color: var(--accent);
       margin-bottom: 0.5rem;
+      text-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
     }
 
     .point p {
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(255, 255, 255, 0.8);
       font-size: 0.9rem;
     }
 
-    /* TEAM SECTION */
-    .team {
-      margin-bottom: 3rem;
-    }
-
-    .team h3 {
+    .team-section h3 {
       font-size: 1.8rem;
       color: var(--primary);
       margin-bottom: 2rem;
-      text-align: center;
-      text-shadow: 0 0 18px rgba(127, 216, 216, 0.4);
-      font-weight: 900;
-      font-family: 'Orbitron', sans-serif;
-      letter-spacing: 1px;
+      text-shadow: 0 0 20px rgba(127, 216, 216, 0.5);
     }
 
     .team-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-    }
-
-    /* PRESENTATION SHOWCASE SECTION */
-    .presentation-showcase {
-      padding: 6rem 0;
-      position: relative;
-      z-index: 5;
-      background: linear-gradient(135deg, rgba(127, 216, 216, 0.05) 0%, rgba(255, 105, 180, 0.03) 100%);
-    }
-
-    .presentation-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .presentation-header .section-title {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .presentation-header .subtitle {
-      color: var(--secondary);
-      font-size: 1.2rem;
-      letter-spacing: 1px;
-    }
-
-    .slides-preview-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 2rem;
-      margin-bottom: 3rem;
     }
 
-    .slide-preview-card {
-      background: linear-gradient(135deg, rgba(127, 216, 216, 0.08) 0%, rgba(255, 105, 180, 0.05) 100%);
+    .team-member {
+      padding: 1.5rem;
+      background: rgba(26, 26, 26, 0.8);
       border: 2px dashed var(--primary);
-      padding: 2rem 1.5rem;
+      border-radius: 8px;
       text-align: center;
-      cursor: pointer;
-      text-decoration: none;
-      color: #ffffff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .slide-preview-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(127, 216, 216, 0.2), transparent);
-      transition: left 0.6s ease;
-    }
-
-    .slide-preview-card:hover {
-      background: linear-gradient(135deg, rgba(127, 216, 216, 0.15) 0%, rgba(255, 105, 180, 0.1) 100%);
-      border-color: var(--accent);
-      transform: translateY(-10px) scale(1.05);
-      box-shadow: 0 15px 50px rgba(127, 216, 216, 0.3), 0 0 30px rgba(255, 105, 180, 0.2);
-    }
-
-    .slide-preview-card:hover::before {
-      left: 100%;
-    }
-
-    .slide-preview-number {
-      font-size: 2.5rem;
-      font-weight: 900;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font-family: 'Press Start 2P', cursive;
-      letter-spacing: 1px;
-    }
-
-    .slide-preview-title {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--secondary);
-      letter-spacing: 0.5px;
-    }
-
-    .slide-preview-description {
-      font-size: 0.85rem;
-      color: #b0b0b0;
-      line-height: 1.5;
-    }
-
-    .presentation-cta {
-      text-align: center;
-    }
-
-    .presentation-cta .cta-button {
-      display: inline-block;
-      padding: 1rem 2.5rem;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-      color: var(--dark);
-      text-decoration: none;
-      font-weight: 700;
-      border-radius: 0;
-      border: 2px dashed var(--primary);
-      cursor: pointer;
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .presentation-cta .cta-button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.2);
-      transition: left 0.4s ease;
-    }
-
-    .presentation-cta .cta-button:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 12px 40px rgba(127, 216, 216, 0.4), 0 0 25px rgba(255, 105, 180, 0.25);
-    }
-
-    .presentation-cta .cta-button:hover::before {
-      left: 100%;
-    }
-
-    /* MISSION SECTION */
-    .mission {
-      padding: 6rem 0;
-      position: relative;
-      z-index: 5;
-      background: rgba(127, 216, 216, 0.02);
-    }
-
-    .mission-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    .mission-card {
-      background: rgba(127, 216, 216, 0.08);
-      padding: 2rem;
-      border-radius: 8px;
-      border-left: 4px solid var(--primary);
       transition: all 0.3s;
-    }
-
-    .mission-card:hover {
-      background: rgba(127, 216, 216, 0.15);
-      transform: translateY(-5px);
-    }
-
-    .mission-card h3 {
-      color: var(--secondary);
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-
-    .mission-card p {
-      color: var(--primary);
-      line-height: 1.8;
-    }
-
-    /* TECH STACK SECTION */
-    .tech-stack {
-      padding: 6rem 0;
-      position: relative;
-      z-index: 5;
-    }
-
-    .tech-content {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    .tech-card {
-      background: rgba(255, 105, 180, 0.08);
-      padding: 2rem;
-      border-radius: 8px;
-      border-left: 4px solid var(--accent);
-      transition: all 0.3s;
-    }
-
-    .tech-card:hover {
-      background: rgba(255, 105, 180, 0.15);
-      transform: translateY(-5px);
-    }
-
-    .tech-card h3 {
-      color: var(--accent);
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-
-    .tech-card p {
-      color: var(--primary);
-      line-height: 1.8;
-    }
-
-    /* STARTER PACK SECTION */
-    .starter-pack {
-      padding: 6rem 0;
-      position: relative;
-      z-index: 5;
-      background: rgba(255, 105, 180, 0.02);
-    }
-
-    .starter-content {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-      margin-bottom: 3rem;
-    }
-
-    .starter-card {
-      background: linear-gradient(135deg, rgba(127, 216, 216, 0.1), rgba(255, 105, 180, 0.1));
-      padding: 2rem;
-      border-radius: 8px;
-      border: 2px solid var(--primary);
-      transition: all 0.3s;
-    }
-
-    .starter-card:hover {
-      background: linear-gradient(135deg, rgba(127, 216, 216, 0.2), rgba(255, 105, 180, 0.2));
-      transform: translateY(-5px);
-      box-shadow: 0 0 30px rgba(127, 216, 216, 0.2);
-    }
-
-    .starter-card h3 {
-      color: var(--secondary);
-      margin-bottom: 1.5rem;
-      font-weight: 700;
-    }
-
-    .starter-card p {
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-      line-height: 1.8;
-    }
-
-    .starter-card ul {
-      list-style: none;
-      margin-top: 1rem;
-    }
-
-    .starter-card li {
-      color: var(--primary);
-      padding: 0.5rem 0;
-      padding-left: 1.5rem;
-      position: relative;
-    }
-
-    .starter-card li::before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: var(--primary);
-      font-weight: bold;
-    }
-
-    .starter-cta {
-      text-align: center;
-      padding: 2rem;
-      background: linear-gradient(135deg, rgba(127, 216, 216, 0.1), rgba(255, 105, 180, 0.1));
-      border-radius: 8px;
-      border: 2px solid var(--primary);
-    }
-
-    .starter-cta p {
-      color: var(--secondary);
-      font-size: 1.2rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .cta-button {
-      display: inline-block;
-      padding: 1rem 2rem;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      color: var(--dark);
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 700;
-      transition: all 0.3s;
-      box-shadow: 0 0 30px rgba(127, 216, 216, 0.3);
-    }
-
-    .cta-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 0 50px rgba(127, 216, 216, 0.5);
-    }
-
-    .service-card {
-      background: rgba(127, 216, 216, 0.05);
-      padding: 2rem;
-      border-radius: 8px;
-      border: 2px solid var(--primary);
-      transition: all 0.3s;
-    }  transition: all 0.3s;
     }
 
     .team-member:hover {
-      background: rgba(127, 216, 216, 0.1);
-      transform: translateY(-3px);
+      background: rgba(26, 26, 26, 0.95);
+      box-shadow: 0 0 30px rgba(127, 216, 216, 0.3);
+      transform: translateY(-4px);
     }
 
     .team-member h4 {
-      color: var(--secondary);
-      margin-bottom: 0.5rem;
-      text-shadow: 0 0 10px rgba(255, 229, 168, 0.3);
-      font-weight: 700;
-      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+      text-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
     }
 
     .team-member p {
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.85rem;
       margin-bottom: 0.5rem;
     }
 
@@ -833,15 +743,15 @@
       color: var(--primary);
       text-decoration: none;
       font-size: 0.85rem;
-      word-break: break-all;
-      transition: color 0.3s;
+      transition: all 0.3s;
     }
 
     .team-member a:hover {
       color: var(--accent);
+      text-shadow: 0 0 10px rgba(255, 105, 180, 0.4);
     }
 
-    /* PORTFOLIO LINK - RETRO TV CYBERPUNK */
+    /* PORTFOLIO SECTION */
     .portfolio-link {
       min-height: 600px;
       display: flex;
@@ -932,7 +842,7 @@
       align-items: center;
       justify-content: center;
       padding: 4rem 2rem;
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 100%);
+      background: linear-gradient(135deg, #1a1a1a 0%, #0d3d4d 100%);
       position: relative;
       overflow: hidden;
       margin: 4rem 0;
@@ -944,14 +854,13 @@
       content: '';
       position: absolute;
       top: 0;
-      left: 0;
-      width: 100%;
+      right: 0;
+      width: 60%;
       height: 100%;
       background-image: url('/retro-computer-contact.gif');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: right center;
-      opacity: 0.95;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.8;
       z-index: 1;
     }
 
@@ -962,130 +871,106 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, rgba(10,10,10,0.98) 0%, rgba(10,10,10,0.8) 35%, rgba(10,10,10,0.3) 70%, rgba(10,10,10,0) 100%);
+      background: linear-gradient(90deg, rgba(26,26,26,0.95) 0%, rgba(26,26,26,0.7) 40%, rgba(26,26,26,0) 100%);
       z-index: 2;
     }
 
     .retro-contact-content {
       position: relative;
       z-index: 3;
-      max-width: 600px;
-      text-align: left;
+      max-width: 500px;
     }
 
     .retro-contact-content h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-shadow: 0 0 30px rgba(127, 216, 216, 0.5);
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 900;
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      text-shadow: 0 0 20px rgba(127, 216, 216, 0.5);
     }
 
     .retro-contact-content p {
-      font-size: 1.1rem;
       color: rgba(255, 255, 255, 0.9);
       margin-bottom: 2rem;
-      line-height: 1.8;
+      font-size: 1.1rem;
+      line-height: 1.6;
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     }
 
     .contact-methods {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: 1fr;
       gap: 1.5rem;
-      margin-bottom: 2rem;
     }
 
     .contact-method {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      padding: 1.2rem;
-      background: rgba(127, 216, 216, 0.05);
-      border: 2px solid var(--primary);
+      padding: 1.5rem;
+      background: rgba(26, 26, 26, 0.8);
+      border: 2px dashed var(--primary);
       border-radius: 6px;
+      display: flex;
+      gap: 1rem;
       transition: all 0.3s;
     }
 
     .contact-method:hover {
-      background: rgba(127, 216, 216, 0.15);
-      box-shadow: 0 0 20px rgba(127, 216, 216, 0.3);
-      transform: translateX(10px);
+      background: rgba(26, 26, 26, 0.95);
+      box-shadow: 0 0 30px rgba(127, 216, 216, 0.3);
+      transform: translateX(8px);
     }
 
     .contact-method-icon {
-      font-size: 1.8rem;
-      color: var(--primary);
-      min-width: 40px;
+      font-size: 2rem;
+      min-width: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .contact-method-info h4 {
-      color: var(--primary);
-      margin: 0 0 0.3rem 0;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
     }
 
-    .contact-method-info a,
-    .contact-method-info p {
-      color: rgba(255, 255, 255, 0.8);
+    .contact-method-info a {
+      display: block;
+      color: var(--primary);
       text-decoration: none;
-      margin: 0;
-      font-size: 1rem;
+      font-size: 0.95rem;
+      margin-bottom: 0.3rem;
+      transition: all 0.3s;
     }
 
     .contact-method-info a:hover {
       color: var(--accent);
+      text-shadow: 0 0 10px rgba(255, 105, 180, 0.4);
     }
 
     /* FOOTER */
     footer {
-      padding: 3rem 0;
-      border-top: 1px solid var(--primary);
-      position: relative;
-      z-index: 10;
+      padding: 3rem 2rem;
       text-align: center;
-      color: rgba(255, 255, 255, 0.6);
-    }
-
-    header {
-      padding: 1.5rem 2rem;
-      border-bottom: 1px dashed var(--primary);
-      position: relative;
-      z-index: 10;
+      border-top: 1px solid rgba(127, 216, 216, 0.2);
+      margin-top: 4rem;
     }
 
     .footer-content {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
       margin-bottom: 2rem;
-      text-align: left;
     }
 
-    .footer-section h4 {
-      color: var(--primary);
-      margin-bottom: 1rem;
+    .footer-logo {
+      max-height: 150px;
+      object-fit: contain;
     }
 
-    .footer-section a {
-      display: block;
-      color: rgba(255, 255, 255, 0.7);
-      text-decoration: none;
-      margin-bottom: 0.5rem;
-      transition: color 0.3s;
-    }
-
-    .footer-section a:hover {
-      color: var(--primary);
-    }
-
-    .footer-bottom {
+    .footer-credits {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.85rem;
       border-top: 1px solid rgba(127, 216, 216, 0.2);
       padding-top: 2rem;
     }
@@ -1207,6 +1092,34 @@
       .pixel-text, .tagline, .bio-title, .badge, .point p, .team-member p {
         font-size: 0.6rem;
       }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services-list {
+        grid-template-columns: 1fr;
+      }
+
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .pack-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .points-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tech-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .bio-content {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 480px) {
@@ -1238,15 +1151,18 @@
       .pixel-text, .tagline, .bio-title, .badge, .point p, .team-member p {
         font-size: 0.5rem;
       }
+
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        gap: 1rem;
+      }
     }
   </style>
 </head>
 <body>
-  <canvas id="waveCanvas"></canvas>
-
-  <!-- FLUID SIMULATION CANVAS -->
-  <canvas id="fluidCanvas"></canvas>
-
   <div class="container">
     <!-- HEADER -->
     <header>
@@ -1269,9 +1185,6 @@
 
     <!-- HERO SECTION -->
     <section class="hero">
-      <video class="hero-video" autoplay muted loop playsinline>
-        <source src="/background.mp4" type="video/mp4">
-      </video>
       <div class="hero-content">
         <div class="tagline fr">Web Designer • App Developer • Marketing</div>
         <div class="tagline en hidden">Web Designer • App Developer • Marketing</div>
@@ -1284,112 +1197,91 @@
         
         <div class="cta-buttons">
           <button class="cta-button fr" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">DÉCOUVRIR NOS SERVICES</button>
-          <button class="cta-button en hidden" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">EXPLORE SERVICES</button>
-          
+          <button class="cta-button en hidden" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">DISCOVER OUR SERVICES</button>
           <button class="cta-button fr" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">NOUS CONTACTER</button>
           <button class="cta-button en hidden" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">CONTACT US</button>
         </div>
       </div>
     </section>
 
-    <!-- PRESENTATION SECTION - SLIDE 1 COVER PAGE -->
-    <section class="presentation-showcase" id="presentation-section" style="width: 100%; min-height: 720px; background: linear-gradient(135deg, #1a1a1a 0%, #0d3d4d 100%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-      <div style="position: absolute; width: 220px; height: 220px; border: 2px solid rgba(127,216,216,0.25); border-radius: 50%; bottom: -40px; left: 80px; z-index: 0; box-shadow: 0 0 30px rgba(127,216,216,0.1);"></div>
-      <div style="position: absolute; width: 170px; height: 170px; border: 2px solid rgba(255,105,180,0.25); top: 80px; right: 40px; z-index: 0; clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); box-shadow: 0 0 30px rgba(255,105,180,0.1);"></div>
-      <div style="position: absolute; width: 100px; height: 100px; border: 2px solid rgba(255,229,168,0.15); top: 50%; right: 20%; z-index: 0; border-radius: 50%;"></div>
-      <div style="position: absolute; width: 8px; height: 8px; background: #7FD8D8; border-radius: 50%; z-index: 0; top: 150px; right: 15%; opacity: 0.6;"></div>
-      <div style="position: absolute; width: 8px; height: 8px; background: #7FD8D8; border-radius: 50%; z-index: 0; bottom: 200px; left: 50px; opacity: 0.4;"></div>
-      <div style="position: absolute; width: 8px; height: 8px; background: #7FD8D8; border-radius: 50%; z-index: 0; top: 300px; right: 10%; opacity: 0.5;"></div>
-      <div style="position: absolute; right: 0; top: 0; width: 60%; height: 100%; background-image: url('/hero-cover.jpg'); background-size: cover; background-position: center; opacity: 0.9; z-index: 0;"></div>
-      <div style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(26,26,26,0.95) 0%, rgba(26,26,26,0.75) 40%, rgba(26,26,26,0) 100%); z-index: 1;"></div>
-      
-      <div style="position: relative; z-index: 2; padding: 80px 60px 8px; max-width: 50%; color: #ffffff; width: 100%; max-width: 600px;">
-        <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px;">
-          <div style="width: 60px; height: 4px; background: linear-gradient(90deg, #7FD8D8 0%, #FF69B4 100%); border-radius: 2px;"></div>
-          <div style="font-family: 'Poppins', sans-serif; font-size: 28px; font-weight: 700; color: #7FD8D8; letter-spacing: 2px;">APPLE<span style="color: #FF69B4;">PUNK</span></div>
+    <!-- SOLUTIONS SECTION -->
+    <section class="solutions" id="services">
+      <h2 class="fr">Solutions d'Entreprise</h2>
+      <h2 class="en hidden">Business Solutions</h2>
+      <p class="solutions-subtitle fr">Transformez Votre PME en Leader Numérique</p>
+      <p class="solutions-subtitle en hidden">Transform Your SME into a Digital Leader</p>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <h3 class="fr">Dashboards Intelligents</h3>
+          <h3 class="en hidden">Smart Dashboards</h3>
         </div>
-
-        <h1 style="font-family: 'Poppins', sans-serif; font-size: 64px; font-weight: 700; line-height: 1.05; margin-bottom: 12px; color: #ffffff; text-shadow: 0 4px 20px rgba(127,216,216,0.3);">Solutions d'Entreprise</h1>
-
-        <div style="font-family: 'Poppins', sans-serif; font-size: 24px; font-weight: 600; color: #FFE5A8; margin-bottom: 12px; line-height: 1.4; display: flex; align-items: center; gap: 12px;">
-          <i class="fas fa-rocket" style="font-size: 28px; color: #7FD8D8;"></i>
-          Transformez Votre PME en Leader Numérique
+        <div class="service-card">
+          <h3 class="fr">Gestion IA Avancée</h3>
+          <h3 class="en hidden">Advanced AI Management</h3>
         </div>
-
-        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 12px; padding: 10px; background: rgba(127, 216, 216, 0.08); border-left: 3px solid #7FD8D8; border-radius: 2px; align-items: center;">
-          <div style="display: flex; gap: 12px; align-items: center;">
-            <div style="font-size: 24px; color: #7FD8D8; flex-shrink: 0;"><i class="fas fa-chart-line"></i></div>
-            <div style="font-family: 'Poppins', sans-serif; font-size: 14px; color: #e0e0e0; line-height: 1.3; font-weight: 500;">Dashboards Intelligents</div>
-          </div>
-          <div style="display: flex; gap: 12px; align-items: center;">
-            <div style="font-size: 24px; color: #FF69B4; flex-shrink: 0;"><i class="fas fa-brain"></i></div>
-            <div style="font-family: 'Poppins', sans-serif; font-size: 14px; color: #e0e0e0; line-height: 1.3; font-weight: 500;">Gestion IA Avancée</div>
-          </div>
-          <div style="display: flex; gap: 12px; align-items: center;">
-            <div style="font-size: 24px; color: #FFE5A8; flex-shrink: 0;"><i class="fas fa-shopping-cart"></i></div>
-            <div style="font-family: 'Poppins', sans-serif; font-size: 14px; color: #e0e0e0; line-height: 1.3; font-weight: 500;">E-commerce Intégré</div>
-          </div>
-          <div style="display: flex; gap: 12px; align-items: center;">
-            <div style="font-size: 24px; color: #7FD8D8; flex-shrink: 0;"><i class="fas fa-shield-alt"></i></div>
-            <div style="font-family: 'Poppins', sans-serif; font-size: 14px; color: #e0e0e0; line-height: 1.3; font-weight: 500;">Sécurité Maximale</div>
-          </div>
+        <div class="service-card">
+          <h3 class="fr">E-commerce Intégré</h3>
+          <h3 class="en hidden">Integrated E-commerce</h3>
         </div>
-
-        <div style="height: 1px; background: linear-gradient(90deg, rgba(127,216,216,0.3) 0%, transparent 100%); margin-bottom: 12px;"></div>
-
-        <p style="font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 400; color: #b0b0b0; margin-bottom: 12px; line-height: 1.6;">Dashboards intelligents, gestion d'inventaire IA, boutique en ligne sécurisée et support 24/7</p>
-
-        <a href="/presentation" style="display: inline-flex; align-items: center; gap: 10px; padding: 10px 36px; background: linear-gradient(135deg, #7FD8D8 0%, #FF69B4 100%); color: #1a1a1a; text-decoration: none; font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 600; border-radius: 4px; border: 2px solid transparent; cursor: pointer; text-transform: uppercase; letter-spacing: 1px;">
-          <i class="fas fa-arrow-right" style="font-size: 18px;"></i>
-          Découvrir
-        </a>
+        <div class="service-card">
+          <h3 class="fr">Sécurité Maximale</h3>
+          <h3 class="en hidden">Maximum Security</h3>
+        </div>
       </div>
+
+      <div style="height: 1px; background: linear-gradient(90deg, rgba(127,216,216,0.3) 0%, transparent 100%); margin-bottom: 12px;"></div>
+
+      <p style="font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 400; color: #b0b0b0; margin-bottom: 12px; line-height: 1.6;">Dashboards intelligents, gestion d'inventaire IA, boutique en ligne sécurisée et support 24/7</p>
+
+      <a href="/presentation" style="display: inline-flex; align-items: center; gap: 10px; padding: 10px 36px; background: linear-gradient(135deg, #7FD8D8 0%, #FF69B4 100%); color: #1a1a1a; text-decoration: none; font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 600; border-radius: 4px; border: 2px solid transparent; cursor: pointer; text-transform: uppercase; letter-spacing: 1px;">
+        <i class="fas fa-arrow-right" style="font-size: 18px;"></i>
+        Découvrir
+      </a>
     </section>
 
     <!-- MISSION SECTION -->
     <section class="mission" id="mission">
-      <div class="mission-content">
-        <h2 class="section-title fr">Notre Mission</h2>
-        <h2 class="section-title en hidden">Our Mission</h2>
+      <h2 class="fr">Notre Mission</h2>
+      <h2 class="en hidden">Our Mission</h2>
+      
+      <div class="mission-grid">
+        <div class="mission-card">
+          <h3 class="fr">🎯 Donner une Chance</h3>
+          <h3 class="en hidden">🎯 Give a Chance</h3>
+          <p class="fr">Offrir aux petites entreprises une plateforme pour se développer rapidement et professionnellement.</p>
+          <p class="en hidden">Provide small businesses with a platform to grow quickly and professionally.</p>
+        </div>
         
-        <div class="mission-grid">
-          <div class="mission-card">
-            <h3 class="fr">🎯 Donner une Chance</h3>
-            <h3 class="en hidden">🎯 Give a Chance</h3>
-            <p class="fr">Offrir aux petites entreprises une plateforme pour se développer rapidement et professionnellement.</p>
-            <p class="en hidden">Provide small businesses with a platform to grow quickly and professionally.</p>
-          </div>
-          
-          <div class="mission-card">
-            <h3 class="fr">💰 Budget Accessible</h3>
-            <h3 class="en hidden">💰 Affordable Budget</h3>
-            <p class="fr">Solutions professionnelles à petit coût. Pas de compromis sur la qualité.</p>
-            <p class="en hidden">Professional solutions at low cost. No compromise on quality.</p>
-          </div>
-          
-          <div class="mission-card">
-            <h3 class="fr">⚡ Développement Rapide</h3>
-            <h3 class="en hidden">⚡ Fast Development</h3>
-            <p class="fr">Déploiement en semaines, pas en mois. Infrastructure prête à l'emploi.</p>
-            <p class="en hidden">Deploy in weeks, not months. Ready-to-use infrastructure.</p>
-          </div>
-          
-          <div class="mission-card">
-            <h3 class="fr">🎨 Design Personnalisé</h3>
-            <h3 class="en hidden">🎨 Custom Design</h3>
-            <p class="fr">Aux couleurs de votre entreprise. Identité visuelle unique et mémorable.</p>
-            <p class="en hidden">In your company colors. Unique and memorable visual identity.</p>
-          </div>
+        <div class="mission-card">
+          <h3 class="fr">💰 Budget Accessible</h3>
+          <h3 class="en hidden">💰 Affordable Budget</h3>
+          <p class="fr">Solutions professionnelles à petit coût. Pas de compromis sur la qualité.</p>
+          <p class="en hidden">Professional solutions at low cost. No compromise on quality.</p>
+        </div>
+        
+        <div class="mission-card">
+          <h3 class="fr">⚡ Développement Rapide</h3>
+          <h3 class="en hidden">⚡ Fast Development</h3>
+          <p class="fr">Déploiement en semaines, pas en mois. Infrastructure prête à l'emploi.</p>
+          <p class="en hidden">Deploy in weeks, not months. Ready-to-use infrastructure.</p>
+        </div>
+        
+        <div class="mission-card">
+          <h3 class="fr">🎨 Design Personnalisé</h3>
+          <h3 class="en hidden">🎨 Custom Design</h3>
+          <p class="fr">Aux couleurs de votre entreprise. Identité visuelle unique et mémorable.</p>
+          <p class="en hidden">In your company colors. Unique and memorable visual identity.</p>
         </div>
       </div>
     </section>
 
-    <!-- TECH STACK SECTION -->
-    <section class="tech-stack" id="tech">
-      <h2 class="section-title fr">Technologie Pionnière</h2>
-      <h2 class="section-title en hidden">Pioneer Technology</h2>
+    <!-- TECHNOLOGY SECTION -->
+    <section class="technology">
+      <h2 class="fr">Technologie Pionnière</h2>
+      <h2 class="en hidden">Pioneer Technology</h2>
       
-      <div class="tech-content">
+      <div class="tech-grid">
         <div class="tech-card">
           <h3 class="fr">🐧 Linux First</h3>
           <h3 class="en hidden">🐧 Linux First</h3>
@@ -1399,7 +1291,7 @@
         
         <div class="tech-card">
           <h3 class="fr">🎬 Graphisme Sans Compromis</h3>
-          <h3 class="en hidden">🎬 Graphics No Compromise</h3>
+          <h3 class="en hidden">🎬 Graphics Without Compromise</h3>
           <p class="fr">Animations fluides, graphiques haute résolution. Aucun compromis sur la qualité visuelle.</p>
           <p class="en hidden">Smooth animations, high-resolution graphics. No compromise on visual quality.</p>
         </div>
@@ -1421,12 +1313,12 @@
     </section>
 
     <!-- STARTER PACK SECTION -->
-    <section class="starter-pack" id="starter">
-      <h2 class="section-title fr">Starter Pack PME</h2>
-      <h2 class="section-title en hidden">SMB Starter Pack</h2>
+    <section class="starter-pack">
+      <h2 class="fr">Starter Pack PME</h2>
+      <h2 class="en hidden">SME Starter Pack</h2>
       
-      <div class="starter-content">
-        <div class="starter-card">
+      <div class="pack-grid">
+        <div class="pack-card">
           <h3 class="fr">🚀 Démarrage Rapide</h3>
           <h3 class="en hidden">🚀 Quick Start</h3>
           <p class="fr"><strong>Semaine 1-2:</strong> Consultation & Design</p>
@@ -1437,7 +1329,7 @@
           <p class="en hidden"><strong>Week 5:</strong> Deployment & Launch</p>
         </div>
         
-        <div class="starter-card">
+        <div class="pack-card">
           <h3 class="fr">🎨 Branding Complet</h3>
           <h3 class="en hidden">🎨 Complete Branding</h3>
           <ul>
@@ -1452,7 +1344,7 @@
           </ul>
         </div>
         
-        <div class="starter-card">
+        <div class="pack-card">
           <h3 class="fr">💻 Infrastructure Complète</h3>
           <h3 class="en hidden">💻 Complete Infrastructure</h3>
           <ul>
@@ -1467,7 +1359,7 @@
           </ul>
         </div>
         
-        <div class="starter-card">
+        <div class="pack-card">
           <h3 class="fr">📊 Analytics & Support</h3>
           <h3 class="en hidden">📊 Analytics & Support</h3>
           <ul>
@@ -1482,23 +1374,25 @@
           </ul>
         </div>
       </div>
-      
-      <div class="starter-cta">
-        <p class="fr"><strong>À partir de $2,999/mois</strong> - Tout inclus, pas de frais cachés</p>
-        <p class="en hidden"><strong>From $2,999/month</strong> - Everything included, no hidden fees</p>
-        <a href="/presentation" class="cta-button fr">Commencer Maintenant</a>
-        <a href="/presentation" class="cta-button en hidden">Start Now</a>
-      </div>
+
+      <p class="pack-price fr">À partir de $2,999/mois</p>
+      <p class="pack-price en hidden">Starting from $2,999/month</p>
+      <p class="pack-description fr">Tout inclus, pas de frais cachés</p>
+      <p class="pack-description en hidden">Everything included, no hidden fees</p>
+
+      <a href="#contact" style="display: inline-flex; align-items: center; gap: 10px; padding: 14px 32px; background: linear-gradient(135deg, #7FD8D8 0%, #FF69B4 100%); color: #1a1a1a; text-decoration: none; font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: 700; border-radius: 6px; border: 2px solid transparent; cursor: pointer; text-transform: uppercase; letter-spacing: 1px;">
+        <span class="fr">Commencer Maintenant</span>
+        <span class="en hidden">Start Now</span>
+      </a>
     </section>
 
     <!-- SERVICES SECTION -->
-    <section class="services" id="services">
-      <h2 class="section-title fr">Nos Services</h2>
-      <h2 class="section-title en hidden">Our Services</h2>
+    <section class="services" id="services-detail">
+      <h2 class="fr">Nos Services</h2>
+      <h2 class="en hidden">Our Services</h2>
       
-      <div class="services-grid">
-        <!-- Online Shop -->
-        <div class="service-card">
+      <div class="services-list">
+        <div class="service-item">
           <h3 class="fr">🛍️ Online Shop</h3>
           <h3 class="en hidden">🛍️ Online Shop</h3>
           <p class="fr">E-commerce complet avec paiement Stripe</p>
@@ -1513,8 +1407,7 @@
           </ul>
         </div>
 
-        <!-- Productivity Apps -->
-        <div class="service-card">
+        <div class="service-item">
           <h3 class="fr">⚙️ Productivity Apps</h3>
           <h3 class="en hidden">⚙️ Productivity Apps</h3>
           <p class="fr">Software sur mesure pour votre workflow</p>
@@ -1529,8 +1422,7 @@
           </ul>
         </div>
 
-        <!-- Encrypted Database -->
-        <div class="service-card">
+        <div class="service-item">
           <h3 class="fr">🔐 Database Cryptée</h3>
           <h3 class="en hidden">🔐 Encrypted Database</h3>
           <p class="fr">Infrastructure sécurisée niveau militaire</p>
@@ -1547,56 +1439,56 @@
       </div>
     </section>
 
-    <!-- FEATURES SECTION -->
-    <section class="features" id="features">
-      <h2 class="section-title fr">Pourquoi APPLEPUNK</h2>
-      <h2 class="section-title en hidden">Why APPLEPUNK</h2>
+    <!-- WHY APPLEPUNK SECTION -->
+    <section class="why-applepunk">
+      <h2 class="fr">Pourquoi APPLEPUNK</h2>
+      <h2 class="en hidden">Why APPLEPUNK</h2>
       
-      <div class="features-grid">
-        <div class="feature">
-          <div class="feature-icon">🚀</div>
-          <h4 class="fr">Dernière Technologie</h4>
-          <h4 class="en hidden">Latest Technology</h4>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">🚀</div>
+          <h3 class="fr">Dernière Technologie</h3>
+          <h3 class="en hidden">Latest Technology</h3>
           <p class="fr">Nous utilisons les meilleures technologies du marché</p>
           <p class="en hidden">We use the best technologies on the market</p>
         </div>
 
-        <div class="feature">
-          <div class="feature-icon">🔒</div>
-          <h4 class="fr">Database Cryptée</h4>
-          <h4 class="en hidden">Encrypted Database</h4>
+        <div class="benefit-card">
+          <div class="benefit-icon">🔒</div>
+          <h3 class="fr">Database Cryptée</h3>
+          <h3 class="en hidden">Encrypted Database</h3>
           <p class="fr">Sécurité niveau militaire</p>
           <p class="en hidden">Military-grade security</p>
         </div>
 
-        <div class="feature">
-          <div class="feature-icon">⚡</div>
-          <h4 class="fr">Performance</h4>
-          <h4 class="en hidden">Performance</h4>
+        <div class="benefit-card">
+          <div class="benefit-icon">⚡</div>
+          <h3 class="fr">Performance</h3>
+          <h3 class="en hidden">Performance</h3>
           <p class="fr">Applications ultra-rapides et réactives</p>
           <p class="en hidden">Ultra-fast and responsive applications</p>
         </div>
 
-        <div class="feature">
-          <div class="feature-icon">💼</div>
-          <h4 class="fr">Support Professionnel</h4>
-          <h4 class="en hidden">Professional Support</h4>
+        <div class="benefit-card">
+          <div class="benefit-icon">💼</div>
+          <h3 class="fr">Support Professionnel</h3>
+          <h3 class="en hidden">Professional Support</h3>
           <p class="fr">Équipe dédiée disponible pour vous aider</p>
-          <p class="en hidden">Dedicated team ready to help you</p>
+          <p class="en hidden">Dedicated team available to help you</p>
         </div>
 
-        <div class="feature">
-          <div class="feature-icon">📈</div>
-          <h4 class="fr">Scalable</h4>
-          <h4 class="en hidden">Scalable</h4>
+        <div class="benefit-card">
+          <div class="benefit-icon">📈</div>
+          <h3 class="fr">Scalable</h3>
+          <h3 class="en hidden">Scalable</h3>
           <p class="fr">Grandit avec votre entreprise</p>
           <p class="en hidden">Grows with your business</p>
         </div>
 
-        <div class="feature">
-          <div class="feature-icon">💰</div>
-          <h4 class="fr">Tarification Transparente</h4>
-          <h4 class="en hidden">Transparent Pricing</h4>
+        <div class="benefit-card">
+          <div class="benefit-icon">💰</div>
+          <h3 class="fr">Tarification Transparente</h3>
+          <h3 class="en hidden">Transparent Pricing</h3>
           <p class="fr">Pas de frais cachés, prix clairs</p>
           <p class="en hidden">No hidden fees, clear pricing</p>
         </div>
@@ -1605,25 +1497,17 @@
 
     <!-- BIO SECTION -->
     <section class="bio" id="bio">
-      <h2 class="section-title fr">À Propos</h2>
-      <h2 class="section-title en hidden">About Us</h2>
-      
-      <div class="bio-container">
-        <div class="bio-main">
+      <h2 class="fr">À Propos</h2>
+      <h2 class="en hidden">About</h2>
+
+      <div class="bio-content">
+        <div class="bio-card">
           <h3 class="fr">Sebastien Germain</h3>
           <h3 class="en hidden">Sebastien Germain</h3>
           <p class="bio-title fr">PDG & Fondateur • Développeur Full Stack & Ingénieur Software</p>
           <p class="bio-title en hidden">CEO & Founder • Full Stack Developer & Software Engineer</p>
-          
-          <p class="bio-text fr">
-            Artiste coloré avec créativité++. Création d'expériences multi-plateformes pixel-perfect depuis les années 2000.
-            Certifié Apple & Microsoft. Old School Pixel Geek qui a créé son premier site HTML à 7 ans.
-          </p>
-          <p class="bio-text en hidden">
-            Colorful artist with creativity++. Creating pixel-perfect multi-platform experiences since the 2000s.
-            Apple & Microsoft Certified. Old School Pixel Geek who created his first HTML website at age 7.
-          </p>
-          
+          <p class="fr">Artiste coloré avec créativité++. Création d'expériences multi-plateformes pixel-perfect depuis les années 2000. Certifié Apple & Microsoft. Old School Pixel Geek qui a créé son premier site HTML à 7 ans.</p>
+          <p class="en hidden">Colorful artist with creativity++. Creating pixel-perfect multi-platform experiences since the 2000s. Apple & Microsoft Certified. Old School Pixel Geek who created his first HTML site at age 7.</p>
           <div class="bio-badges">
             <span class="badge">HTML @ 7 ans</span>
             <span class="badge">Apple Certified</span>
@@ -1631,20 +1515,14 @@
             <span class="badge">Full Stack</span>
           </div>
         </div>
-        
-        <div class="bio-mission">
+
+        <div class="mission-statement">
           <h4 class="fr">Notre Mission</h4>
           <h4 class="en hidden">Our Mission</h4>
-          <p class="fr">
-            Donner aux petites entreprises l'accès à des solutions web et app professionnelles à coût abordable.
-            Applications d'entreprise sur mesure complètes pour tous.
-          </p>
-          <p class="en hidden">
-            Give small businesses access to professional web and app solutions at affordable cost.
-            Complete custom enterprise applications for everyone.
-          </p>
+          <p class="fr">Donner aux petites entreprises l'accès à des solutions web et app professionnelles à coût abordable. Applications d'entreprise sur mesure complètes pour tous.</p>
+          <p class="en hidden">Give small businesses access to professional web and app solutions at affordable cost. Complete custom business applications for everyone.</p>
           
-          <div class="mission-points">
+          <div class="points-grid" style="margin-top: 2rem;">
             <div class="point">
               <h5 class="fr">🚀 Cross-Platform</h5>
               <h5 class="en hidden">🚀 Cross-Platform</h5>
@@ -1666,35 +1544,39 @@
           </div>
         </div>
       </div>
-      
-      <div class="team">
+
+      <div class="team-section">
         <h3 class="fr">L'Équipe</h3>
         <h3 class="en hidden">The Team</h3>
         
         <div class="team-grid">
           <div class="team-member">
-            <h4>Sebastien Germain</h4>
+            <h4 class="fr">Sebastien Germain</h4>
+            <h4 class="en hidden">Sebastien Germain</h4>
             <p class="fr">PDG & Fondateur</p>
             <p class="en hidden">CEO & Founder</p>
             <a href="mailto:founder@applepunk.com">founder@applepunk.com</a>
           </div>
-          
+
           <div class="team-member">
-            <h4>Nadia</h4>
+            <h4 class="fr">Nadia</h4>
+            <h4 class="en hidden">Nadia</h4>
             <p class="fr">Chef de Projet & RH</p>
             <p class="en hidden">Project Manager & HR</p>
             <a href="mailto:nadiavp@applepunk.com">nadiavp@applepunk.com</a>
           </div>
-          
+
           <div class="team-member">
-            <h4>Maxime Lepine</h4>
+            <h4 class="fr">Maxime Lepine</h4>
+            <h4 class="en hidden">Maxime Lepine</h4>
             <p class="fr">Gestion & Développement</p>
             <p class="en hidden">Management & Development</p>
             <a href="mailto:Gestion.maxime.lepine@gmail.com">Gestion.maxime.lepine@gmail.com</a>
           </div>
-          
+
           <div class="team-member">
-            <h4>William Fortier</h4>
+            <h4 class="fr">William Fortier</h4>
+            <h4 class="en hidden">William Fortier</h4>
             <p class="fr">Ingénieur Vidéo & Son</p>
             <p class="en hidden">Video & Audio Engineer</p>
             <p class="fr">Production multimédia</p>
@@ -1702,19 +1584,20 @@
           </div>
         </div>
       </div>
-      
-      <div class="portfolio-link">
-        <div class="portfolio-link-content">
-          <p class="fr">Découvrez notre portfolio complet et nos projets réalisés pour des PME innovantes</p>
-          <p class="en hidden">Discover our complete portfolio and projects created for innovative SMEs</p>
-          <a href="https://www.applepunk.com" target="_blank" class="portfolio-button fr">Visiter applepunk.com</a>
-          <a href="https://www.applepunk.com" target="_blank" class="portfolio-button en hidden">Visit applepunk.com</a>
-        </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section class="portfolio-link">
+      <div class="portfolio-link-content">
+        <p class="fr">Découvrez notre portfolio complet et nos projets réalisés pour des PME innovantes</p>
+        <p class="en hidden">Discover our complete portfolio and projects created for innovative SMEs</p>
+        <a href="https://www.applepunk.com" target="_blank" class="portfolio-button fr">Visiter applepunk.com</a>
+        <a href="https://www.applepunk.com" target="_blank" class="portfolio-button en hidden">Visit applepunk.com</a>
       </div>
     </section>
 
     <!-- RETRO COMPUTER CONTACT SECTION -->
-    <section class="retro-contact-section">
+    <section class="retro-contact-section" id="contact">
       <div class="retro-contact-content">
         <h2 class="fr">Nous Contacter</h2>
         <h2 class="en hidden">Contact Us</h2>
@@ -1738,6 +1621,7 @@
               <h4 class="fr">Email</h4>
               <h4 class="en hidden">Email</h4>
               <a href="mailto:founder@applepunk.com">founder@applepunk.com</a>
+              <a href="mailto:nadiavp@applepunk.com">nadiavp@applepunk.com</a>
             </div>
           </div>
           
@@ -1746,97 +1630,29 @@
             <div class="contact-method-info">
               <h4 class="fr">Équipe</h4>
               <h4 class="en hidden">Team</h4>
-              <a href="mailto:nadiavp@applepunk.com">nadiavp@applepunk.com</a>
               <a href="mailto:Gestion.maxime.lepine@gmail.com">Gestion.maxime.lepine@gmail.com</a>
             </div>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- FOOTER -->
-    <footer id="contact">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h4 class="fr">Services</h4>
-          <h4 class="en hidden">Services</h4>
-          <a href="#services" class="fr">Boutique en Ligne</a>
-          <a href="#services" class="en hidden">Online Shop</a>
-          <a href="#services" class="fr">Applications</a>
-          <a href="#services" class="en hidden">Apps</a>
-          <a href="#services" class="fr">Base de Données</a>
-          <a href="#services" class="en hidden">Database</a>
-        </div>
-
-        <div class="footer-section">
-          <h4 class="fr">Entreprise</h4>
-          <h4 class="en hidden">Company</h4>
-          <a href="#bio" class="fr">À Propos</a>
-          <a href="#bio" class="en hidden">About</a>
-          <a href="#" class="fr">Blog</a>
-          <a href="#" class="en hidden">Blog</a>
-          <a href="#" class="fr">Carrières</a>
-          <a href="#" class="en hidden">Careers</a>
-        </div>
-
-        <div class="footer-section">
-          <h4 class="fr">Contact</h4>
-          <h4 class="en hidden">Contact</h4>
-          <a href="tel:+14387777278">Nadia Ladouceur - (438) 777-7278</a>
-          <a href="tel:+14508471720">Sebastien Germain - (450) 847-1720</a>
-          <a href="mailto:founder@applepunk.com">founder@applepunk.com</a>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <div style="display: flex; align-items: center; justify-content: center; gap: 3rem; margin-bottom: 3rem; flex-wrap: wrap;">
-          <img src="/banner-applepunk.jpg" alt="APPLEPUNK Banner" style="height: 150px; width: auto; object-fit: contain; filter: drop-shadow(0 0 20px rgba(127, 216, 216, 0.3));">
-          <img src="/logo-cowabunga.png" alt="COWABUNGA Logo" style="height: 150px; width: auto; object-fit: contain; filter: drop-shadow(0 0 20px rgba(255, 105, 180, 0.3));">
-        </div>
-        <p style="font-size: 1.1rem; margin-bottom: 1rem;">Designed by SEBG. For APPLEPUNK all rights reserved.</p>
-        <p style="font-size: 0.85rem; color: var(--primary); letter-spacing: 1px;">Designed for iOS • Optimized for Windows • Kick ass on Android</p>
-      </div>
-    </footer>
   </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <img src="/banner-applepunk.jpg" alt="APPLEPUNK Logo" class="footer-logo">
+      <img src="/log.png" alt="COWABUNGA Logo" class="footer-logo">
+    </div>
+    <div class="footer-credits">
+      <p class="fr">© 2025 APPLEPUNK. Tous droits réservés. | Créé avec ❤️ par Seub Germain</p>
+      <p class="en hidden">© 2025 APPLEPUNK. All rights reserved. | Created with ❤️ by Seub Germain</p>
+    </div>
+  </footer>
 
   <script>
     let currentTheme = 'dark';
     let currentLang = 'fr';
-
-    // FLUID SIMULATION INITIALIZATION
-    const fluidCanvas = document.getElementById('fluidCanvas');
-    fluidCanvas.width = window.innerWidth;
-    fluidCanvas.height = window.innerHeight;
-    
-    window.addEventListener('resize', () => {
-      fluidCanvas.width = window.innerWidth;
-      fluidCanvas.height = window.innerHeight;
-    });
-
-    // WAVE ANIMATION - THEME AWARE (BACKUP)
-    const canvas = document.getElementById('waveCanvas');
-    const ctx = canvas ? canvas.getContext('2d') : null;
-    
-    // Canvas resize handled above
-
-    const themeWaves = {
-      dark: [
-        { amplitude: 100, frequency: 0.008, phase: 0, color: '#00FFFF', speed: 0.004 },
-        { amplitude: 80, frequency: 0.01, phase: Math.PI / 4, color: '#FF1493', speed: 0.003 },
-        { amplitude: 90, frequency: 0.007, phase: Math.PI / 2, color: '#9D4EDD', speed: 0.0025 },
-        { amplitude: 70, frequency: 0.012, phase: Math.PI, color: '#FF69B4', speed: 0.0045 }
-      ],
-      light: [
-        { amplitude: 100, frequency: 0.008, phase: 0, color: '#FFE5A8', speed: 0.004 },
-        { amplitude: 80, frequency: 0.01, phase: Math.PI / 4, color: '#FFB6C1', speed: 0.003 },
-        { amplitude: 90, frequency: 0.007, phase: Math.PI / 2, color: '#DDA0DD', speed: 0.0025 },
-        { amplitude: 70, frequency: 0.012, phase: Math.PI, color: '#87CEEB', speed: 0.0045 }
-      ]
-    };
-
-    let waves = themeWaves.dark;
-
-    // Wave animation disabled - using fluid simulation instead
 
     // THEME TOGGLE
     function toggleTheme() {
@@ -1853,7 +1669,6 @@
         document.body.classList.remove('white-theme');
       }
       
-      waves = themeWaves[currentTheme];
       document.querySelector('button:nth-of-type(2)').textContent = currentTheme === 'dark' ? 'DARK' : 'LIGHT';
     }
 
@@ -1869,8 +1684,5 @@
     style.textContent = '.hidden { display: none !important; }';
     document.head.appendChild(style);
   </script>
-
-  <!-- MAGICAL BACKGROUND ANIMATION -->
-  <script src="/magic-bg.js"></script>
 </body>
 </html>
