@@ -1,8 +1,11 @@
 // Custom Fluid Animation using Canvas 2D
+console.log('Custom fluid animation script loaded');
 const canvas = document.getElementById('fluidCanvas');
+console.log('Canvas element:', canvas);
 if (!canvas) {
   console.error('Fluid canvas not found');
 } else {
+  console.log('Canvas found, initializing animation');
   const ctx = canvas.getContext('2d');
   
   // Set canvas size
