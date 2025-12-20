@@ -1712,6 +1712,77 @@
   </script>
 
   <!-- CUSTOM FLUID ANIMATION SCRIPT -->
-  <script src="/custom-fluid.js"></script>
+  <script>
+    // Wait for DOM to be ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initFluidAnimation);
+    } else {
+      initFluidAnimation();
+    }
+
+    function initFluidAnimation() {
+      const canvas = document.getElementById('fluidCanvas');
+      if (!canvas) {
+        console.error('Fluid canvas not found');
+        return;
+      }
+
+      const ctx = canvas.getContext('2d');
+      if (!ctx) {
+        console.error('Canvas context not available');
+        return;
+      }
+
+      console.log('Fluid animation initialized');
+
+      // Set canvas size
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+
+      // Simple particle animation
+      let particles = [];
+      let time = 0;
+
+      function animate() {
+        // Clear with semi-transparent background
+        ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Draw animated waves
+        const colors = ['#00FFFF', '#FF00FF', '#FFFF00'];
+        const waveHeight = 60;
+        const waveFreq = 0.008;
+        const waveSpeed = time * 0.03;
+
+        colors.forEach((color, idx) => {
+          ctx.strokeStyle = color;
+          ctx.lineWidth = 3;
+          ctx.globalAlpha = 0.4;
+          ctx.shadowColor = color;
+          ctx.shadowBlur = 15;
+          ctx.beginPath();
+
+          const offset = (idx * canvas.width / 3) + waveSpeed;
+          for (let x = 0; x < canvas.width; x += 8) {
+            const y = canvas.height * 0.4 + Math.sin((x + offset) * waveFreq) * waveHeight;
+            if (x === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+        });
+
+        ctx.globalAlpha = 1;
+        ctx.shadowBlur = 0;
+        time++;
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    }
+  </script>
 </body>
 </html>
