@@ -29,21 +29,35 @@
     }
 
     :root {
-      --primary: #7FD8D8;
+      --primary: #00FFFF;
       --secondary: #FFE5A8;
-      --accent: #FF69B4;
+      --accent: #FF1493;
       --dark: #1a1a1a;
       --light: #FFFAF0;
-      --text: #7FD8D8;
+      --text: #00FFFF;
     }
 
     body {
-      font-family: 'Orbitron', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Press Start 2P', 'Orbitron', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
       background: var(--dark);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.8;
       overflow-x: hidden;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      text-shadow: 0 0 10px rgba(0, 255, 255, 0.6), 0 0 20px rgba(255, 20, 147, 0.3);
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Press Start 2P', 'Orbitron', sans-serif;
+      color: #00FFFF;
+      text-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(255, 20, 147, 0.5);
+      letter-spacing: 2px;
+    }
+
+    p, span, a {
+      color: #00FFFF;
+      text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
     }
 
     /* WHITE THEME TEXT SHADOW FOR VISIBILITY */
@@ -81,8 +95,10 @@
     /* PIXEL FONT FOR SMALL TEXT */
     .pixel-text, .tagline, .bio-title, .badge, .point p, .team-member p {
       font-family: 'Press Start 2P', cursive;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       letter-spacing: 2px;
+      color: #00FFFF;
+      text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
     }
 
     /* ANIMATION CANVAS REMOVED */
