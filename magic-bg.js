@@ -1,4 +1,4 @@
-// Magical Background Animation with Enhanced Network Effect
+// Magical Background Animation with Theme Support
 (function() {
   const canvas = document.getElementById('fluidCanvas');
   if (!canvas) return;
@@ -12,6 +12,12 @@
   }
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
+
+  // Check current theme
+  function isDarkTheme() {
+    const html = document.documentElement;
+    return html.classList.contains('dark') || !html.classList.contains('light');
+  }
 
   // Particle class
   class Particle {
@@ -58,67 +64,75 @@
   let time = 0;
 
   function animate() {
-    // Draw animated gradient background
-    const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-    
-    // Animated colors
-    const hue1 = (time * 0.1) % 360;
-    const hue2 = (time * 0.15 + 120) % 360;
-    const hue3 = (time * 0.12 + 240) % 360;
-    
-    gradient.addColorStop(0, `hsl(${hue1}, 100%, 5%)`);
-    gradient.addColorStop(0.5, `hsl(${hue2}, 100%, 10%)`);
-    gradient.addColorStop(1, `hsl(${hue3}, 100%, 5%)`);
-    
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    const darkTheme = isDarkTheme();
 
-    // Draw particles
-    ctx.globalAlpha = 1;
-    particles.forEach(particle => {
-      particle.update();
-      particle.draw();
-    });
+    if (darkTheme) {
+      // DARK THEME: Animated gradient with particles
+      const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      
+      // Animated colors
+      const hue1 = (time * 0.1) % 360;
+      const hue2 = (time * 0.15 + 120) % 360;
+      const hue3 = (time * 0.12 + 240) % 360;
+      
+      gradient.addColorStop(0, `hsl(${hue1}, 100%, 5%)`);
+      gradient.addColorStop(0.5, `hsl(${hue2}, 100%, 10%)`);
+      gradient.addColorStop(1, `hsl(${hue3}, 100%, 5%)`);
+      
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Draw enhanced connecting lines between nearby particles
-    const colors = ['#00FFFF', '#FF00FF', '#FFFF00'];
-    
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        
-        // Increased connection distance for more visible network
-        if (distance < 250) {
-          // Calculate opacity based on distance (closer = more opaque)
-          const opacity = 1 - (distance / 250);
+      // Draw particles
+      ctx.globalAlpha = 1;
+      particles.forEach(particle => {
+        particle.update();
+        particle.draw();
+      });
+
+      // Draw enhanced connecting lines between nearby particles
+      const colors = ['#00FFFF', '#FF00FF', '#FFFF00'];
+      
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
           
-          // Assign color based on particle index
-          const lineColor = colors[(i + j) % 3];
-          
-          // Draw the line with glow effect
-          ctx.globalAlpha = opacity * 0.7;
-          ctx.strokeStyle = lineColor;
-          ctx.lineWidth = 2;
-          ctx.shadowColor = lineColor;
-          ctx.shadowBlur = 12;
-          
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.stroke();
-          
-          // Draw a second line for extra glow effect
-          ctx.globalAlpha = opacity * 0.4;
-          ctx.lineWidth = 4;
-          ctx.shadowBlur = 20;
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.stroke();
+          // Increased connection distance for more visible network
+          if (distance < 250) {
+            // Calculate opacity based on distance (closer = more opaque)
+            const opacity = 1 - (distance / 250);
+            
+            // Assign color based on particle index
+            const lineColor = colors[(i + j) % 3];
+            
+            // Draw the line with glow effect
+            ctx.globalAlpha = opacity * 0.7;
+            ctx.strokeStyle = lineColor;
+            ctx.lineWidth = 2;
+            ctx.shadowColor = lineColor;
+            ctx.shadowBlur = 12;
+            
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+            
+            // Draw a second line for extra glow effect
+            ctx.globalAlpha = opacity * 0.4;
+            ctx.lineWidth = 4;
+            ctx.shadowBlur = 20;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
         }
       }
+    } else {
+      // LIGHT THEME: Simple white background
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
 
     ctx.globalAlpha = 1;
