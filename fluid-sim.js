@@ -1,14 +1,22 @@
 'use strict';
 
-const canvas = document.getElementsByTagName('canvas')[0];
-canvas.width = canvas.clientWidth;
-canvas.height = canvas.clientHeight;
+// Target the fluid canvas specifically
+const canvas = document.getElementById('fluidCanvas') || document.getElementsByTagName('canvas')[0];
+if (canvas) {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
 
 Array.prototype.getRandom = function() {
     return this[Math.floor(Math.random() * this.length)];
 };
 
-let splatColors = [{ r: 0, g: 0.15, b: 0 }];
+// Cyberpunk colors: cyan, magenta, yellow
+let splatColors = [
+  { r: 0, g: 1, b: 1 },      // Cyan
+  { r: 1, g: 0, b: 1 },      // Magenta
+  { r: 1, g: 1, b: 0 }       // Yellow
+];
 
 let idleSplats;
 
@@ -36,14 +44,14 @@ let config = {
     BLOOM_INTENSITY: 0.8,
     BLOOM_THRESHOLD: 0.6,
     BLOOM_SOFT_KNEE: 0.7,
-    POINTER_COLOR: [{ r: 0, g: 0.15, b: 0 }],
+    POINTER_COLOR: [{ r: 0, g: 1, b: 1 }, { r: 1, g: 0, b: 1 }, { r: 1, g: 1, b: 0 }],
     SOUND_SENSITIVITY: 0.25,
     AUDIO_RESPONSIVE: true,
     FREQ_RANGE: 8,
     FREQ_RANGE_START: 0,
-    IDLE_SPLATS: false,
-    RANDOM_AMOUNT: 10,
-    RANDOM_INTERVAL: 1,
+    IDLE_SPLATS: true,
+    RANDOM_AMOUNT: 15,
+    RANDOM_INTERVAL: 0.5,
     SPLAT_ON_CLICK: true,
     SHOW_MOUSE_MOVEMENT: true,
     FRAME_INTERVAL_MS: 1000 / 60,
