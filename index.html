@@ -1326,6 +1326,28 @@
       <video autoplay muted loop playsinline webkit-playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0.8;" class="hero-video">
         <source src="/christmas-hero-animated.mp4" type="video/mp4">
       </video>
+      
+      <!-- AUDIO PLAYER -->
+      <audio id="christmas-music" autoplay loop style="display: none;">
+        <source src="/christmas-music.mp3" type="audio/mpeg">
+      </audio>
+      
+      <!-- MINI PLAYER BUTTON -->
+      <div style="position: absolute; bottom: 30px; right: 30px; z-index: 100;">
+        <button id="music-toggle" style="
+          background: linear-gradient(135deg, #00d4ff, #ff00ff);
+          border: 2px solid #00d4ff;
+          color: white;
+          padding: 12px 20px;
+          border-radius: 25px;
+          cursor: pointer;
+          font-weight: bold;
+          font-size: 14px;
+          box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+          transition: all 0.3s ease;
+        " onmouseover="this.style.boxShadow='0 0 30px rgba(255, 0, 255, 0.8)'" onmouseout="this.style.boxShadow='0 0 20px rgba(0, 212, 255, 0.5)'">🎵 PLAY MUSIC</button>
+      </div>
+      
       <div class="hero-content">
         <div class="tagline fr">Web Designer • App Developer • Marketing</div>
         <div class="tagline en hidden">Web Designer • App Developer • Marketing</div>
@@ -1800,6 +1822,36 @@
   <script>
     let currentTheme = 'dark';
     let currentLang = 'fr';
+    let musicPlaying = false;
+    
+    // MUSIC PLAYER
+    const christmasMusic = document.getElementById('christmas-music');
+    const musicToggle = document.getElementById('music-toggle');
+    
+    if (christmasMusic && musicToggle) {
+      // Try to autoplay
+      christmasMusic.play().catch(() => {
+        console.log('Autoplay blocked by browser');
+      });
+      
+      musicToggle.addEventListener('click', () => {
+        if (christmasMusic.paused) {
+          christmasMusic.play();
+          musicToggle.textContent = '🎵 PAUSE MUSIC';
+          musicPlaying = true;
+        } else {
+          christmasMusic.pause();
+          musicToggle.textContent = '🎵 PLAY MUSIC';
+          musicPlaying = false;
+        }
+      });
+      
+      // Update button text when music ends
+      christmasMusic.addEventListener('ended', () => {
+        musicToggle.textContent = '🎵 PLAY MUSIC';
+        musicPlaying = false;
+      });
+    }
 
     // THEME TOGGLE
     function toggleTheme() {
